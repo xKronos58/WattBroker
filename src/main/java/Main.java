@@ -1,5 +1,3 @@
-package org.etrade;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,7 +25,7 @@ public class Main {
 
     public static List<SolarFarm> getSolarFarms() {
         List<List<String>> records = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File("/Users/finleycrowther/Desktop/Code/java_Code/AEMO_alg_testing/src/org/etrade/_PV_SOLAR_FARMS.csv"))) {
+        try (Scanner scanner = new Scanner(new File("src/main/java/_PV_SOLAR_FARMS.csv"))) {
             while (scanner.hasNextLine()) {
                 records.add(getRecordFromLine(scanner.nextLine()));
             }
