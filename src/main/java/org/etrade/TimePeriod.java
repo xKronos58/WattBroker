@@ -1,3 +1,4 @@
+package org.etrade;
 public class TimePeriod {
     Weather weather;
     float currentMWH;

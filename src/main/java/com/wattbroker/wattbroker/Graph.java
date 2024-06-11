@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 public class Graph extends Pane {
@@ -43,6 +44,8 @@ public class Graph extends Pane {
         Market {
             @Override
             public Pane setput(List<URI> apiLocation) {
+                com.wattbroker.wattbroker.Data data = new com.wattbroker.wattbroker.Data();
+                data.getMarketGraph(new Date(System.currentTimeMillis()));
                 return null;
             }
         }, Data {

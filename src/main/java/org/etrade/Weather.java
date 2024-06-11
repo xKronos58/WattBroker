@@ -1,4 +1,6 @@
+package org.etrade;
 import ch.hsr.geohash.GeoHash;
+import com.util.CustomHttpRequest;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -291,7 +293,7 @@ public class Weather {
         }
     }
 
-    private class Rain {
+    public class Rain {
         int precipitation_50_chance;
         Amount amount;
         int chance;

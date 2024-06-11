@@ -1,3 +1,5 @@
+package org.etrade;
+import com.util.CustomHttpRequest;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -115,7 +117,7 @@ public class SolarFarm {
         // https://api.open-meteo.com/v1/bom?latitude=52.52&longitude=13.41&hourly=cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high
         // https://api.open-meteo.com/v1/bom?r1vh7d&hourly=cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high
 
-        CustomHttpRequest cr = new CustomHttpRequest("https://api.open-meteo.com/v1/bom?latitude="+lat+"&longitude="+lng+"&hourly=cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high");
+        com.util.CustomHttpRequest cr = new CustomHttpRequest("https://api.open-meteo.com/v1/bom?latitude="+lat+"&longitude="+lng+"&hourly=cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high");
         File f = new File("src/org.etrade.temp/clouds_"+StationName+"_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm"))+".json");
         if(Files.exists(f.toPath()))
             Files.delete(f.toPath());

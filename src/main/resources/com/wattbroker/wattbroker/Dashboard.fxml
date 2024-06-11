@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1117.0" prefWidth="1728.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.UI_Controller">
+<AnchorPane prefHeight="1117.0" prefWidth="1728.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.UI_Controller">
    <children>
       <HBox layoutX="375.0" layoutY="153.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -44,7 +45,7 @@
                         <Insets left="30.0" top="30.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <HBox prefHeight="84.0" prefWidth="387.0" style="-fx-background-color: #3E1D2A; -fx-background-radius: 25px;" GridPane.rowIndex="2">
+                  <HBox fx:id="DashboardButton" onMouseClicked="#ShowDashboard" prefHeight="84.0" prefWidth="387.0" style="-fx-background-color: #3E1D2A; -fx-background-radius: 25px;" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -61,7 +62,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Dashboard_icon" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Dashboard_icon.png" />
                                  </image>
@@ -78,7 +79,7 @@
                         </GridPane>
                      </children>
                   </HBox>
-                  <HBox layoutX="25.0" layoutY="128.0" onMouseClicked="#ShowMarket" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="4">
+                  <HBox fx:id="MarketButton" layoutX="25.0" layoutY="128.0" onMouseClicked="#ShowMarket" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="4">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -92,7 +93,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Market_icon" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Market_icon.png" />
                                  </image>
@@ -115,7 +116,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowData" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="8">
+                  <HBox fx:id="DataButton" layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowData" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="8">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -129,7 +130,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Data_icon" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Data_icon.png" />
                                  </image>
@@ -152,7 +153,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowSettings" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="10">
+                  <HBox fx:id="SettingsButton" layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowSettings" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="10">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -166,7 +167,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Settings_icon" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Settings_icon.png" />
                                  </image>
@@ -189,7 +190,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowAlgorithms" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="6">
+                  <HBox fx:id="Algorithms" layoutX="10.0" layoutY="10.0" onMouseClicked="#ShowAlgorithms" prefHeight="84.0" prefWidth="387.0" style="-fx-background-radius: 25px;" GridPane.rowIndex="6">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -203,7 +204,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="Algorithms_icon" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Algorithms_icon.png" />
                                  </image>
@@ -233,18 +234,8 @@
                   </ImageView>
                </children>
             </GridPane>
-            <GridPane layoutX="2325.0" layoutY="10.0" prefWidth="1312.0" style="-fx-background-color: #171717;">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
          </children>
       </HBox>
+      <Pane fx:id="ContentPane" prefHeight="1142.0" prefWidth="1312.0" AnchorPane.leftAnchor="416.0" />
    </children>
 </AnchorPane>
