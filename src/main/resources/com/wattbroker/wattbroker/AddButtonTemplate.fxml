@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="85.0" prefWidth="1235.0" style="-fx-background-color: rgba(71, 71, 71, 0.28); -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.AlgTemplateController">
+   <children>
+      <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="518.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="584.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="8.0">
+         <image>
+            <Image url="@Images/Add_icon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

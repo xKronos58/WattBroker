@@ -9,6 +9,10 @@ import java.util.Scanner;
 public class Algo_Run {
     public static void main(String[] args) throws IOException {
         List<SolarFarm> solarFarmsList = getSolarFarms();
+
+        for(SolarFarm s : solarFarmsList) {
+            System.out.println(s.calculateEfficiencyHour(0)*100);
+        }
     }
 
     private static List<Weather> fillWeather(List<SolarFarm> farms) {

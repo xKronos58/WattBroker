@@ -1,0 +1,5 @@
+NAME, DESCRIPTION, EFFICIENCY, PROFIT, BALANCE, STATUS
+VIC-1, victoria main algorithm, 84.5, 412.4, 501.2, true
+VIC-2, victoria testing algorithm, 10.2, -12.4, 1.2, false
+NSW-1, new south wales main algorithm, 78.1, 312.4, 401.2, true
+TAS-1, tasmania main algorithm, 92.5, 512.4, 601.2, true

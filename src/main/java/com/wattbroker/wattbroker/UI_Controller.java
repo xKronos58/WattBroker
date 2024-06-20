@@ -3,6 +3,8 @@ package com.wattbroker.wattbroker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +27,14 @@ public class UI_Controller {
     public ImageView Data_icon;
     public ImageView Settings_icon;
     public ImageView Algorithms_icon;
+    public ScrollPane ScrollPaneAlg;
+
+    public Node Market_Pane;
+    public Node Dashboard_Pane;
+    public Node Settings_Pane;
+    public Node Algorithms_Pane;
+    public Node Data_Pane;
+
 
     /* Selected colour:   #3E1D2A
     *  Deselected colour: #1C1C1C
@@ -32,7 +42,17 @@ public class UI_Controller {
     String lastPane = "";
     String currentPane = "";
 
+    @FXML
     public void initialize() {
+        try {
+            Market_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Market_Pane.fxml")));
+            Dashboard_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dashboard_Pane.fxml")));
+            Settings_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Settings_Pane.fxml")));
+            Algorithms_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Algorithm_Pane.fxml")));
+            Data_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Data_Pane.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         ShowDashboard(null);
     }
 
@@ -98,24 +118,6 @@ public class UI_Controller {
         });
     }
 
-    public Node Market_Pane;
-    public Node Dashboard_Pane;
-    public Node Settings_Pane;
-    public Node Algorithms_Pane;
-    public Node Data_Pane;
-
-    {
-        try {
-            Market_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Market_Pane.fxml")));
-            Dashboard_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dashboard_Pane.fxml")));
-            Settings_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Settings_Pane.fxml")));
-            Algorithms_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Algorithm_Pane.fxml")));
-            Data_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Data_Pane.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void setLastButton(String buttonName) {
         switch (buttonName) {
             case "Dashboard":
@@ -139,5 +141,9 @@ public class UI_Controller {
                 Algorithms_icon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/Algorithms_icon.png")).toString()));
                 break;
         }
+    }
+
+    public void CloseALGPane(MouseEvent mouseEvent) {
+
     }
 }

@@ -100,11 +100,11 @@ public class SolarFarm {
         // if it is above 25% then the efficiency is 50%,
         // otherwise it is 100%
         if(this.clouds.get(hour).cloudCover > 50)
-            finalVal = 0.175; // Note this ranges from 0.25 to 0.10 depending on the panel manufacturer
+            finalVal = 0.175 + ((double) this.clouds.get(hour).cloudCover /350); // Note this ranges from 0.25 to 0.10 depending on the panel manufacturer
         else if(this.clouds.get(hour).cloudCover > 25)
-            finalVal = 0.5;
+            finalVal = 0.5 - ((double) this.clouds.get(hour).cloudCover /350);
         else
-            finalVal = 1.0;
+            finalVal = 1.0 - ((double) this.clouds.get(hour).cloudCover /350);
 
         // the output value is degraded by ~0.345%/°C above 25°C
         if(this.weather.getTemperature(hour) > 25)

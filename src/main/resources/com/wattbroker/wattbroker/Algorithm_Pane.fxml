@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,18 +9,19 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.AlgorithmPaneController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="376.2146911621094" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="762.0" minHeight="10.0" prefHeight="762.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="281.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="900.0" minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
@@ -43,7 +45,7 @@
             <Insets right="32.0" top="18.0" />
          </GridPane.margin>
          <children>
-            <TextField id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing" style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
+            <TextField fx:id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing" style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
                <padding>
                   <Insets left="25.0" />
                </padding>
@@ -58,5 +60,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <ScrollPane fx:id="ScrollPaneAlg" prefHeight="200.0" prefWidth="1312.0" style="-fx-background-color: #171717;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <content>
+            <VBox prefHeight="1077.0" prefWidth="1294.0" style="-fx-background-color: #171717;" />
+         </content>
+      </ScrollPane>
    </children>
 </GridPane>
