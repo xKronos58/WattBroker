@@ -42,7 +42,7 @@
       </AnchorPane>
       <AnchorPane layoutX="728.0" layoutY="24.0" prefHeight="81.0" prefWidth="470.0" style="-fx-background-color: rgba(81, 81, 81, 0.51); -fx-background-radius: 20;" AnchorPane.leftAnchor="736.0" AnchorPane.topAnchor="24.0">
          <children>
-            <Text fill="WHITE" layoutX="30.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BALANCE" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="21.0">
+            <Text fill="WHITE" layoutX="30.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOLDINGS" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="21.0">
                <font>
                   <Font name="Inter SemiBold" size="32.0" />
                </font>

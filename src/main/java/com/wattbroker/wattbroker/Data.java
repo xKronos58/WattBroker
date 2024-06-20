@@ -40,5 +40,11 @@ public class Data {
         return temp;
     }
 
-    public record tV(String dateTime, double value) {}
+    public record tV(String dateTime, double value) {
+        public double dateTimeAsDouble() {
+
+
+            return 0;
+        }
+    }
 }

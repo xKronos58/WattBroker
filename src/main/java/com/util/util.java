@@ -108,4 +108,50 @@ public class util {
         alert.setContentText(message);
         alert.show();
     }
+
+    /**
+     * A class for storing two values x and y
+     * @param <X> value of x
+     * @param <Y> value of y
+     * @ruturn vector object
+     * */
+    public static class Vector<X, Y> {
+        private X x;
+        private Y y;
+
+        // Constructor
+        public Vector(X x, Y y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        // Getter for x
+        public X getX() {
+            return x;
+        }
+
+        // Setter for x
+        public void setX(X x) {
+            this.x = x;
+        }
+
+        // Getter for y
+        public Y getY() {
+            return y;
+        }
+
+        // Setter for y
+        public void setY(Y y) {
+            this.y = y;
+        }
+
+        // Override toString() method for better readability
+        @Override
+        public String toString() {
+            return "Vector{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    '}';
+        }
+    }
 }

@@ -1,15 +1,16 @@
 package com.wattbroker.wattbroker;
 
 import com.util.util;
+import com.util.util.Vector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class Graph extends Pane {
     @FXML
@@ -29,24 +30,24 @@ public class Graph extends Pane {
 
     }
 
-    public static Node market() {
-        return graphType.Market.setput(null);
-    }
-    public static Node data() {
-        return graphType.Data.setput(null);
-    }
-    public static Node settings() {
-        return graphType.Settings.setput(null);
-    }
-    public static Node algorithms() {
-        return graphType.Algorithms.setput(null);
-    }
+//    public static Node market() {
+//        return graphType.Market.setput(null);
+//    }
+//    public static Node data() {
+//        return graphType.Data.setput(null);
+//    }
+//    public static Node settings() {
+//        return graphType.Settings.setput(null);
+//    }
+//    public static Node algorithms() {
+//        return graphType.Algorithms.setput(null);
+//    }
 
 
     enum graphType {
         Market {
             @Override
-            public Pane setput(List<URI> apiLocation) {
+            public List<Vector<Minimum<Double>, Maximum<Double>>> setput(List<URI> apiLocation) {
                 com.wattbroker.wattbroker.Data data = new Data();
                 List<Data.tV> _data = data.getMarketData(new Date(System.currentTimeMillis()));
                 Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
@@ -58,35 +59,43 @@ public class Graph extends Pane {
 
                 long current = System.nanoTime();
                 // Find y (Value) axis high and low.
-                double max = 0;
-                for (Data.tV datum : _data) {
-                    if (datum.value() > max)
-                        max = datum.value();
+                double max_val = 0, min_val = 0;
+                for (Data.tV data_i : _data) {
+                    if (data_i.value() > max_val)
+                        max_val = data_i.value();
+                    else if (data_i.value() < min_val)
+                        min_val = data_i.value();
                 }
+
+
                 long _final = System.nanoTime();
-                System.out.println(_final-current + "ns\n"+max);
-                return null;
+                System.out.println(_final-current + "ns\n"+max_val);
+
+                List<Vector<Minimum<Double>, Maximum<Double>>> maxMin = new ArrayList<>();
+                maxMin.add(new Vector<>(new Minimum<>(min_val), new Maximum<>(max_val)));
+                maxMin.add(new Vector<>(new Minimum<>(0.0), new Maximum<>(_data.size() - 1.0)));
+                return maxMin;
             }
         }, Data {
             @Override
-            public Pane setput(List<URI> apiLocation) {
+            public List<Vector<Minimum<Double>, Maximum<Double>>> setput(List<URI> apiLocation) {
                 return null;
 
             }
         }, Settings {
             @Override
-            public Pane setput(List<URI> apiLocation) {
+            public List<Vector<Minimum<Double>, Maximum<Double>>> setput(List<URI> apiLocation) {
                 return null;
 
             }
         }, Algorithms {
             @Override
-            public Pane setput(List<URI> apiLocation) {
+            public List<Vector<Minimum<Double>, Maximum<Double>>> setput(List<URI> apiLocation) {
                 return null;
 
             }
         };
-        public abstract Pane setput(List<URI> apiLocation);
+        public abstract List<Vector<Minimum<Double>, Maximum<Double>>> setput(List<URI> apiLocation);
     }
 
     public enum graphTimeAxisType {
@@ -136,4 +145,77 @@ public class Graph extends Pane {
 
         return type;
     }
+
+    /**
+     * Converts data into vector co-ordinates
+     * @param maxMin takes a list (Size 2) of the max x (value) and y (time)
+     * @param data takes a list of the data to be plotted
+     * */
+    private List<Vector<Double, Double>> plotPoints(
+            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data) {
+        if(maxMin.size() != 2)
+            throw new IllegalArgumentException("maxMin must have 2 elements");
+        Vector<Double, Double> graphSize = new Vector<>(graph_pane.getWidth(), graph_pane.getHeight());
+        Vector<Double, Double> graphOrigin = new Vector<>(maxMin.get(0).getX().min, maxMin.get(1).getX().min);
+        Vector<Double, Double> Ratio_xy = Ratio(graphSize);
+        Vector<Double, Double> Ratio_vn_vx = Ratio(false, maxMin.get(0));
+        Vector<Double, Double> Ratio_vn_vy = Ratio(true, maxMin.get(1));
+
+        for(Data.tV d : data) {
+            double x = d.value(), y = d.dateTimeAsDouble();
+            double x_ = x * Ratio_vn_vx.getX(), y_ = y * Ratio_vn_vy.getX();
+            x_ = x_ * Ratio_xy.getX();
+            y_ = y_ * Ratio_xy.getY();
+        }
+
+        // x = a_length, y = b_length, ratio = x/y, y/x
+        // value =y, time =x
+
+
+        return null;
+    }
+
+    private Vector<Double, Double> Ratio(Vector<Double, Double> wh) {
+        double x = wh.getX(), y = wh.getY();
+        return new Vector<>(x / y, y / x);
+    }
+
+    /**
+     * @param ignore IGNORE THIS! it does not matter what you pass in as it is to differentiate the pass-through type.
+     * */
+    private Vector<Double, Double> Ratio(Boolean ignore, Vector<Minimum<Double>, Maximum<Double>> ah) {
+        double x = ah.getX().min, y = ah.getY().max;
+        return new Vector<>(x / y, y / x);
+    }
+
+    public static class Maximum<t> {
+        t max;
+        public Maximum(t max) {
+            this.max = max;
+        }
+
+        public t getMax() {
+            return max;
+        }
+
+        public void setMax(t max) {
+            this.max = max;
+        }
+    }
+
+    public static class Minimum<t> {
+        t min;
+        public Minimum(t min) {
+            this.min = min;
+        }
+
+        public t getMin() {
+            return min;
+        }
+
+        public void setMin(t min) {
+            this.min = min;
+        }
+    }
+
 }
