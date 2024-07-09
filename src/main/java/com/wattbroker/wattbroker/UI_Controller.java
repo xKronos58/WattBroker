@@ -59,7 +59,7 @@ public class UI_Controller {
     public void ShowMarket(MouseEvent mouseEvent) {
         if(currentPane.equals("Market")) return;
         setContent("Market_Pane.fxml");
-        MarketButton.setStyle("-fx-background-color: #3E1D2A; -fx-background-radius: 25px");
+        MarketButton.setStyle("-fx-background-color: #172854; -fx-background-radius: 25px");
         lastPane = currentPane;
         currentPane = "Market";
         setLastButton(lastPane);
@@ -69,7 +69,7 @@ public class UI_Controller {
     public void ShowData(MouseEvent mouseEvent) {
         if(currentPane.equals("Data")) return;
         setContent("Data_Pane.fxml");
-        DataButton.setStyle("-fx-background-color: #3E1D2A; -fx-background-radius: 25px");
+        DataButton.setStyle("-fx-background-color: #172854; -fx-background-radius: 25px");
         lastPane = currentPane;
         currentPane = "Data";
         setLastButton(lastPane);
@@ -79,7 +79,7 @@ public class UI_Controller {
     public void ShowSettings(MouseEvent mouseEvent) {
         if(currentPane.equals("Settings")) return;
         setContent("Settings_Pane.fxml");
-        SettingsButton.setStyle("-fx-background-color: #3E1D2A; -fx-background-radius: 25px");
+        SettingsButton.setStyle("-fx-background-color: #172854; -fx-background-radius: 25px");
         lastPane = currentPane;
         currentPane = "Settings";
         setLastButton(lastPane);
@@ -89,7 +89,7 @@ public class UI_Controller {
     public void ShowAlgorithms(MouseEvent mouseEvent) {
         if(currentPane.equals("Algorithms")) return;
         setContent("Algorithm_Pane.fxml");
-        Algorithms.setStyle("-fx-background-color: #3E1D2A; -fx-background-radius: 25px");
+        Algorithms.setStyle("-fx-background-color: #172854; -fx-background-radius: 25px");
         lastPane = currentPane;
         currentPane = "Algorithms";
         setLastButton(lastPane);
@@ -99,7 +99,7 @@ public class UI_Controller {
     public void ShowDashboard(MouseEvent mouseEvent) {
         if(currentPane.equals("Dashboard")) return;
         setContent("Dashboard_Pane.fxml");
-        DashboardButton.setStyle("-fx-background-color: #3E1D2A; -fx-background-radius: 25px");
+        DashboardButton.setStyle("-fx-background-color: #172854; -fx-background-radius: 25px");
         lastPane = currentPane;
         currentPane = "Dashboard";
         setLastButton(lastPane);

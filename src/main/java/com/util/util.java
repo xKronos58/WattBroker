@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Comparator;
 import java.util.List;
 
@@ -113,7 +114,6 @@ public class util {
      * A class for storing two values x and y
      * @param <X> value of x
      * @param <Y> value of y
-     * @ruturn vector object
      * */
     public static class Vector<X, Y> {
         private X x;
@@ -153,5 +153,49 @@ public class util {
                     ", y=" + y +
                     '}';
         }
+    }
+
+    /**
+     * Takes a file name and returns a list of all the lines inside the file.
+     * @param fileName name of the file to read
+     * @return List of all the lines inside the file
+     * @throws IOException if the file does not exist
+     */
+    public static List<String> readFile(String fileName) throws IOException {
+        Path filePath = Path.of(System.getProperty("user.dir"), "SavedEquations", fileName);
+        if(!filePath.toFile().exists())
+            throw new IllegalArgumentException("File does not exist");
+
+        return Files.readAllLines(filePath);
+    }
+
+    public static Path convertFileToPath(String fileName) {
+        return Path.of(System.getProperty("user.dir"), "SavedEquations", fileName);
+    }
+
+    /**
+     * Takes a file name and a line and appends the line to the file.
+     * @param  fileName name of the file to write to
+     * @param  line String to be appended to the file
+     * @throws IOException if the file does not exist
+     * */
+    public static void writeFile(String fileName, String line) throws IOException {
+        Path filePath = Path.of(System.getProperty("user.dir"), "Accounts", fileName);
+        Files.writeString(filePath, line + "\n", StandardOpenOption.APPEND);
+    }
+
+    /**
+     * Takes a file name and clears the file.
+     * @param  fileName name of the file to clear
+     * @throws IOException if the file does not exist
+     * */
+    public static void clearFile(String fileName) throws IOException {
+        Path filePath = Path.of(System.getProperty("user.dir"), "SavedEquations", fileName);
+        Files.writeString(filePath, "", StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    public static void replaceLine(Path filePath, int line) throws IOException {
+        String t = Files.readString(filePath);
+        System.out.println(t);
     }
 }

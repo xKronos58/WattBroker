@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<fx:root fx:id="rootPane" type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="https://javafx.com/javafx/20.0.1">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0"
+                prefWidth="812.0" style="-fx-background-color: #171717;" fx:id="root">
+    <HBox prefHeight="585.0" prefWidth="728.0" spacing="103.0" AnchorPane.leftAnchor="55.0"
+          AnchorPane.topAnchor="48.0">
+        <Line endY="581.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="12.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="13.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="14.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="15.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="16.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endY="581.0" layoutX="17.0" layoutY="11.0" stroke="#483c3c"/>
+    </HBox>
+    <VBox prefHeight="585.0" prefWidth="728.0" spacing="115.0" AnchorPane.leftAnchor="55.0"
+          AnchorPane.topAnchor="48.0">
+        <Line endX="728.0" stroke="#483c3c"/>
+        <Line endX="728.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c"/>
+        <Line endX="728.0" layoutX="11.0" layoutY="116.0" stroke="#483c3c"/>
+        <Line endX="728.0" layoutX="11.0" layoutY="221.0" stroke="#483c3c"/>
+        <Line endX="728.0" layoutX="11.0" layoutY="326.0" stroke="#483c3c"/>
+        <Line endX="728.0" layoutX="11.0" layoutY="431.0" stroke="#483c3c"/>
+    </VBox>
+    <HBox prefHeight="22.0" prefWidth="785.0" spacing="66.0" AnchorPane.leftAnchor="27.0"
+          AnchorPane.topAnchor="647.0">
+        <Text fx:id="_1" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_2" fill="#848484" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="04:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_3" fill="#848484" layoutX="130.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_4" fill="#848484" layoutX="250.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_5" fill="#848484" layoutX="370.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_6" fill="#848484" layoutX="490.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="_7" fill="#848484" layoutX="610.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24:00">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+    </HBox>
+    <HBox prefHeight="24.0" prefWidth="200.0" spacing="22.0">
+        <Text fx:id="hourButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="HOUR">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="dayButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="DAY">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+        <Text fx:id="weekButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK">
+            <font>
+                <Font name="Inter SemiBold" size="18.0"/>
+            </font>
+        </Text>
+    </HBox>
+        <AnchorPane fx:id="map_root"/>
+    </AnchorPane>
+</fx:root>

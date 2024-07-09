@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1117.0" prefWidth="1728.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.UI_Controller">
+<AnchorPane prefHeight="1117.0" prefWidth="1728.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.UI_Controller">
    <children>
       <HBox layoutX="375.0" layoutY="153.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -33,8 +33,8 @@
                   <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="423.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="215.1075439453125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="309.8924560546875" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -45,7 +45,7 @@
                         <Insets left="30.0" top="30.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <HBox fx:id="DashboardButton" onMouseClicked="#ShowDashboard" prefHeight="84.0" prefWidth="387.0" style="-fx-background-color: #3E1D2A; -fx-background-radius: 25px;" GridPane.rowIndex="2">
+                  <HBox fx:id="DashboardButton" onMouseClicked="#ShowDashboard" prefHeight="84.0" prefWidth="387.0" style="-fx-background-color: #172854; -fx-background-radius: 25px;" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="15.0" right="15.0" />
                      </padding>
@@ -229,7 +229,7 @@
                   </HBox>
                   <ImageView fitHeight="423.0" fitWidth="416.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="12">
                      <image>
-                        <Image url="@Images/Bottom_art.png" />
+                        <Image url="@Images/Banner_nav.png" />
                      </image>
                   </ImageView>
                </children>
