@@ -1,10 +1,12 @@
 package com.wattbroker.wattbroker;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
@@ -12,39 +14,50 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StateOverlay {
+public class StateOverlay extends Application {
     @FXML
     SVGPath state;
     @FXML
     Text stateName;
     @FXML
     Button close;
-
+    @FXML
+    Text priceLabel;
     Map.State localState;
-    private FXMLLoader fxmlLoader;
+    private final FXMLLoader fxmlLoader;
     public StateOverlay(Map.State state){
-        fxmlLoader = new FXMLLoader(getClass().getResource("StateOverlay.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("StateOverlay.fxml"));
         fxmlLoader.setController(this);
         localState = state;
     }
 
-    public void Build(Stage stage) {
-        Scene scene = stage.getScene();
-        AnchorPane root = (AnchorPane) scene.getRoot();
+    public void Build() {
         try {
-            Node node = (Node) fxmlLoader.load();
-            node.setId("stateOverlay");
-            System.out.println(root.getId());
-            root.getChildren().add(node);
-        } catch (IOException e) {
+            start(new Stage());
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
 
+    /**
+     * @param stage
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage stage) throws Exception {
+        Scene s = new Scene(fxmlLoader.load(), 1186,727);
+        stage.setScene(s);
+        s.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ESCAPE)
+                stage.close();
+        });
         this.state.setContent(localState.getPath());
+        this.state.setFill(localState.getColour());
         this.state.setTranslateX(localState.getSVGLocation().getX());
         this.state.setTranslateY(localState.getSVGLocation().getY());
         this.stateName.setText(localState.getName());
-//        this.close.setOnAction(e -> root.getChildren().
-//                removeIf(item -> item.getId().equals("close")));
+        this.priceLabel.setText("$"+ (localState.getPrice()));
+        close.setOnAction(e -> stage.close());
+        stage.show();
     }
 }

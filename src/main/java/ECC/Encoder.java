@@ -27,11 +27,7 @@ public class Encoder {
         int bit, i = 0;
         do {
             bit = bits[i];
-            if (bit == 0) {
-                mMatrix.scramble(true);
-            } else {
-                mMatrix.scramble(false);
-            }
+            mMatrix.scramble(bit == 0);
             if (i == bits.length - 1) {
                 i = 0;
             }else{
@@ -47,7 +43,7 @@ public class Encoder {
     private Matrix createMatrix(String plainText) {
         List<Point> pList = new ArrayList<>();
         for (Character c : plainText.toCharArray()) {
-            Point p = (c > 32) ? charTable.get((int) c-32) : charTable.get((int) c);
+            Point p = /*(c > 32) ? charTable.get((int) c-32) : */charTable.get((int) c);
             pList.add(p);
         }
         System.out.println("\n1) Convert m to a list of Points");

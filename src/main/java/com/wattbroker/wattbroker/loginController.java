@@ -7,12 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
+
+import static javafx.scene.input.KeyEvent.KEY_TYPED;
 
 public class loginController {
     public Button signInButton;
@@ -34,20 +37,14 @@ public class loginController {
         String passwordHash = convertToHash(password.getText());
         String usernameHash = convertToHash(username.getText());
 
-        //TODO implement application server
-//        if(Data.APPLICATION_SERVER_IP.query(usernameHash, passwordHash)) {
-//            // Open the main window
-//        } else {
-//            // Show error message
-//        }
-
+        DB_query dbq = new DB_query();
         //HARD CODED LOGIN FOR TESTING
-        if(username.getText().equals("admin") && password.getText().equals("admin")) {
-            Login.primaryStage.close();
-            Main main = new Main();
+        if(dbq.checkCredentials(username.getText(), password.getText())) {
+            WattBroker.primaryStage.close();
+            Main main = new Main(new User());
             main.start(new Stage());
         } else {
-            util.infoMessage("Login failed", "Invalid credentials");
+            util.infoMessage("The username or password provided was incorrect.", "Invalid credentials");
         }
     }
 
@@ -55,16 +52,16 @@ public class loginController {
         return text;
     }
 
-    public void CreateAccount(MouseEvent mouseEvent) {
+    public void gotoCreateAccount(MouseEvent mouseEvent) {
         try {
-            Login.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("CreateAccount.fxml")).load()));
+            WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("CreateAccount.fxml")).load()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public void createAccount(MouseEvent mouseEvent) {
+    public void createAccount(ActionEvent mouseEvent) {
         String firstName = FirstName.getText(), lastName = LastName.getText(),
                 password = Password.getText(), username = Username.getText(),
                 companyCode = CompanyCode.getText(), employeeCode = EmployeeCode.getText();
@@ -82,5 +79,33 @@ public class loginController {
         if(password.length() < 8)
             util.errorMessage("Your password must be greater than 8 digits", "Invalid Password");
 
+        DB_query dbq = new DB_query();
+        if(dbq.addUser(firstName, lastName, username, "email" /*Todo: implement*/, password, companyCode, employeeCode)) {
+            util.infoMessage("Account created successfully!", "Success");
+            try {
+                WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("Login.fxml")).load()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            util.errorMessage("There was a problem", "ERROR");
+        }
+
+    }
+
+    public void closeCreateAccountScreen(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ESCAPE) {
+            try {
+                WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("Login.fxml")).load()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void signInKey(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            signIn(new ActionEvent());
+        }
     }
 }

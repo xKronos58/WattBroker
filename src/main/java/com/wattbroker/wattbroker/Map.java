@@ -18,10 +18,10 @@ import java.util.Random;
 
 public class Map extends AnchorPane {
 
-    Color StartColour = Color.rgb(129, 207, 252);
-    Color endColour = Color.rgb(82,91, 195);
-    double minValue = 0.0;
-    double maxValue = 100.0; /*TODO base of actual prices*/
+    public static Color StartColour = Color.rgb(129, 207, 252);
+    public static Color endColour = Color.rgb(82,91, 195);
+    static double minValue = 0.0;
+    static double maxValue = 100.0; /*TODO base of actual prices*/
     @FXML @SuppressWarnings("unused")
     private AnchorPane map_root;
     @FXML @SuppressWarnings("unused")
@@ -38,7 +38,7 @@ public class Map extends AnchorPane {
     @FXML @SuppressWarnings("unused") private Text _6;
     @FXML @SuppressWarnings("unused") private Text _7;
     Group root;
-    Random r = new Random();
+    static Random r = new Random();
     boolean[] onOverlay = {
             false,
             false,
@@ -49,8 +49,8 @@ public class Map extends AnchorPane {
     };
 
     /** Avoid magic numbers for array index */
-    byte SA = 0, NT = 1, VIC = 2, NSW = 3, TAS = 4, QLD = 5;
-    private final double[] prices = new double[] {
+    static byte SA = 0, NT = 1, VIC = 2, NSW = 3, TAS = 4, QLD = 5;
+    private static final double[] prices = new double[] {
             r.nextDouble(100),
             r.nextDouble(100),
             r.nextDouble(100),
@@ -286,7 +286,7 @@ public class Map extends AnchorPane {
         });
         svg.setOnMouseClicked(e -> {
             StateOverlay so = new StateOverlay(State.SA);
-            so.Build(Login.primaryStage);
+            so.Build();
         });
 
 
@@ -328,7 +328,8 @@ public class Map extends AnchorPane {
         });
 
         svg.setOnMouseClicked(e -> {
-            System.out.println("nt");
+            StateOverlay so = new StateOverlay(State.NT);
+            so.Build();
         });
 
         return svg;
@@ -355,7 +356,8 @@ public class Map extends AnchorPane {
         });
 
         svg.setOnMouseClicked(e -> {
-            System.out.println("qld");
+            StateOverlay so = new StateOverlay(State.QLD);
+            so.Build();
         });
         return svg;
     }
@@ -377,10 +379,12 @@ public class Map extends AnchorPane {
         });
         svg.setOnMouseExited(e -> {
             map_root.getChildren().removeIf(n -> n.getId() != null && n.getId().equals("icon_nsw"));
+            overlayAdded[0] = false;
         });
 
         svg.setOnMouseClicked(e -> {
-            System.out.println("nsw");
+            StateOverlay so = new StateOverlay(State.NSW);
+            so.Build();
         });
         return svg;
     }
@@ -405,7 +409,8 @@ public class Map extends AnchorPane {
         });
 
         svg.setOnMouseClicked(e -> {
-            System.out.println("vic");
+            StateOverlay so = new StateOverlay(State.VIC);
+            so.Build();
         });
         return svg;
     }
@@ -430,7 +435,8 @@ public class Map extends AnchorPane {
         });
 
         svg.setOnMouseClicked(e -> {
-            System.out.println("tas");
+            StateOverlay so = new StateOverlay(State.TAS);
+            so.Build();
         });
         return svg;
     }
@@ -454,7 +460,7 @@ public class Map extends AnchorPane {
      * @param minValue minimum value for the gradient (Lowest state price)
      * @param maxValue maximum value for the gradient (Highest state price)
      * maxValue and minValue should be the lowest and highest state prices to give an even colour distribution*/
-    private double normalise(double val, double minValue, double maxValue) {
+    private static double normalise(double val, double minValue, double maxValue) {
         return (val - minValue) / (maxValue - minValue);
     }
 
@@ -465,7 +471,7 @@ public class Map extends AnchorPane {
      * @param endColor high colour of the gradient for the good prices
      * @param fraction value from the normalise() method.
      * */
-    private Color interpolateColor(Color startColor, Color endColor, double fraction) {
+    private static Color interpolateColor(Color startColor, Color endColor, double fraction) {
         double red = startColor.getRed() + fraction * (endColor.getRed() - startColor.getRed());
         double green = startColor.getGreen() + fraction * (endColor.getGreen() - startColor.getGreen());
         double blue = startColor.getBlue() + fraction * (endColor.getBlue() - startColor.getBlue());
@@ -500,95 +506,147 @@ public class Map extends AnchorPane {
             public String getPath() {
                 return "M243.923 300.756L237.474 299.835L232.637 294.312L223.884 278.435L222.041 272.452L223.884 267.85L221.581 257.725L219.968 247.83L213.749 242.307L207.07 236.785L202.002 237.475L199.008 238.395L193.019 237.705L193.48 234.714L199.238 225.049L200.39 219.986L200.16 214.924L192.559 202.958L190.946 207.56L185.879 224.819L181.963 226.66H171.138L168.834 221.367L171.368 219.526L177.126 219.296L178.048 215.614L179.43 203.649L181.963 194.444L188.413 188.921L190.025 186.16L189.795 178.797L192.789 177.186L193.71 176.035L188.413 161.308L186.34 161.768L185.879 170.052L182.654 173.504L176.896 183.399L174.132 188.921L168.604 189.842L160.312 195.595L154.093 204.569L148.795 213.083L143.498 216.995L138.43 214.924L133.133 197.205L132.902 192.603L126.453 186.39L122.077 176.495L116.318 174.424L112.172 170.282L110.33 166.831L113.094 161.768L108.487 159.237L106.184 155.785L103.189 150.953L98.813 148.882L91.6727 151.183L87.9873 148.422L83.1503 145.891L78.3133 144.97L76.01 146.811H72.3247L66.7967 142.899L58.5047 137.837L51.3643 134.385L48.8307 133.925L46.7577 134.385L43.3027 136.226L32.477 136.456L5.75833 138.297L0 1.61078L83.3807 0L149.026 0.230111L216.513 2.99145L262.58 4.83234L245.305 301.216L243.923 300.756Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(52.0, 213.0);
             }
-
             @Override
             public String getName() {
                 return "SOUTH AUSTRALIA";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.SA], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.SA], 1);
             }
         }, NT{
             @Override
             public String getPath() {
                 return "M0 119.905L8.45215 118.216L16.9043 120.468L17.4678 113.15L9.01562 104.706L8.45215 99.0763L11.833 92.884L18.0312 92.3211L21.4121 74.8701L26.4834 76.5589L32.6816 68.6779L29.3008 61.9227V56.2933H34.3721L36.0625 51.2269L42.8242 47.2864L43.9512 39.4053H52.4033L56.9111 33.2131L68.7441 36.5907L81.1406 34.9019L87.9023 37.1536L97.4814 31.5243L105.934 29.2725L103.68 18.0139L98.0449 12.9475L90.1562 11.8216L84.5215 5.62933L98.0449 0L109.314 12.3845L114.949 8.444L121.711 19.1397L135.234 22.5173L142.56 18.5768L143.686 23.6432L168.479 28.1467L171.86 28.7096L180.312 35.4648L184.82 36.0277L189.328 31.5243L197.217 32.6501L198.907 36.5907L206.232 34.9019L209.613 42.22L214.685 42.7829L218.629 37.1536L214.685 32.6501L222.573 28.7096H224.264L227.644 33.776L231.589 34.9019L234.406 36.0277L237.224 40.5312L231.589 46.7235L227.644 52.9157L223.137 53.4787L224.264 60.7968L220.883 65.8632L215.811 64.1744L204.542 71.4925V81.0624L207.923 84.44L202.852 93.4469L203.415 96.2616L198.344 100.202L191.582 111.461L189.328 113.15L191.582 121.031L212.994 135.104L215.248 139.607L224.827 144.674L227.081 151.992L237.787 150.303L249.057 157.621L258.072 162.125L262.58 170.569L252.437 454.85L197.217 453.161L127.909 452.036L36.0625 454.85L11.2695 455.413L0 119.905Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(60.0, 175.0);
             }
-
             @Override
             public String getName() {
                 return "NORTHERN TERRITORY";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.NT], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.NT], 1);
             }
         },  QLD{
             @Override
             public String getPath() {
                 return "M6.54629 113.36L12.0015 115.176L20.0026 118.083L24.3668 121.353L28.0036 128.983L34.5499 131.526L41.4599 136.976L47.6425 135.523L53.8251 134.796L57.8256 129.346L62.1898 121.716L66.9177 115.54L70.1908 104.64L70.9182 97.7364L75.646 85.3831L73.4639 79.5698L75.2824 69.7598L74.1913 65.3998L72.3729 61.0398L75.2824 55.5899L78.1918 51.2299L77.4645 43.2366L81.1013 41.4199L83.6471 38.1499L78.9192 33.7899L86.9202 21.4366L89.8297 9.08331L90.9207 5.81332L94.9212 3.63332L98.5581 0L100.376 0.726665L100.013 3.26999L104.377 6.90332L104.741 22.5266L106.923 25.0699L109.832 26.8866L106.923 31.9733L113.105 39.2399V42.1466L114.924 47.5965L113.833 60.6765L116.379 69.7598L117.833 76.2998L122.197 78.4798L126.925 74.1198L132.744 73.0298L134.199 79.2065L141.836 85.7464L145.473 88.6531L145.109 99.1897L146.928 107.91L146.564 113.36L145.837 118.446L154.202 135.886L156.747 140.61L156.384 148.603L153.838 154.416L158.566 156.233L157.475 164.953L157.111 168.586L162.203 174.763L169.84 179.85L177.477 180.576L178.932 184.936L180.387 190.023L188.751 191.476L192.388 199.106L195.661 196.563L201.48 202.013L199.662 206.373L203.662 215.093L207.663 224.176L209.118 237.983V245.249L214.209 246.339L215.664 247.793L216.391 239.799L219.664 241.979L227.665 250.699L230.939 256.513L229.12 268.139L237.849 280.129L242.94 281.219L246.213 286.306L247.304 292.483L253.851 297.206L255.305 301.929L257.124 306.653L260.033 309.196L259.67 315.373L262.579 320.459L261.852 323.003L259.67 326.272L260.033 340.442L259.67 344.076L256.76 343.712L258.579 348.436L261.852 355.702L261.124 364.786L252.396 365.512L245.122 362.606L234.212 368.419L233.484 373.869L229.12 373.506L227.302 373.142L224.029 377.139L222.21 377.502L222.938 373.869L220.392 370.962L218.573 368.419L213.846 366.602H209.118L206.936 362.969L198.207 364.422L192.752 361.516L187.66 363.332L182.569 368.419L125.471 362.969L94.1939 359.336L51.643 356.429L47.6425 356.066L51.643 297.933L0 295.389L6.54629 113.36Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(60.0, 175.0);
             }
-
             @Override
             public String getName() {
                 return "QUEENSLAND";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.QLD], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.QLD], 1);
             }
         }, NSW{
             @Override
             public String getPath() {
                 return "M6.9673 0L70.5439 5.22044L117.138 9.5708L169.392 15.2263L175.924 8.70073L181.15 7.39562L185.504 8.70073L194.649 8.26569L197.697 10.4409L200.31 11.3109L205.1 12.181L208.148 14.3562L210.325 16.0963L213.373 19.5766L213.809 23.927L216.857 24.7971L220.341 23.0569L222.518 19.1416L226.437 21.3168H231.227L232.969 16.9664L232.534 13.0511L242.984 8.26569L247.774 9.5708L252.129 11.746L262.58 9.5708L262.145 20.8818L256.484 31.3226L251.694 44.8088L246.033 57.4248V65.2555L242.114 74.3912L237.324 84.8321L232.969 90.0526L229.485 95.273L227.308 101.364L211.632 111.369L199.439 125.726L195.52 135.296L190.73 143.997L186.811 157.048L181.15 162.704L173.312 170.969L168.957 181.845L165.473 192.286L162.861 207.947L160.683 210.558L131.943 191.851L132.379 185.326L130.637 180.975V173.58L122.799 170.099L113.654 171.404L105.38 169.664L95.3649 169.229L83.6076 165.314L76.2048 162.269L69.673 163.574L69.2375 166.184L69.673 168.794L68.3666 169.229L65.3184 167.489L60.5284 159.658L55.3029 154.003L48.3356 150.088L46.1583 146.172L43.1101 142.692L44.852 135.296L40.4974 133.339L32.4415 130.728L28.7401 133.556L25.6919 126.596L25.2565 122.68L16.9828 117.025L13.0637 115.72L9.14458 117.895L0 114.415L6.9673 0Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(60.0, 258.0);
             }
-
             @Override
             public String getName() {
                 return "NEW SOUtH WALES";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.NSW], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.NSW], 1);
             }
         }, VIC{
             @Override
             public String getPath() {
                 return "M6.9673 0L70.5439 5.22044L117.138 9.5708L169.392 15.2263L175.924 8.70073L181.15 7.39562L185.504 8.70073L194.649 8.26569L197.697 10.4409L200.31 11.3109L205.1 12.181L208.148 14.3562L210.325 16.0963L213.373 19.5766L213.809 23.927L216.857 24.7971L220.341 23.0569L222.518 19.1416L226.437 21.3168H231.227L232.969 16.9664L232.534 13.0511L242.984 8.26569L247.774 9.5708L252.129 11.746L262.58 9.5708L262.145 20.8818L256.484 31.3226L251.694 44.8088L246.033 57.4248V65.2555L242.114 74.3912L237.324 84.8321L232.969 90.0526L229.485 95.273L227.308 101.364L211.632 111.369L199.439 125.726L195.52 135.296L190.73 143.997L186.811 157.048L181.15 162.704L173.312 170.969L168.957 181.845L165.473 192.286L162.861 207.947L160.683 210.558L131.943 191.851L132.379 185.326L130.637 180.975V173.58L122.799 170.099L113.654 171.404L105.38 169.664L95.3649 169.229L83.6076 165.314L76.2048 162.269L69.673 163.574L69.2375 166.184L69.673 168.794L68.3666 169.229L65.3184 167.489L60.5284 159.658L55.3029 154.003L48.3356 150.088L46.1583 146.172L43.1101 142.692L44.852 135.296L40.4974 133.339L32.4415 130.728L28.7401 133.556L25.6919 126.596L25.2565 122.68L16.9828 117.025L13.0637 115.72L9.14458 117.895L0 114.415L6.9673 0Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(60.0, 258.0);
             }
-
             @Override
             public String getName() {
                 return "VICTORIA";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.VIC], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.VIC], 1);
             }
         }, TAS{
             @Override
             public String getPath() {
                 return "M109.045 234.28L122.349 211.895L133.552 207.697L148.257 179.016H154.559L171.364 181.815L179.766 171.322L191.67 130.748L205.674 117.457L209.175 85.9781L210.576 59.3957L216.877 41.2077C216.877 41.2077 202.873 21.6207 200.072 21.6207C197.271 21.6207 179.766 33.5129 179.766 33.5129L143.355 34.2124L127.951 38.4096L102.743 44.7054L59.3299 23.7193L14.5164 0.634644L8.21453 1.33418L4.01326 16.0244L0.512207 30.7147L11.0154 63.5929L21.5185 88.0767L33.4221 110.462L38.3236 130.049L34.1223 143.34L33.4221 153.833L53.7282 198.603L64.2314 222.388L72.6339 226.585L88.0386 225.186L102.743 234.28H109.045Z";
             }
-
             @Override
             public Vector<Double, Double> getSVGLocation() {
                 return new Vector<>(83.0, 295.0);
             }
-
             @Override
             public String getName() {
                 return "TASMANIA";
+            }
+            @Override
+            public Color getColour() {
+                return interpolateColor(
+                        StartColour, endColour,
+                        normalise(prices[Map.TAS], minValue, maxValue));
+            }
+            @Override
+            public double getPrice() {
+                return util.Round(prices[Map.TAS], 1);
             }
         };
 
         public abstract String getPath();
         public abstract Vector<Double, Double> getSVGLocation();
         public abstract String getName();
+        /**
+         * @return the colour of the state based off price */
+        public abstract Color getColour();
+        public abstract double getPrice();
     }
 }

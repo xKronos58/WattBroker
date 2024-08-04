@@ -62,7 +62,8 @@ public class AlgorithmPaneController {
 
     public record Algorithms(String name, String description,
                              double efficiency, double profit,
-                             double balance, boolean running) {
+                             double balance, boolean running,
+                             String filename) {
 
     }
     public Algorithms getRecordFromLine(String line) {
@@ -70,7 +71,7 @@ public class AlgorithmPaneController {
         if(values[0].equals("NAME")) return null;
         try {
             return new Algorithms(values[0], values[1], Double.parseDouble(values[2]),
-                    Double.parseDouble(values[3]), Double.parseDouble(values[4]), values[5].equals("true"));
+                    Double.parseDouble(values[3]), Double.parseDouble(values[4]), values[5].equals("true"), values[6]);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,6 +86,11 @@ public class AlgorithmPaneController {
                 Node temp = current.load();
                 AlgTemplateController Controller = current.getController();
                 Controller.setAlgorithm(algorithm);
+                temp.setOnMouseClicked(e -> {
+                    AlgorithmSettingsPage asp = new AlgorithmSettingsPage(algorithm);
+
+
+                });
                 nodes.add(temp);
             } catch (Exception e) {
                 System.out.println(e.getMessage());

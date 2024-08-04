@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1268.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox prefHeight="639.0" prefWidth="1169.0" spacing="166.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0">
+      <Line endY="639.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="12.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="13.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="14.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="15.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="16.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endY="639.0" layoutX="17.0" layoutY="11.0" stroke="#483c3c" />
+   </HBox>
+   <VBox prefHeight="639.0" prefWidth="1169.0" spacing="127.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0">
+      <Line endX="1169.0" stroke="#483c3c" />
+      <Line endX="1169.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c" />
+      <Line endX="1169.0" layoutX="11.0" layoutY="116.0" stroke="#483c3c" />
+      <Line endX="1169.0" layoutX="11.0" layoutY="221.0" stroke="#483c3c" />
+      <Line endX="1169.0" layoutX="11.0" layoutY="326.0" stroke="#483c3c" />
+      <Line endX="1169.0" layoutX="11.0" layoutY="431.0" stroke="#483c3c" />
+   </VBox>
+   <HBox layoutY="698.0" prefHeight="21.0" prefWidth="1232.0" spacing="142.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="698.0">
+      <Text fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="04:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="130.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="250.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="370.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="490.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" layoutX="610.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24:00">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+   </HBox>
+   <HBox prefHeight="24.0" prefWidth="200.0" spacing="22.0" AnchorPane.leftAnchor="40.0">
+      <Text fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="HOUR">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="DAY">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK">
+         <font>
+            <Font name="Inter SemiBold" size="18.0" />
+         </font>
+      </Text>
+   </HBox>
+   <AnchorPane prefHeight="639.0" prefWidth="1169.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0" />
+</AnchorPane>

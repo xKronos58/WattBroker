@@ -15,17 +15,30 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class Weather {
     Path filePath;
     List<Hour> Content;
+    Season s = Season.SUMMER;
     public Weather(double lat, double lng) throws IOException {
         this.filePath = getWeather(lat, lng);
         this.Content = getJSONArray();
+        s = setSeason(Calendar.getInstance().get(Calendar.MONTH));
 
-        System.out.printf("org.etrade.Weather data has been loaded from %s\nWith %s hours loaded", filePath, Content.size());
+        System.out.println("The season is : " + s +"\n Temp: " + getTemperature(0));
+
+        System.out.printf("Weather data has been loaded from %s\nWith %s hours loaded", filePath, Content.size());
+    }
+
+    public Season getSeason() {
+        return s;
+    }
+
+    public void updateSeason() {
+        s = setSeason(Calendar.getInstance().get(Calendar.MONTH));
     }
 
     public int getTemperature(int hour) {
@@ -327,7 +340,7 @@ public class Weather {
         public int getPrecipitation_25_chance() {
             return precipitation_25_chance;
         }
-
+        // Bollocks...
         public String formatRain() {
             return String.format("Chance of rain: %s\nAmount: %s\nChance of 10 percent: %s\nChance of 25 percent: %s", chance, amount.formatAmount(), precipitation_10_chance, precipitation_25_chance);
         }
@@ -426,5 +439,26 @@ public class Weather {
         NNW("NNW");
 
         DIRECTION(String d) {}
+    }
+
+    public enum Season {
+        SUMMER("SUMMER"),
+        WINTER("WINTER"),
+        AUTUMN("AUTUMN"),
+        SPRING("SPRING");
+        Season(String season) {}
+    }
+
+    public Season setSeason(int i) {
+        if(i == 11 || i == 0 || i == 1)
+            return Season.SUMMER;
+        else if (i == 2 || i == 3 || i == 4)
+            return Season.AUTUMN;
+        else if (i == 5 || i == 6 || i == 7)
+            return Season.WINTER;
+        else if (i == 8 || i == 9 || i == 10)
+            return Season.SPRING;
+        else
+            throw new IllegalArgumentException("[" + i + "] Is not a month of the year");
     }
 }

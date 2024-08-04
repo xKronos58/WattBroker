@@ -34,6 +34,7 @@ public class UI_Controller {
     public Node Settings_Pane;
     public Node Algorithms_Pane;
     public Node Data_Pane;
+    public ImageView userIcon;
 
 
     /* Selected colour:   #3E1D2A
@@ -45,6 +46,11 @@ public class UI_Controller {
     @FXML
     public void initialize() {
         try {
+            if(Main.user.hasUploadedProfilePicture())
+                userIcon.setImage(Main.user.webUrlOrFile()
+                        ? new Image(String.valueOf(Objects.requireNonNull(
+                                Main.class.getResource(Main.user.fileLocation()))))
+                        : new Image(Main.user.fileLocation()));
             Market_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Market_Pane.fxml")));
             Dashboard_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dashboard_Pane.fxml")));
             Settings_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Settings_Pane.fxml")));

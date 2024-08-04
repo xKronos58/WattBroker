@@ -37,14 +37,20 @@
                   <RowConstraints maxHeight="947.0" minHeight="10.0" prefHeight="309.8924560546875" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/Logo.png" />
-                     </image>
-                     <GridPane.margin>
-                        <Insets left="30.0" top="30.0" />
-                     </GridPane.margin>
-                  </ImageView>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="userIcon" fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="323.0" AnchorPane.topAnchor="25.0">
+                           <image>
+                              <Image url="@Images/DefaultIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="77.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="25.0">
+                           <image>
+                              <Image url="@Images/Logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                   <HBox fx:id="DashboardButton" onMouseClicked="#ShowDashboard" prefHeight="84.0" prefWidth="387.0" style="-fx-background-color: #172854; -fx-background-radius: 25px;" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="15.0" right="15.0" />

@@ -3,16 +3,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
 public class Algo_Run {
     public static void main(String[] args) throws IOException {
-        List<SolarFarm> solarFarmsList = getSolarFarms();
+//        List<SolarFarm> solarFarmsList = getSolarFarms();
+//
+//        for(SolarFarm s : solarFarmsList) {
+//            System.out.println(s.calculateEfficiencyHour(0)*100);
+//        }
 
-        for(SolarFarm s : solarFarmsList) {
-            System.out.println(s.calculateEfficiencyHour(0)*100);
-        }
+        Weather w = new Weather(-37.77317995596664, 144.98780890829914);
     }
 
     private static List<Weather> fillWeather(List<SolarFarm> farms) {

@@ -31,8 +31,8 @@ public class algorithmFileReader {
 
     public static List<String> encrypt(List<String> content){
         List<String> encrypted = new ArrayList<>();
-        for(String s : content)
-            encrypted.add(ECC.main(s));
+//        for(String s : content)
+//            encrypted.add(ECC.Main(s));
 
         return encrypted;
     }

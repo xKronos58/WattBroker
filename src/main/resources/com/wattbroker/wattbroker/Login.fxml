@@ -26,7 +26,7 @@
       </opaqueInsets>
       <TextField fx:id="username" accessibleText="Username Box" prefHeight="72.0" prefWidth="723.0"
                  style="-fx-background-color: rgba(151, 151, 151, 0.20); -fx-background-radius: 21; -fx-text-fill: #FFF;"
-                 AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="337.0">
+                 AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="337.0" onKeyPressed="#signInKey">
          <font>
             <Font name="Inter Medium" size="32.0"/>
          </font>
@@ -55,7 +55,7 @@
       </Text>
       <PasswordField fx:id="password" prefHeight="72.0" prefWidth="723.0"
                      style="-fx-background-color: rgba(151, 151, 151, 0.20); -fx-background-radius: 21; -fx-text-fill: #FFF;"
-                     AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="512.0">
+                     AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="512.0" onKeyPressed="#signInKey">
          <opaqueInsets>
             <Insets left="20.0"/>
          </opaqueInsets>
@@ -93,7 +93,7 @@
       <AnchorPane layoutX="223.0" layoutY="696.0" prefHeight="54.0" prefWidth="342.0"
                   style="-fx-background-color: #FFF; -fx-background-radius: 15;" AnchorPane.leftAnchor="223.0"
                   AnchorPane.rightAnchor="222.0" AnchorPane.topAnchor="690.0" fx:id="createAccountButton"
-                  onMouseClicked="#CreateAccount">
+                  onMouseClicked="#gotoCreateAccount">
          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true"
                     AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
             <Image url="@Images/CreateAccount.png"/>

@@ -11,52 +11,120 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import com.wattbroker.wattbroker.LargeGraph?>
+<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.MarketPaneController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0"/>
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="376.2146911621094" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="762.0" minHeight="10.0" prefHeight="762.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="239.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES"/>
+      <RowConstraints maxHeight="3803.0" minHeight="10.0" prefHeight="762.0" vgrow="SOMETIMES"/>
    </rowConstraints>
-   <children>
-      <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
-         <image>
-            <Image url="@Images/Banner.png" />
-         </image>
-         <GridPane.margin>
-            <Insets left="20.0" top="12.0" />
-         </GridPane.margin>
-      </ImageView>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET" GridPane.valignment="TOP">
+   <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
+      <GridPane.margin>
+         <Insets left="20.0" top="12.0"/>
+      </GridPane.margin>
+      <Image url="@Images/Banner.png"/>
+   </ImageView>
+   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET" GridPane.valignment="TOP">
+      <font>
+         <Font name="System Bold" size="80.0"/>
+      </font>
+      <GridPane.margin>
+         <Insets left="36.0" top="36.0"/>
+      </GridPane.margin>
+   </Text>
+   <AnchorPane maxHeight="60.0" prefHeight="60.0" prefWidth="394.0"
+               style="-fx-background-color: #343434; -fx-background-radius: 25;" GridPane.columnIndex="1"
+               GridPane.valignment="TOP">
+      <GridPane.margin>
+         <Insets right="32.0" top="18.0"/>
+      </GridPane.margin>
+      <TextField id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing"
+                 style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
+         <padding>
+            <Insets left="25.0"/>
+         </padding>
          <font>
-            <Font name="System Bold" size="80.0" />
+            <Font size="20.0"/>
          </font>
-         <GridPane.margin>
-            <Insets left="36.0" top="36.0" />
-         </GridPane.margin>
-      </Text>
-      <AnchorPane maxHeight="60.0" prefHeight="60.0" prefWidth="394.0" style="-fx-background-color: #343434; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets right="32.0" top="18.0" />
-         </GridPane.margin>
-         <children>
-            <TextField id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing" style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
-               <padding>
-                  <Insets left="25.0" />
-               </padding>
+      </TextField>
+      <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true"
+                 AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
+         <Image url="@Images/search.png"/>
+      </ImageView>
+   </AnchorPane>
+   <ScrollPane prefHeight="3803.0" prefWidth="1312.0"
+               style="-fx-background-color: transparent; -fx-border-style: none; -fx-border-color: transparent; -fx-border-radius: 0;"
+               GridPane.columnSpan="2" GridPane.rowIndex="1" fx:id="scrollPane">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3400.0" prefWidth="1308.0">
+         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #171717;"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Market Status">
+               <VBox.margin>
+                  <Insets left="83.0"/>
+               </VBox.margin>
                <font>
-                  <Font size="20.0" />
+                  <Font size="48.0"/>
                </font>
-            </TextField>
-            <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
-               <image>
-                  <Image url="@Images/search.png" />
-               </image>
-            </ImageView>
-         </children>
+            </Text>
+            <Pane fx:id="MS_pane" prefHeight="735.984" prefWidth="1169.0">
+               <VBox.margin>
+                  <Insets left="42.0" right="1.0" top="35.0"/>
+               </VBox.margin>
+               <LargeGraph/>
+            </Pane>
+            <Text fill="WHITE" layoutX="93.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Renewable Energy">
+               <font>
+                  <Font size="48.0"/>
+               </font>
+               <VBox.margin>
+                  <Insets left="83.0"/>
+               </VBox.margin>
+            </Text>
+            <Pane fx:id="RE_pane" layoutX="52.0" layoutY="67.0" prefHeight="735.984" prefWidth="1169.0">
+               <VBox.margin>
+                  <Insets left="42.0" top="35.0"/>
+               </VBox.margin>
+               <LargeGraph/>
+            </Pane>
+            <Text fill="WHITE" layoutX="10.0" layoutY="849.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Fossil Fuel">
+               <font>
+                  <Font size="48.0"/>
+               </font>
+               <VBox.margin>
+                  <Insets left="83.0"/>
+               </VBox.margin>
+            </Text>
+            <Pane fx:id="FF_pane" layoutX="10.0" layoutY="860.0" prefHeight="735.984" prefWidth="1169.0">
+               <VBox.margin>
+                  <Insets left="42.0" top="35.0"/>
+               </VBox.margin>
+               <LargeGraph/>
+            </Pane>
+            <Text fill="WHITE" layoutX="10.0" layoutY="1642.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Usage">
+               <font>
+                  <Font size="48.0"/>
+               </font>
+               <VBox.margin>
+                  <Insets left="83.0"/>
+               </VBox.margin>
+            </Text>
+            <Pane fx:id="US_pane" layoutX="10.0" layoutY="1653.0" prefHeight="735.984" prefWidth="1169.0">
+               <VBox.margin>
+                  <Insets left="42.0" top="35.0"/>
+               </VBox.margin>
+               <LargeGraph/>
+            </Pane>
+         </VBox>
       </AnchorPane>
-   </children>
+   </ScrollPane>
 </GridPane>

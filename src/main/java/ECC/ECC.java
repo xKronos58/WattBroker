@@ -137,25 +137,25 @@ public class ECC {
         });
     }
 
-    public static String main(String args) {
+    public static void main(String[] args) {
         EllipticCurve c = new EllipticCurve(4, 20, 29, new Point(1, 5));
         ECC ecc = new ECC(c);
         ecc.displayCodeTable();
         // generate pair of keys
         KeyPair keys = generateKeyPair(c);
         // encrypt the msg
-        int[] cipherText = ecc.encrypt(args, keys.getPublicKey());
-//        System.out.println("5) Alice send this to Bob:");
-//        Helpers.print(cipherText);
+        int[] cipherText = ecc.encrypt("test", keys.getPublicKey());
+        System.out.println("5) Alice send this to Bob:");
+        Helpers.print(cipherText);
 
-        // decrypt the result
-//        String plainText = ecc.decrypt(cipherText, keys.getPrivateKey());
-//        System.out.println("\n5) Translate each point to a carracter");
+//         decrypt the result
+        String plainText = ecc.decrypt(cipherText, keys.getPrivateKey());
+        System.out.println("\n5) Translate each point to a carracter");
 
-        //System.out.println("Cipher : ");
-        //Helpers.print(cipherText);
-//        System.out.println("Plain text : \n" + plainText);
+        System.out.println("Cipher : ");
+        Helpers.print(cipherText);
+        System.out.println("Plain text : \n" + plainText);
 
-        return Helpers.format(cipherText);
+//        return Helpers.format(cipherText);
     }
 }

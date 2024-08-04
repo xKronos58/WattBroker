@@ -198,4 +198,13 @@ public class util {
         String t = Files.readString(filePath);
         System.out.println(t);
     }
+
+    /**
+     * Rounds a double value to however many places provided
+     * @param value double value to be rounded
+     * @param places how many decimal places to be rounded to. */
+    public static double Round(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    }
 }

@@ -37,7 +37,8 @@ public class fakeDataBuilder {
 
 
         for(int i = 0; i < 24*60; i++){
-            data.add(String.format("2024-06-06 %02d:%02d:00,%f", i/60, i%60, Math.log(i)*Math.log(i)*Math.log(i)));
+            // \sin\left(x+2\pi\right)\cos\left(4x+\pi\right)+2
+            data.add(String.format("2024-06-06 %02d:%02d:00,%f", i/60, i%60, Math.sin((double) (i) /100 + 2*Math.PI)*Math.cos((double) (4 * i) /100 + Math.PI) + 2));
         }
 
         writeListToFile(data, "src/main/resources/com/wattbroker/wattbroker/_LOCAL_Data_Storage/market@2024-06-03_00:00:00-23:59:00.csv");

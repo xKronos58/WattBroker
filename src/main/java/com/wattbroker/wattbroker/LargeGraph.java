@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Graph extends Pane {
+public class LargeGraph extends Pane {
     @FXML @SuppressWarnings("unused")
     private Pane graphPane;
     @FXML @SuppressWarnings("unused")
@@ -41,8 +41,8 @@ public class Graph extends Pane {
 
 
     long start;
-    public Graph() {
-        FXMLLoader load = new FXMLLoader(getClass().getResource("graph.fxml"));
+    public LargeGraph() {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("large_graph.fxml"));
         load.setRoot(this);
         load.setController(this);
 
@@ -53,7 +53,7 @@ public class Graph extends Pane {
         }
 
         StackPane graph = new StackPane(wavyPath(plotPoints(
-                Graph.graphType.Market.set_put(null, 'd'), new Data()
+                LargeGraph.graphType.Market.set_put(null, 'd'), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
                                 "market@2024-06-02_00:00:00-23:59:00.csv"))));
 
@@ -61,7 +61,7 @@ public class Graph extends Pane {
 
         graphPane.getChildren().add(graph);
 
-        Line l = new Line(77, 24, 77+ dayButton.prefWidth(0), 24);
+        Line l = new Line(117, 24, 117+ dayButton.prefWidth(0), 24);
         l.setStroke(Color.rgb(120, 32, 150, 1));
         l.setStrokeWidth(3);
         root.getChildren().add(l);
@@ -78,8 +78,8 @@ public class Graph extends Pane {
             updateGraph(new char[]{'h'});
             // Set Buttons
             hourButton.setFill(Color.WHITE);
-            l.setStartX(hourButton.getX());
-            l.setEndX(hourButton.prefWidth(0));
+            l.setStartX(hourButton.getX()+40);
+            l.setEndX(hourButton.prefWidth(0)+40);
             l.setTranslateX(0);
             dayButton.setFill(Color.rgb(132, 132, 132, 1));
             weekButton.setFill(Color.rgb(132, 132, 132, 1));
@@ -101,8 +101,8 @@ public class Graph extends Pane {
             updateGraph(new char[]{'d'});
             // Set Buttons
             dayButton.setFill(Color.WHITE);
-            l.setStartX(dayButton.getX());
-            l.setEndX(dayButton.prefWidth(0));
+            l.setStartX(dayButton.getX()+40);
+            l.setEndX(dayButton.prefWidth(0)+40);
             l.setTranslateX(77);
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             weekButton.setFill(Color.rgb(132, 132, 132, 1));
@@ -124,8 +124,8 @@ public class Graph extends Pane {
             updateGraph(new char[]{'w'});
             // Set Buttons
             weekButton.setFill(Color.WHITE);
-            l.setStartX(weekButton.getX());
-            l.setEndX(weekButton.prefWidth(0));
+            l.setStartX(weekButton.getX()+40);
+            l.setEndX(weekButton.prefWidth(0)+40);
             l.setTranslateX(135);
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             dayButton.setFill(Color.rgb(132, 132, 132, 1));
@@ -151,7 +151,7 @@ public class Graph extends Pane {
         }
 
         StackPane graph = new StackPane(wavyPath(plotPoints(
-                Graph.graphType.Market.set_put(null, lastGraph[0]), new Data()
+                LargeGraph.graphType.Market.set_put(null, lastGraph[0]), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
                                 switch (lastGraph[0]) {
                                     case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
@@ -166,8 +166,7 @@ public class Graph extends Pane {
     }
 
     private StackPane wavyPath(List<util.Vector<Double, Double>> vectors) {
-        Path path = new Path(new MoveTo(0, vectors.get(0).getX())),
-                Overlay = new Path(new MoveTo(0, 714), new LineTo(vectors.get(0).getY(), vectors.get(0).getX()));
+        Path path = new Path(new MoveTo(0, vectors.get(0).getX()));
         // Iterate through the list of vectors to create the curve
         for (int i = 0; i + 2 < vectors.size(); i += 3) {
             var v1 = vectors.get(i);
@@ -178,8 +177,6 @@ public class Graph extends Pane {
             CubicCurveTo curve = new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v3.getY(), v3.getX());
 //            System.out.println(curve.getX() + ", " + curve.getY()); //(Logging for large data)
             path.getElements().add(curve);
-            Overlay.getElements().add(curve);
-
         }
 
         // If there are leftover points that cannot form a complete cubic curve, handle them
@@ -188,20 +185,15 @@ public class Graph extends Pane {
             var v1 = vectors.get(vectors.size() - 2);
             var v2 = vectors.get(vectors.size() - 1);
             // Create a quadratic curve to approximate the remaining points
-            CubicCurveTo x = new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v2.getY(), v2.getX());
-            path.getElements().add(x);
-            Overlay.getElements().add(x);
+            path.getElements().add(new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v2.getY(), v2.getX()));
         } else if (remainingPoints == 1) {
             var v1 = vectors.get(vectors.size() - 1);
             // Create a line to the last point
-            CubicCurveTo x1 = new CubicCurveTo(v1.getY(), v1.getX(), v1.getY(), v1.getX(), v1.getY(), v1.getX());
-            path.getElements().add(x1);
-            Overlay.getElements().add(x1);
+            path.getElements().add(new CubicCurveTo(v1.getY(), v1.getX(), v1.getY(), v1.getX(), v1.getY(), v1.getX()));
         }
 
-
-        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() -1).getY(), 714));
-
+        Path Overlay = new Path(path.getElements());
+        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() - 1).getY(), vectors.get(0).getX()));
         Overlay.setStroke(Color.rgb(0, 0, 0, 0.0));
 
         DropShadow dropShadow = new DropShadow();
@@ -340,11 +332,10 @@ public class Graph extends Pane {
      * */
     @SuppressWarnings("ClassEscapesDefinedScope")
     public List<Vector<Double, Double>> plotPoints(
-            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data
-    ) {
+            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data) {
         if(maxMin.size() != 2)
             throw new IllegalArgumentException("maxMin must have 2 elements");
-        Vector<Double, Double> graphSize = new Vector<>(585.0, 728.0);
+        Vector<Double, Double> graphSize = new Vector<>(639.0, 1169.0);
 
         List<Vector<Double, Double>> points = new ArrayList<>();
 
@@ -356,7 +347,6 @@ public class Graph extends Pane {
             x *= d2;
             y *= d1;
             x = graphSize.getY() - x;
-//            System.out.println(x + ", " + y);
             points.add(new Vector<>(x, y));
         }
 
@@ -393,13 +383,4 @@ public class Graph extends Pane {
         }
     }
 
-
-    public enum GraphSize {
-        SMALL(new Vector<>(10.0/*TBD*/,10.0/*TBD*/)),
-        REGULAR(new Vector<>(585.0, 728.0)),
-        LARGE(new Vector<>(639.0, 1169.0));
-
-        <Y, X> GraphSize(Vector<X, Y> size) {
-        }
-    }
 }
