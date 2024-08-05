@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static javafx.scene.input.KeyEvent.KEY_TYPED;
-
 public class loginController {
     public Button signInButton;
     public PasswordField password;
@@ -35,11 +33,8 @@ public class loginController {
 
     public void signIn(ActionEvent actionEvent) throws IOException {
         String passwordHash = convertToHash(password.getText());
-        String usernameHash = convertToHash(username.getText());
-
         DB_query dbq = new DB_query();
-        //HARD CODED LOGIN FOR TESTING
-        if(dbq.checkCredentials(username.getText(), password.getText())) {
+        if(dbq.checkCredentials(username.getText(), passwordHash)) {
             WattBroker.primaryStage.close();
             Main main = new Main(new User());
             main.start(new Stage());
@@ -49,7 +44,7 @@ public class loginController {
     }
 
     private String convertToHash(String text) {
-        return text;
+        return Hash.hashText(new String[]{text});
     }
 
     public void gotoCreateAccount(MouseEvent mouseEvent) {
@@ -76,18 +71,30 @@ public class loginController {
             return;
         }
 
-        if(password.length() < 8)
+        if(password.length() < 8) {
             util.errorMessage("Your password must be greater than 8 digits", "Invalid Password");
+            return;
+        }
 
+        // For future french developers :
+        // Did you know title in French is spelled as "Titre" and pronounced as "tit"? - Ned P
+
+        // Create a new database query.
         DB_query dbq = new DB_query();
-        if(dbq.addUser(firstName, lastName, username, "email" /*Todo: implement*/, password, companyCode, employeeCode)) {
+
+        // Adds the user to the database *
+        // returns false if there was an error and shows an error message from the util
+        if(dbq.addUser(firstName, lastName, username, "email" /*Todo: implement*/, convertToHash(password), companyCode, employeeCode)) {
             util.infoMessage("Account created successfully!", "Success");
             try {
+                // If successful shows the login page
                 WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("Login.fxml")).load()));
             } catch (IOException e) {
+                // If the FXML file cannot be found
                 throw new RuntimeException(e);
             }
         } else {
+            // Else shows an error message
             util.errorMessage("There was a problem", "ERROR");
         }
 
@@ -106,6 +113,14 @@ public class loginController {
     public void signInKey(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             signIn(new ActionEvent());
+        }
+    }
+
+    public void ForgotPassword(MouseEvent mouseEvent) {
+        try {
+            WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("ForgotPassword.fxml")).load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

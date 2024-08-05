@@ -21,9 +21,8 @@ public class DB_query {
         try (var conn = DriverManager.getConnection(url);
              var stmt = conn.createStatement();
              var rs = stmt.executeQuery(sql)) {
-            if (!rs.next())
+             if (!rs.next())
                 return false;
-
             return rs.getString("PASSWORD").equals(password);
         } catch (SQLException e) {
             System.err.println(e.getMessage());
