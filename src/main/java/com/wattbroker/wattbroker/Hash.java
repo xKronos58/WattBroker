@@ -6,8 +6,17 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
 
+/**
+ * Class used to salt and hash user passwords and check user passwords against the hash for sign-in. Based off the argon 2 method of text / password hashing returning a byte array in string form of the salted and hashed string.
+ * @see . Hash.hashText() for implimentation of the algorithm.
+ */
 public class Hash {
 
+    /**
+     * Computing the hash for the input message
+     * @param message to be hashed
+     * @param digestSize size of bytes to be hashed against
+     * @return hashed result of message */
     private static byte[] hash(byte[] message, int digestSize) {
         if (digestSize <= 64) {
             return blake2b(digestSize, message);
@@ -32,6 +41,11 @@ public class Hash {
         return result;
     }
 
+    /**
+     * Using Blake2bDigest to encrypt the input
+     * @see Blake2bDigest Blake2bDigest
+     * @param digestSize Digest Size
+     * @param input String to be encrypted */
     private static byte[] blake2b(int digestSize, byte[] input) {
         Blake2bDigest blake2bDigest = new Blake2bDigest(digestSize * 8);
         blake2bDigest.update(input, 0, input.length);
@@ -40,10 +54,19 @@ public class Hash {
         return output;
     }
 
+    /**
+     * Swaps an int to byte format
+     * @param value int to be swapped
+     * @return byte[] of the integer */
     private static byte[] intToBytes(int value) {
         return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(value).array();
     }
 
+    /**
+     * Concatenates multiple byte arrays into one
+     * @param arrays the arrays to concatenate
+     * @return the concatenated array
+     */
     private static byte[] concat(byte[]... arrays) {
         int totalLength = Arrays.stream(arrays).mapToInt(arr -> arr.length).sum();
         byte[] result = new byte[totalLength];
@@ -55,6 +78,20 @@ public class Hash {
         return result;
     }
 
+    /**
+     * Implementation of the Argon2 algorithm
+     * @param password the password to hash
+     * @param salt the salt to use
+     * @param parallelism the parallelism factor
+     * @param tagLength the length of the output tag
+     * @param memorySizeKB the memory size in KB
+     * @param iterations the number of iterations
+     * @param version the version of the algorithm
+     * @param key the key to use
+     * @param associatedData the associated data
+     * @param hashType the hash type
+     * @return the hash of the password
+     */
     public static byte[] argon2(byte[] password, byte[] salt, int parallelism, int tagLength, int memorySizeKB, int iterations, int version, byte[] key, byte[] associatedData, int hashType) {
         int totalLength = 6 * 4 // 6 integers (parallelism, tagLength, memorySizeKB, iterations, version, hashType)
                 + 4 + password.length // length of password + password bytes
@@ -122,12 +159,25 @@ public class Hash {
         return hash(finalBlock, tagLength);
     }
 
+    /**
+     * Implementation of the Argon2i algorithm
+     * @param i the i-th block
+     * @param j the j-th block
+     * @param parallelism the parallelism factor
+     * @param columnCount the number of columns
+     * @return the indexes of the block to be used for hashing
+     * @implNote CURRENTLY USING PLACEHOLDER FOR LOGIC TODO IMPLEMENT LOGIC */
     private static int[] getBlockIndexes(int i, int j, int parallelism, int columnCount) {
         // This function should implement the index selection based on the hashType
         // For simplicity, this function needs to be defined according to section 3.4
         return new int[]{i, (j - 1) % columnCount}; // Placeholder, replace with actual logic
     }
 
+    /**
+     * Runs an xor algorithm replacing bytes based of length and the '^' function
+     * @param a first byte array
+     * @param b second byte array
+     * @return byte[] scrambled based off length */
     private static byte[] xor(byte[] a, byte[] b) {
         byte[] result = new byte[a.length];
         for (int i = 0; i < a.length; i++) {
@@ -136,6 +186,11 @@ public class Hash {
         return result;
     }
 
+    /**
+     * Argon 2 based hashing algorithm used for hashing passwords stored within the database for security reasons.
+     * @param args String password or content to be encrypted
+     * @return String result of the byte array after the hash
+     * @implNote Does not include salting and is just the raw hash */
     public static String hashText(String[] args) {
         if(args.length != 1)
             throw new IllegalArgumentException("Please provide the password as an argument");
@@ -153,22 +208,5 @@ public class Hash {
         byte[] result = argon2(password, salt, parallelism, tagLength, memorySizeKB, iterations, version, key, associatedData, hashType);
 
         return Arrays.toString(result);
-    }
-
-    public static void main(String[] args) {
-        byte[] password = "PaSsW1".getBytes();
-        byte[] salt = "".getBytes();
-        int parallelism = 1;
-        int tagLength = 32;
-        int memorySizeKB = 1024;
-        int iterations = 1;
-        int version = 0x13;
-        byte[] key = new byte[0];
-        byte[] associatedData = new byte[0];
-        int hashType = 1; // Argon2i
-
-        byte[] result = argon2(password, salt, parallelism, tagLength, memorySizeKB, iterations, version, key, associatedData, hashType);
-
-        System.out.println(Arrays.toString(result));
     }
 }

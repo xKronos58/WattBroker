@@ -4,6 +4,7 @@ import com.util.util;
 import com.util.util.Vector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
@@ -68,12 +69,12 @@ public class Graph extends Pane {
         StackPane graph = new StackPane(wavyPath(plotPoints(
                 Graph.graphType.Market.set_put(null, 'd'), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
-                                "market@2024-06-02_00:00:00-23:59:00.csv")), GraphSize.REGULAR));
+                                "market@2024-06-02_00:00:00-23:59:00.csv"), GraphSize.REGULAR), GraphSize.REGULAR));
 
         // Add id to the graph for later usage
         graph.setId("Graph");
 
-        // Add the graph the to root pane
+        // Add the graph to the root pane
         graphPane.getChildren().add(graph);
 
         // Add the currently selected button line
@@ -175,7 +176,7 @@ public class Graph extends Pane {
                                     case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
                                     case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
                                     default -> throw new IllegalStateException("Unexpected value: " + lastGraph[0]);
-                                })), GraphSize.REGULAR));
+                                }), GraphSize.REGULAR), Graph.GraphSize.REGULAR));
 
         graph.setId("Graph");
 
@@ -185,7 +186,8 @@ public class Graph extends Pane {
     @SuppressWarnings("ClassEscapesDefinedScope")
     public static StackPane wavyPath(List<Vector<Double, Double>> vectors, GraphSize size) {
         Path path = new Path(new MoveTo(0, vectors.get(0).getX())),
-                Overlay = new Path(new MoveTo(0, size.getY()), new LineTo(vectors.get(0).getY(), vectors.get(0).getX()));
+                Overlay = new Path(new MoveTo(0, size.getY()), new LineTo(0, vectors.get(0).getX()));
+
         // Iterate through the list of vectors to create the curve
         for (int i = 0; i + 2 < vectors.size(); i += 3) {
             var v1 = vectors.get(i);
@@ -218,7 +220,7 @@ public class Graph extends Pane {
         }
 
 
-        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() -1).getY(), 714));
+        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() -1).getY(), size.getY()));
 
         Overlay.setStroke(Color.rgb(0, 0, 0, 0.0));
 
@@ -232,10 +234,12 @@ public class Graph extends Pane {
         path.setStroke(LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)"));
 
         Overlay.setFill(gradient);
-//        path.setEffect(dropShadow);
-//        path.setStroke(LinearGradient.valueOf("linear-gradient(to right, red, yellow, green, blue, purple)"));
         path.setStrokeWidth(6);
-        return new StackPane(Overlay, path);
+
+        StackPane temp = new StackPane(Overlay, path);
+        temp.setAlignment(Pos.TOP_CENTER);
+
+        return temp;
     }
 
     private static final LinearGradient gradient = new LinearGradient(1, -0.5, 1, 1, true, null,
@@ -263,6 +267,8 @@ public class Graph extends Pane {
                 Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
                 // Check time and devise scale :
                 String t1 = initial.dateTime(), t2 = end.dateTime();
+
+                // TO be implemented
                 graphTimeAxisType type ;
                 type = findTimeAxis(t1, t2);
 
@@ -281,7 +287,7 @@ public class Graph extends Pane {
                 // Return time taken
                 long _final = System.nanoTime();
                 long time = _final-current;
-                System.out.println(time + "ns => " + time/10000 + "ms");
+                System.out.println(time + "ns => " + time/100000000 + "ms");
 
                 // Return the max and min values of the data
                 List<Vector<Minimum<Double>, Maximum<Double>>> maxMin = new ArrayList<>();
@@ -310,9 +316,11 @@ public class Graph extends Pane {
 
         /**
          * Sets the graph type.
+         *
          * @see Vector Vector class
          * @see Minimum Minimum type
-         * @see Maximum Maximum tyoe */
+         * @see Maximum Maximum tyoe
+         */
         public abstract List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt);
     }
 
@@ -380,29 +388,27 @@ public class Graph extends Pane {
      * @see Data.tV Data types
      * */
     @SuppressWarnings("ClassEscapesDefinedScope")
-    public List<Vector<Double, Double>> plotPoints(
-            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data
+    public static List<Vector<Double, Double>> plotPoints(
+            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data,
+            GraphSize size
     ) {
         // Check if maxMin is of size 2
         if(maxMin.size() != 2)
             throw new IllegalArgumentException("maxMin must have 2 elements");
 
-        // Define the size of the graph. Based of the GraphSize.x enum to define X and Y
-        Vector<Double, Double> graphSize = new Vector<>(585.0, 728.0);
-
         // Define the list of points to be plotted
         List<Vector<Double, Double>> points = new ArrayList<>();
 
         // Define the scaling factor for the graph
-        double d1 = graphSize.getY()/maxMin.get(1).getY().max,
-                d2 = graphSize.getX()/maxMin.get(0).getY().max;
+        double d1 = size.getY()/maxMin.get(1).getY().max,
+                d2 = size.getX()/maxMin.get(0).getY().max;
 
         // Iterate through the data and convert it to a vector
         for(int i = 0; i < data.size(); i++) {
             double x = data.get(i).value(), y = i;
             x *= d2; // Multiply the x by the x scalar value
             y *= d1; // Multiply the x by the x scalar value
-            x = graphSize.getY() - x;
+            x = size.getY() - x;
 //            System.out.println(x + ", " + y); // Logging for large data sets
             points.add(new Vector<>(x, y)); // Add the points
         }

@@ -6,8 +6,8 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
 <fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="https://javafx.com/javafx/20.0.1">
-    <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="553.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-        <HBox prefHeight="390.0" prefWidth="483.0" spacing="68.27" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0">
+    <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="553.0" style="-fx-background-color: #232323;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+        <HBox prefHeight="390.0" prefWidth="483.0" spacing="68.27" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="48.0">
             <Line endY="390.0" stroke="#483c3c" />
             <Line endY="390.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c" />
             <Line endY="390.0" layoutX="12.0" layoutY="11.0" stroke="#483c3c" />
@@ -17,7 +17,7 @@
             <Line endY="390.0" layoutX="16.0" layoutY="11.0" stroke="#483c3c" />
             <Line endY="390.0" layoutX="17.0" layoutY="11.0" stroke="#483c3c" />
         </HBox>
-        <VBox prefHeight="390.0" prefWidth="390.0" spacing="76.8" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0">
+        <VBox prefHeight="390.0" prefWidth="390.0" spacing="76.8" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="48.0">
             <Line endX="483.0" stroke="#483c3c" />
             <Line endX="483.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c" />
             <Line endX="483.0" layoutX="11.0" layoutY="116.0" stroke="#483c3c" />
@@ -25,7 +25,7 @@
             <Line endX="483.0" layoutX="11.0" layoutY="326.0" stroke="#483c3c" />
             <Line endX="483.0" layoutX="11.0" layoutY="431.0" stroke="#483c3c" />
         </VBox>
-        <HBox layoutY="698.0" prefHeight="21.0" prefWidth="515.0" spacing="46.5" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="459.0">
+        <HBox layoutY="698.0" prefHeight="21.0" prefWidth="515.0" spacing="46.5" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="459.0">
             <Text fx:id="_1" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
                 <font>
                     <Font name="Inter SemiBold" size="11.0" />
@@ -79,7 +79,7 @@
                 </font>
             </Text>
         </HBox>
-        <AnchorPane fx:id="graphPane" prefHeight="390.0" prefWidth="483.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="48.0" />
+        <AnchorPane fx:id="graphPane" prefHeight="390.0" prefWidth="483.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="48.0" />
     </AnchorPane>
 
 </fx:root>

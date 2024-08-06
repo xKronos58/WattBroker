@@ -67,10 +67,10 @@ public class SmallGraph extends Pane {
         }
 
         // Create the graph and add it to the graphPane
-        StackPane graph = new StackPane(wavyPath(plotPoints(
-                SmallGraph.graphType.Market.set_put(null, 'd'), new Data()
+        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints(
+                Graph.graphType.Market.set_put(null, 'd'), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
-                                "market@2024-06-02_00:00:00-23:59:00.csv")), GraphSize.REGULAR));
+                                "market@2024-06-02_00:00:00-23:59:00.csv"), Graph.GraphSize.SMALL), Graph.GraphSize.SMALL));
 
         // Add id to the graph for later usage
         graph.setId("Graph");
@@ -169,207 +169,19 @@ public class SmallGraph extends Pane {
             }
         }
 
-        StackPane graph = new StackPane(wavyPath(plotPoints(
-                SmallGraph.graphType.Market.set_put(null, lastGraph[0]), new Data()
+        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints(
+                Graph.graphType.Market.set_put(null, lastGraph[0]), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
                                 switch (lastGraph[0]) {
                                     case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
                                     case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
                                     case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
                                     default -> throw new IllegalStateException("Unexpected value: " + lastGraph[0]);
-                                })), GraphSize.SMALL));
+                                }), Graph.GraphSize.SMALL), Graph.GraphSize.SMALL));
 
         graph.setId("Graph");
 
         graphPane.getChildren().add(graph);
-    }
-
-    @SuppressWarnings("ClassEscapesDefinedScope")
-    public static StackPane wavyPath(List<Vector<Double, Double>> vectors, GraphSize size) {
-        Path path = new Path(new MoveTo(0, vectors.get(0).getX())),
-                Overlay = new Path(new MoveTo(0, size.getY()), new LineTo(vectors.get(0).getY(), vectors.get(0).getX()));
-        // Iterate through the list of vectors to create the curve
-        for (int i = 0; i + 2 < vectors.size(); i += 3) {
-            var v1 = vectors.get(i);
-            var v2 = vectors.get(i + 1);
-            var v3 = vectors.get(i + 2);
-
-            // Create the cubic curve with the three control points
-            CubicCurveTo curve = new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v3.getY(), v3.getX());
-//            System.out.println(curve.getX() + ", " + curve.getY()); //(Logging for large data)
-            path.getElements().add(curve);
-            Overlay.getElements().add(curve);
-
-        }
-
-        // If there are leftover points that cannot form a complete cubic curve, handle them
-        int remainingPoints = vectors.size() % 3;
-        if (remainingPoints == 2) {
-            var v1 = vectors.get(vectors.size() - 2);
-            var v2 = vectors.get(vectors.size() - 1);
-            // Create a quadratic curve to approximate the remaining points
-            CubicCurveTo x = new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v2.getY(), v2.getX());
-            path.getElements().add(x);
-            Overlay.getElements().add(x);
-        } else if (remainingPoints == 1) {
-            var v1 = vectors.get(vectors.size() - 1);
-            // Create a line to the last point
-            CubicCurveTo x1 = new CubicCurveTo(v1.getY(), v1.getX(), v1.getY(), v1.getX(), v1.getY(), v1.getX());
-            path.getElements().add(x1);
-            Overlay.getElements().add(x1);
-        }
-
-
-        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() -1).getY(), 714));
-
-        Overlay.setStroke(Color.rgb(0, 0, 0, 0.0));
-
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BLACK);
-        dropShadow.setRadius(10);
-        dropShadow.setOffsetX(5);
-        dropShadow.setOffsetY(5);
-        dropShadow.setBlurType(javafx.scene.effect.BlurType.GAUSSIAN);
-
-        path.setStroke(LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)"));
-
-        Overlay.setFill(gradient);
-//        path.setEffect(dropShadow);
-//        path.setStroke(LinearGradient.valueOf("linear-gradient(to right, red, yellow, green, blue, purple)"));
-        path.setStrokeWidth(6);
-        return new StackPane(Overlay, path);
-    }
-
-    private static final LinearGradient gradient = new LinearGradient(1, -0.5, 1, 1, true, null,
-            new Stop(-2, Color.rgb(74, 165, 210, 1)),
-            new Stop(1, Color.rgb(119, 79, 175, 0.1)));
-
-    /**
-     * Defines the type of graph
-     * and differentiates the required scalars and other graph modifiers for each graph type and dataset
-     * @see graphTimeAxisType Graph scalar */
-    enum graphType {
-        Market {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                com.wattbroker.wattbroker.Data data = new Data();
-                // Get market data from these files * Requires AEMO API access
-                List<Data.tV> _data = data.getMarketData(new Date(System.currentTimeMillis()),
-                        switch (gt) { //TODO once AEMO API access is gotten change formatting to those datasets
-                            case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
-                            case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
-                            case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
-                            default -> throw new IllegalStateException("Unexpected value: " + gt);
-                        });
-
-                Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
-                // Check time and devise scale :
-                String t1 = initial.dateTime(), t2 = end.dateTime();
-                graphTimeAxisType type ;
-                type = findTimeAxis(t1, t2);
-
-                // Get time current time for performance metrics
-                long current = System.nanoTime();
-
-                // Find y (Value) axis high and low.
-                double max_val = 0, min_val = 0;
-                for (Data.tV data_i : _data) {
-                    if (data_i.value() > max_val)
-                        max_val = data_i.value();
-                    else if (data_i.value() < min_val)
-                        min_val = data_i.value();
-                }
-
-                // Return time taken
-                long _final = System.nanoTime();
-                long time = _final-current;
-                System.out.println(time + "ns => " + time/10000 + "ms");
-
-                // Return the max and min values of the data
-                List<Vector<Minimum<Double>, Maximum<Double>>> maxMin = new ArrayList<>();
-                maxMin.add(new Vector<>(new Minimum<>(min_val), new Maximum<>(max_val)));
-                maxMin.add(new Vector<>(new Minimum<>(0.0), new Maximum<>(_data.size() - 1.0)));
-                return maxMin;
-            }
-        }, Data {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-            }
-        }, Settings {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-
-            }
-        }, Algorithms {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-
-            }
-        };
-
-        /**
-         * Sets the graph type.
-         * @see Vector Vector class
-         * @see Minimum Minimum type
-         * @see Maximum Maximum tyoe */
-        public abstract List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt);
-    }
-
-    /**
-     * Stores the different time break indexes used for devising graph scales for different time ranges of data
-     * */
-    public enum graphTimeAxisType {
-        SECOND(10), // 10ms of 100ms => 10
-        MINUTE(6),  // 10s of 60s => 6
-        HOUR(10),   // 10m of 60m => 6
-        DAY(8),     // 3h of 24h => 8
-        WEEK(7);    // 1d of 7d => 7
-
-        private final int breaks;
-
-        /**
-         * Constructor for each time set
-         * @param i amount of time breaks */
-        graphTimeAxisType(int i) {
-            this.breaks = i;
-        }
-
-        /**
-         * gets the break index
-         * @return int index of breaks */
-        public int getBreaks() {
-            return breaks;
-        }
-    }
-
-    /**
-     * Finds the time axis of the graph
-     * @param t1 the initial time
-     * @param t2 the final time
-     * @return the time axis of the graph
-     * */
-    public static graphTimeAxisType findTimeAxis(String t1, String t2) {
-        // Get the index of breaks in the time
-        int indexOfBreak_t1 = util.until(0, t1, ' '),
-                indexOfBreak_t2 = util.until(0, t2, ' ');
-        graphTimeAxisType type;
-        // Check the time axis
-        if(t1.charAt(indexOfBreak_t1 - 1) != t2.charAt(indexOfBreak_t2 - 1)) {
-            type = graphTimeAxisType.WEEK;
-        } else if (!t1.substring(indexOfBreak_t1, indexOfBreak_t1 + 2)
-                .equals (t2.substring(indexOfBreak_t2, indexOfBreak_t2 + 2))) {
-            type = graphTimeAxisType.HOUR;
-        } else if (!t1.substring(indexOfBreak_t1 + 3, indexOfBreak_t1 + 5)
-                .equals(t2.substring(indexOfBreak_t2 + 3, indexOfBreak_t2 + 5))) {
-            type = graphTimeAxisType.MINUTE;
-        } else {
-            type = graphTimeAxisType.SECOND;
-        }
-
-        return type;
     }
 
     /**
@@ -383,7 +195,7 @@ public class SmallGraph extends Pane {
      * */
     @SuppressWarnings("ClassEscapesDefinedScope")
     public List<Vector<Double, Double>> plotPoints(
-            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data
+            List<Vector<Graph.Minimum<Double>, Graph.Maximum<Double>>> maxMin, List<Data.tV> data
     ) {
         // Check if maxMin is of size 2
         if(maxMin.size() != 2)
