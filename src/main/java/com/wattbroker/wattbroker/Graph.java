@@ -475,7 +475,7 @@ public class Graph extends Pane {
 
 
     public enum GraphSize {
-        SMALL(new Vector<>(10.0/*TBD*/,10.0/*TBD*/)),
+        SMALL(new Vector<>(390.0/*TBD*/,483.0/*TBD*/)),
         REGULAR(new Vector<>(585.0, 728.0)),
         LARGE(new Vector<>(639.0, 1169.0));
 
