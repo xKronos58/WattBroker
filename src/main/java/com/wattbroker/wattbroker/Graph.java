@@ -160,7 +160,7 @@ public class Graph extends Pane {
         });
     }
 
-    private void updateGraph(char[] lastGraph) {
+    public void updateGraph(char[] lastGraph) {
         for(Node n : graphPane.getChildren()) {
             if(n.getId().equals("Graph")) {
                 graphPane.getChildren().remove(n);
@@ -236,8 +236,26 @@ public class Graph extends Pane {
         Overlay.setFill(gradient);
         path.setStrokeWidth(6);
 
-        StackPane temp = new StackPane(Overlay, path);
+        Node ValueNeedle;
+
+        ValueNeedle = new Circle(10);
+
+        // Drag Function
+        Overlay.setOnMouseMoved(e -> {
+//            System.out.println(e.getX() + ", " + e.getY());
+            ValueNeedle.setTranslateX(e.getX()-360); // TODO Add scalar based off graph size to snap to correct x;
+            // Find Y value
+            int x = (int) ((e.getX()/vectors.size()));
+
+            double y = vectors.get(Math.min(x, vectors.size() - 1)).getY();
+
+            ValueNeedle.setTranslateY(y);
+        });
+
+
+        StackPane temp = new StackPane(Overlay, path, ValueNeedle);
         temp.setAlignment(Pos.TOP_CENTER);
+
 
         return temp;
     }
@@ -264,13 +282,13 @@ public class Graph extends Pane {
                             default -> throw new IllegalStateException("Unexpected value: " + gt);
                         });
 
-                Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
+//                Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
                 // Check time and devise scale :
-                String t1 = initial.dateTime(), t2 = end.dateTime();
+//                String t1 = initial.dateTime(), t2 = end.dateTime();
 
                 // TO be implemented
-                graphTimeAxisType type ;
-                type = findTimeAxis(t1, t2);
+//                graphTimeAxisType type ;
+//                type = findTimeAxis(t1, t2);
 
                 // Get time current time for performance metrics
                 long current = System.nanoTime();

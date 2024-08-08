@@ -150,71 +150,20 @@ public class LargeGraph extends Pane {
             }
         }
 
-        StackPane graph = new StackPane(wavyPath(plotPoints(
-                LargeGraph.graphType.Market.set_put(null, lastGraph[0]), new Data()
+        StackPane graph = new StackPane(Graph.wavyPath(plotPoints(
+                graphType.Market.set_put(null, lastGraph[0]), new Data()
                         .getMarketData(new Date(System.currentTimeMillis()),
                                 switch (lastGraph[0]) {
                                     case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
                                     case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
                                     case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
                                     default -> throw new IllegalStateException("Unexpected value: " + lastGraph[0]);
-                                }))));
+                                })), Graph.GraphSize.LARGE));
 
         graph.setId("Graph");
 
         graphPane.getChildren().add(graph);
     }
-
-    private StackPane wavyPath(List<util.Vector<Double, Double>> vectors) {
-        Path path = new Path(new MoveTo(0, vectors.get(0).getX()));
-        // Iterate through the list of vectors to create the curve
-        for (int i = 0; i + 2 < vectors.size(); i += 3) {
-            var v1 = vectors.get(i);
-            var v2 = vectors.get(i + 1);
-            var v3 = vectors.get(i + 2);
-
-            // Create the cubic curve with the three control points
-            CubicCurveTo curve = new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v3.getY(), v3.getX());
-//            System.out.println(curve.getX() + ", " + curve.getY()); //(Logging for large data)
-            path.getElements().add(curve);
-        }
-
-        // If there are leftover points that cannot form a complete cubic curve, handle them
-        int remainingPoints = vectors.size() % 3;
-        if (remainingPoints == 2) {
-            var v1 = vectors.get(vectors.size() - 2);
-            var v2 = vectors.get(vectors.size() - 1);
-            // Create a quadratic curve to approximate the remaining points
-            path.getElements().add(new CubicCurveTo(v1.getY(), v1.getX(), v2.getY(), v2.getX(), v2.getY(), v2.getX()));
-        } else if (remainingPoints == 1) {
-            var v1 = vectors.get(vectors.size() - 1);
-            // Create a line to the last point
-            path.getElements().add(new CubicCurveTo(v1.getY(), v1.getX(), v1.getY(), v1.getX(), v1.getY(), v1.getX()));
-        }
-
-        Path Overlay = new Path(path.getElements());
-        Overlay.getElements().add(new LineTo(vectors.get(vectors.size() - 1).getY(), vectors.get(0).getX()));
-        Overlay.setStroke(Color.rgb(0, 0, 0, 0.0));
-
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BLACK);
-        dropShadow.setRadius(10);
-        dropShadow.setOffsetX(5);
-        dropShadow.setOffsetY(5);
-        dropShadow.setBlurType(javafx.scene.effect.BlurType.GAUSSIAN);
-
-        path.setStroke(LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)"));
-
-        Overlay.setFill(gradient);
-//        path.setEffect(dropShadow);
-//        path.setStroke(LinearGradient.valueOf("linear-gradient(to right, red, yellow, green, blue, purple)"));
-        path.setStrokeWidth(6);
-        return new StackPane(path, Overlay);
-    }
-
-    private final LinearGradient gradient = new LinearGradient(1, -0.5, 1, 1, true, null,
-            new Stop(-2, Color.rgb(74, 165, 210, 1)),
-            new Stop(1, Color.rgb(119, 79, 175, 0.1)));
 
     enum graphType {
         Market {

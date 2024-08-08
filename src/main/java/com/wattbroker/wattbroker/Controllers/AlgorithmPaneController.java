@@ -1,14 +1,14 @@
 package com.wattbroker.wattbroker.Controllers;
 
 import com.wattbroker.wattbroker.Main;
+import com.wattbroker.wattbroker.UI_Controller;
+import com.wattbroker.wattbroker.WattBroker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
@@ -23,6 +23,8 @@ import java.util.Scanner;
 public class AlgorithmPaneController {
 
     public ScrollPane ScrollPaneAlg;
+    public AnchorPane root;
+
     @FXML
     public void initialize() {
 
@@ -84,13 +86,19 @@ public class AlgorithmPaneController {
             try {
                 FXMLLoader current = new FXMLLoader(Main.class.getResource("Algorithm_Template.fxml"));
                 Node temp = current.load();
+                temp.setOnMouseClicked(e -> {
+                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("Algorithm_Details_template.fxml"));
+                    root.getChildren().clear();
+                    try {
+                        new AlgorithmDetailController(loader, algorithm.name());
+
+                        root.getChildren().add(loader.load());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
                 AlgTemplateController Controller = current.getController();
                 Controller.setAlgorithm(algorithm);
-                temp.setOnMouseClicked(e -> {
-                    AlgorithmSettingsPage asp = new AlgorithmSettingsPage(algorithm);
-
-
-                });
                 nodes.add(temp);
             } catch (Exception e) {
                 System.out.println(e.getMessage());

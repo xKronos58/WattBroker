@@ -18,8 +18,8 @@ import java.util.Random;
 
 public class Map extends AnchorPane {
 
-    public static Color StartColour = Color.rgb(129, 207, 252);
-    public static Color endColour = Color.rgb(82,91, 195);
+    public static Color StartColour = Color.rgb(65, 229, 237, 1);
+    public static Color endColour = Color.rgb(10, 50, 117, 1);
     static double minValue = 0.0;
     static double maxValue = 100.0; /*TODO base of actual prices*/
     @FXML @SuppressWarnings("unused")
