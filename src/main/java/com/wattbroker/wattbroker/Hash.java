@@ -5,6 +5,7 @@ import org.bouncycastle.crypto.digests.Blake2bDigest;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * Class used to salt and hash user passwords and check user passwords against the hash for sign-in. Based off the argon 2 method of text / password hashing returning a byte array in string form of the salted and hashed string.
@@ -207,6 +208,43 @@ public class Hash {
 
         byte[] result = argon2(password, salt, parallelism, tagLength, memorySizeKB, iterations, version, key, associatedData, hashType);
 
-        return Arrays.toString(result);
+        byte[] passwordBytes = new byte[result.length];
+
+        for (int i = 0; i < result.length; i++) {
+            // Convert the integer to a byte, handling negative values by adjusting with 256
+            passwordBytes[i] = (byte) ((result[i] + 256) % 256);
+        }
+
+        return Base64.getEncoder().encodeToString(passwordBytes);
+    }
+
+    public static void main(String[] args) {
+        if(args.length != 0)
+            throw new IllegalArgumentException("Please provide the password as an argument");
+        byte[] password = "password".getBytes();
+        byte[] salt = "".getBytes();
+        int parallelism = 1;
+        int tagLength = 32;
+        int memorySizeKB = 1024;
+        int iterations = 1;
+        int version = 0x13;
+        byte[] key = new byte[0];
+        byte[] associatedData = new byte[0];
+        int hashType = 1; // Argon2i
+
+        byte[] result = argon2(password, salt, parallelism, tagLength, memorySizeKB, iterations, version, key, associatedData, hashType);
+
+        byte[] passwordBytes = new byte[result.length];
+
+        for (int i = 0; i < result.length; i++) {
+            // Convert the integer to a byte, handling negative values by adjusting with 256
+            passwordBytes[i] = (byte) ((result[i] + 256) % 256);
+        }
+
+        String encodedPassword = Base64.getEncoder().encodeToString(passwordBytes);
+
+        System.out.println(encodedPassword);
+
+        new DB_query().setPassword(12, encodedPassword);
     }
 }

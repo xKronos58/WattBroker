@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsNavController">
+   <children>
+      <AnchorPane layoutX="82.0" layoutY="61.0" prefHeight="1145.0" prefWidth="324.0" style="-fx-background-color: #1C1C1C;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="1145.0" prefWidth="324.0">
+               <children>
+                  <AnchorPane onMouseClicked="#SetGeneralSettings" fx:id="general_button" prefHeight="63.0" prefWidth="324.0">
+                     <children>
+                        <SVGPath fx:id="general_icon" content="M25.7113 15.375H9.39583C7.03712 15.375 5.125 13.4629 5.125 11.1042C5.125 8.74545 7.03712 6.83333 9.39583 6.83333H25.7113M15.2887 34.1667H31.6042C33.9629 34.1667 35.875 32.2545 35.875 29.8958C35.875 27.5371 33.9629 25.625 31.6042 25.625H15.2887M5.125 29.8958C5.125 33.198 7.80196 35.875 11.1042 35.875C14.4064 35.875 17.0833 33.198 17.0833 29.8958C17.0833 26.5936 14.4064 23.9167 11.1042 23.9167C7.80196 23.9167 5.125 26.5936 5.125 29.8958ZM35.875 11.1042C35.875 14.4064 33.198 17.0833 29.8958 17.0833C26.5936 17.0833 23.9167 14.4064 23.9167 11.1042C23.9167 7.80196 26.5936 5.125 29.8958 5.125C33.198 5.125 35.875 7.80196 35.875 11.1042Z" fill="#ffffff00" style="-fx-stroke: #FFFFFF; -fx-stroke-width: 2;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="14.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="General" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="Inter Medium" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="12.0" right="12.0" top="386.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#SetTradingSettings" fx:id="trading_button" layoutX="22.0" layoutY="396.0" prefHeight="63.0" prefWidth="324.0">
+                     <children>
+                        <SVGPath fx:id="trading_icon" content="M38.5 12.25L24.7299 26.0201C24.0369 26.7131 23.6904 27.0596 23.2908 27.1895C22.9393 27.3037 22.5607 27.3037 22.2092 27.1895C21.8096 27.0596 21.4631 26.7131 20.7701 26.0201L15.9799 21.2299C15.2869 20.5369 14.9404 20.1904 14.5408 20.0605C14.1893 19.9463 13.8107 19.9463 13.4592 20.0605C13.0596 20.1904 12.7131 20.5369 12.0201 21.2299L3.5 29.75M38.5 12.25H26.25M38.5 12.25V24.5M38.5 12.25L24.7299 26.0201C24.0369 26.7131 23.6904 27.0596 23.2908 27.1895C22.9393 27.3037 22.5607 27.3037 22.2092 27.1895C21.8096 27.0596 21.4631 26.7131 20.7701 26.0201L15.9799 21.2299C15.2869 20.5369 14.9404 20.1904 14.5408 20.0605C14.1893 19.9463 13.8107 19.9463 13.4592 20.0605C13.0596 20.1904 12.7131 20.5369 12.0201 21.2299L3.5 29.75M38.5 12.25H26.25M38.5 12.25V24.5" fill="#ffffff00" style="-fx-stroke: #FFFFFF; -fx-stroke-width: 2;" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="21.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Trading" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="Inter Medium" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="12.0" right="12.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#SetIntegrationSettings" fx:id="integration_button" layoutX="10.0" layoutY="460.0" prefHeight="63.0" prefWidth="324.0">
+                     <children>
+                        <SVGPath fx:id="integration_icon" content="M14.875 27.125L27.125 14.875M15.75 7V3.5M26.25 35V38.5M7 15.75H3.5M35 26.25H38.5M8.59987 8.59987L6.125 6.125M33.4002 33.4L35.8751 35.8748M21.0001 30.8993L17.2877 34.6116C14.5541 37.3453 10.1219 37.3453 7.38825 34.6116C4.65458 31.878 4.65458 27.4458 7.38825 24.7122L11.1006 20.9998M30.8996 20.9998L34.6119 17.2875C37.3455 14.5539 37.3455 10.1217 34.6119 7.38804C31.8782 4.65437 27.446 4.65437 24.7124 7.38804L21.0001 11.1004M14.875 27.125L27.125 14.875M15.75 7V3.5M26.25 35V38.5M7 15.75H3.5M35 26.25H38.5M8.59987 8.59987L6.125 6.125M33.4002 33.4L35.8751 35.8748M21.0001 30.8993L17.2877 34.6116C14.5541 37.3453 10.1219 37.3453 7.38825 34.6116C4.65458 31.878 4.65458 27.4458 7.38825 24.7122L11.1006 20.9998M30.8996 20.9998L34.6119 17.2875C37.3455 14.5539 37.3455 10.1217 34.6119 7.38804C31.8782 4.65437 27.446 4.65437 24.7124 7.38804L21.0001 11.1004" fill="#ffffff00" style="-fx-stroke: #FFFFFF; -fx-stroke-width: 2;" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="13.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Integration" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="Inter Medium" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="12.0" right="12.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#SetLegalSettings" fx:id="legal_button" layoutX="10.0" layoutY="524.0" prefHeight="63.0" prefWidth="324.0">
+                     <children>
+                        <SVGPath fx:id="legal_icon" content="M35 33.25V28H12.25C9.35051 28 7 30.3505 7 33.25M15.4 38.5H29.4C31.3602 38.5 32.3403 38.5 33.089 38.1185C33.7475 37.783 34.283 37.2475 34.6185 36.589C35 35.8403 35 34.8602 35 32.9V9.1C35 7.13982 35 6.15972 34.6185 5.41103C34.283 4.75247 33.7475 4.21703 33.089 3.88148C32.3403 3.5 31.3602 3.5 29.4 3.5H15.4C12.4597 3.5 10.9896 3.5 9.86655 4.07222C8.8787 4.57555 8.07555 5.3787 7.57222 6.36655C7 7.48959 7 8.95972 7 11.9V30.1C7 33.0403 7 34.5104 7.57222 35.6334C8.07555 36.6213 8.8787 37.4244 9.86655 37.9278C10.9896 38.5 12.4597 38.5 15.4 38.5Z" fill="#ffffff00" style="-fx-stroke: #FFFFFF; -fx-stroke-width: 2;" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="13.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Legal" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="Inter Medium" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="12.0" right="12.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#SetSupport" fx:id="support_button" layoutX="10.0" layoutY="588.0" prefHeight="63.0" prefWidth="324.0">
+                     <children>
+                        <SVGPath fx:id="support_icon" content="M15.9075 15.75C16.3189 14.5804 17.131 13.5942 18.1999 12.966C19.2688 12.3378 20.5256 12.1081 21.7476 12.3177C22.9696 12.5274 24.0779 13.1627 24.8764 14.1112C25.6748 15.0597 26.1118 16.2602 26.11 17.5C26.11 21 20.86 22.75 20.86 22.75M21 29.75H21.0175M38.5 21C38.5 30.665 30.665 38.5 21 38.5C11.335 38.5 3.5 30.665 3.5 21C3.5 11.335 11.335 3.5 21 3.5C30.665 3.5 38.5 11.335 38.5 21Z" fill="#ffffff00" style="-fx-stroke: #FFFFFF; -fx-stroke-width: 2;" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="13.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Support" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="Inter Medium" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="12.0" right="12.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="background_pane" layoutX="360.0" layoutY="36.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

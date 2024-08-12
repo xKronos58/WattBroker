@@ -1,6 +1,7 @@
 package com.wattbroker.wattbroker;
 
 import com.util.util;
+import com.wattbroker.wattbroker.UserHandling.USER_ID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -36,8 +37,7 @@ public class loginController {
         DB_query dbq = new DB_query();
         if(dbq.checkCredentials(username.getText(), passwordHash)) {
             WattBroker.primaryStage.close();
-            Main main = new Main(new User());
-            main.start(new Stage());
+            Main.main(new String[]{username.getText()});
         } else {
             util.infoMessage("The username or password provided was incorrect.", "Invalid credentials");
         }

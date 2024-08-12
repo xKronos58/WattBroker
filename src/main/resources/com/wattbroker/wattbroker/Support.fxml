@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="68.0" layoutY="1.0" prefHeight="1145.0" prefWidth="988.0" style="-fx-background-color: #171717;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="880.9572143554688" minWidth="10.0" prefWidth="636.38134765625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="676.87939453125" minWidth="10.0" prefWidth="500.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="281.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="900.0" minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
+               <image>
+                  <Image url="@Images/small_banner.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="7.0" top="12.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPORT" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="80.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="36.0" top="36.0" />
+               </GridPane.margin>
+            </Text>
+            <AnchorPane maxHeight="60.0" prefHeight="60.0" prefWidth="394.0" style="-fx-background-color: #343434; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="32.0" top="18.0" />
+               </GridPane.margin>
+               <children>
+                  <TextField fx:id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing" style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
+                     <image>
+                        <Image url="@Images/search.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

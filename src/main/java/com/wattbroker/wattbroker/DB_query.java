@@ -2,6 +2,8 @@ package com.wattbroker.wattbroker;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
+
 public class DB_query {
     // TODO : Create hashing algorithm to enhance security.
 
@@ -41,5 +43,75 @@ public class DB_query {
         }
 
         return false;
+    }
+
+    public String getUsername(int id) {
+        String sql = "SELECT USERNAME FROM USERLIST WHERE ID = " + id;
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            return stmt.getResultSet().getString("USERNAME");
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    public String getEmail(int id) {
+        String sql = "SELECT EMAIL FROM USERLIST WHERE ID = " + id;
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            String email = stmt.getResultSet().getString("EMAIL");
+            if(Objects.equals(email, "email")) email = "No email provided";
+            return email;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    public void setUsername(int id, String text) {
+        String sql = "UPDATE USERLIST SET USERNAME = '" + text + "' WHERE ID = " + id;
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void setPassword(int id, String text) {
+        String sql = "UPDATE USERLIST SET PASSWORD = '" + text + "' WHERE ID = " + id;
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void setEmail(int id, String text) {
+        String sql = "UPDATE USERLIST SET EMAIL = '" + text + "' WHERE ID = " + id;
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public int getId(String USERNAME) {
+        String sql = "SELECT ID FROM USERLIST WHERE USERNAME = \"" + USERNAME + "\"";
+        try (var conn = DriverManager.getConnection(url);
+             var stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            return stmt.getResultSet().getInt("ID");
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return -1;
     }
 }

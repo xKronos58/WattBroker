@@ -1,6 +1,7 @@
 package com.wattbroker.wattbroker;
 
 import com.util.algorithmFileReader;
+import com.wattbroker.wattbroker.UserHandling.USER_ID;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,8 @@ public class Main extends Application {
 
     public static User user;
 
+    public static USER_ID userId;
+
     public Main(User user) { Main.user = user; }
 
     @Override
@@ -26,6 +29,11 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        userId=new USER_ID(args[0]);
+        try {
+            new Main(new User()).start(new Stage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

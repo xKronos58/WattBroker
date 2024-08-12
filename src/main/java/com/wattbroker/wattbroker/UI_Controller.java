@@ -1,5 +1,6 @@
 package com.wattbroker.wattbroker;
 
+import com.wattbroker.wattbroker.UserHandling.USER_ID;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,7 +37,6 @@ public class UI_Controller {
     public Node Data_Pane;
     public ImageView userIcon;
 
-
     /* Selected colour:   #3E1D2A
     *  Deselected colour: #1C1C1C
     * */
@@ -53,7 +53,7 @@ public class UI_Controller {
                         : new Image(Main.user.fileLocation()));
             Market_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Market_Pane.fxml")));
             Dashboard_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dashboard_Pane.fxml")));
-            Settings_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Settings_Pane.fxml")));
+            Settings_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("settings_nav.fxml")));
             Algorithms_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Algorithm_Pane.fxml")));
             Data_Pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Data_Pane.fxml")));
         } catch (IOException e) {
