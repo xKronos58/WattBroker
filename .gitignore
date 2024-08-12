@@ -36,3 +36,13 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/main/resources/META-INF/MANIFEST.MF
+/src/main/java/aemo/api_testing/Test.js
+/out/artifacts/Current/WattBroker.jar
+/out/artifacts/LAUNCHER/WattBroker.jar
+/out/artifacts/Login_/WattBroker.jar
+/out/artifacts/Login_jar/WattBroker.jar
+/out/artifacts/Next_current/WattBroker.jar
+/out/artifacts/WattBroker_jar/WattBroker.jar
+/out/artifacts/LAUNCHER/WattBroker.jar.save
+/test/WattBroker.run.xml
