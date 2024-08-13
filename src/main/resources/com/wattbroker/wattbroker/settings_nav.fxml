@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsNavController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsNavController">
    <children>
       <AnchorPane layoutX="82.0" layoutY="61.0" prefHeight="1145.0" prefWidth="324.0" style="-fx-background-color: #1C1C1C;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsControllers.GeneralSettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsControllers.GeneralSettingsController">
    <GridPane layoutX="68.0" layoutY="1.0" prefHeight="1145.0" prefWidth="988.0" style="-fx-background-color: #171717;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="880.9572143554688" minWidth="10.0" prefWidth="636.38134765625" />
@@ -147,6 +147,19 @@
                         </font>
                      </Text>
                   </AnchorPane>
+               </AnchorPane>
+               <AnchorPane minHeight="44.0" onMouseClicked="#Logout" prefHeight="44.0"
+                           style="-fx-background-color: #51515166; -fx-background-radius: 8;">
+                  <VBox.margin>
+                     <Insets left="36.0" right="36.0" top="27.0"/>
+                  </VBox.margin>
+                  <Text fill="#ff6b5c" layoutX="406.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                        text="LOGOUT" AnchorPane.leftAnchor="406.0" AnchorPane.rightAnchor="407.65909576416016"
+                        AnchorPane.topAnchor="6.75">
+                     <font>
+                        <Font name="Inter SemiBold" size="24.0"/>
+                     </font>
+                  </Text>
                </AnchorPane>
                <Text fill="WHITE" layoutX="41.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTIFICATIONS">
                   <font>
@@ -349,7 +362,7 @@
                      </Text>
                   </AnchorPane>
                </AnchorPane>
-               <AnchorPane prefHeight="20.0" prefWidth="1.0" />
+               <AnchorPane minHeight="30.0" prefHeight="30.0" prefWidth="1.0" />
             </VBox>
          </AnchorPane>
       </ScrollPane>

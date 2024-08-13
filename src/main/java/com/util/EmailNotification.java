@@ -6,11 +6,11 @@ import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 //wattbroker@outlook.com
-//Afc_Admin1
+//
 public class EmailNotification {
     public static void outlook(){
         final String username = "wattbroker@outlook.com";
-        final String password = "Afc_Admin1";
+        final String password = "";
 
         // SMTP server properties for Hotmail
         Properties props = new Properties();

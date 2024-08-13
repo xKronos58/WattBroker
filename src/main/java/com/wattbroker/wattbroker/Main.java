@@ -19,6 +19,8 @@ public class Main extends Application {
 
     public Main(User user) { Main.user = user; }
 
+    public static Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Dashboard.fxml"));
@@ -26,6 +28,7 @@ public class Main extends Application {
         stage.setTitle("Watt broker");
         stage.setScene(scene);
         stage.show();
+        primaryStage = stage;
     }
 
     public static void main(String[] args) {

@@ -1,12 +1,16 @@
 package com.wattbroker.wattbroker.Controllers;
 
+import com.wattbroker.wattbroker.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class AlgorithmDetailController {
     FXMLLoader root;
@@ -55,6 +59,16 @@ public class AlgorithmDetailController {
 
         efficiency_text.setOnMouseClicked(e -> setToEfficiency());
         profit_text.setOnMouseClicked(e -> setToProfit());
+
+        rootAnchorPane.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ESCAPE) {
+                rootAnchorPane.getChildren().clear();
+            try {
+                rootAnchorPane.getChildren().add(new FXMLLoader(Main.class.getResource("Algorithm_Pane.fxml")).load());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }});
     }
 
     private void addLine() {

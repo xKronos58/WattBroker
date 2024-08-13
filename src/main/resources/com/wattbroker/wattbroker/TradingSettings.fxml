@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,10 +9,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.SettingsControllers.TradingSettingsController">
    <children>
       <GridPane layoutX="68.0" layoutY="1.0" prefHeight="1145.0" prefWidth="988.0" style="-fx-background-color: #171717;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -20,7 +22,7 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="281.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="900.0" minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
@@ -59,6 +61,624 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <ScrollPane fx:id="rootScrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="988.0" style="-fx-background-color: #171717;">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNTS">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                              </Text>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Withdraw Options" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linked Accounts" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Methods" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TRADING">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="69.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Default Order Type" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Trade Confirmation Settings" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user1" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RISK MANAGEMENT">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="320.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Stop-loss setting" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Take-profit setting" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field11" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user11" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Margin and leverage" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field11112" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user11112" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="10.0" layoutY="152.0" prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Position sizing rules" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field111121" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user111121" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MARKET DATA &amp; ANALYSIS" wrappingWidth="364.7955322265625">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="571.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Withdraw Options" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linked Accounts" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Methods" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="810.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SECURITY">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="822.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Withdraw Options" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linked Accounts" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field1111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user1111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Methods" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="1061.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALERTS &amp; NOTIFICATIONS" wrappingWidth="424.0">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="1073.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Withdraw Options" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field1111111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user1111111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linked Accounts" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field11111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user11111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Methods" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field111111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user111111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <Text fill="WHITE" layoutX="41.0" layoutY="1312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REPORTING &amp; ANALYTICS" wrappingWidth="364.0">
+                                 <font>
+                                    <Font name="Inter SemiBold" size="48.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="31.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox layoutX="41.0" layoutY="1324.0" prefHeight="200.0" prefWidth="100.0" spacing="21.0">
+                                 <children>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Withdraw Options" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fx:id="username_field11111111" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fx:id="edit_user11111111" fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Linked Accounts" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane prefWidth="988.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Methods" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="14.0">
+                                             <font>
+                                                <Font name="Inter Medium" size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <AnchorPane prefHeight="44.0" prefWidth="441.0" style="-fx-background-color: #51515166; -fx-background-radius: 8;" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="6.0">
+                                             <children>
+                                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!USER" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="WHITE" layoutX="28.0" layoutY="41.0" onMouseClicked="#editUser" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                                                   <font>
+                                                      <Font name="Inter Medium" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="31.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
          </children>
       </GridPane>
    </children>

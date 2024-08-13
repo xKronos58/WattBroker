@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
 <fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="https://javafx.com/javafx/20.0.1">
-    <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="553.0" style="-fx-background-color: #232323;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="553.0" style="-fx-background-color: #232323;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
         <HBox prefHeight="390.0" prefWidth="483.0" spacing="68.27" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="48.0">
             <Line endY="390.0" stroke="#483c3c" />
             <Line endY="390.0" layoutX="11.0" layoutY="11.0" stroke="#483c3c" />

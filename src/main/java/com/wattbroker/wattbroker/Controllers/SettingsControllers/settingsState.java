@@ -7,6 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Reads settings from the _LOCAL_Data_Storage/settings.txt file allowing for the storage of settings after the application is closed.
+ * The settings.txt file contains '#' indicating comments for the layout for easy modification outside of the application enviroment and will clean any data or have a default state if modified by the user
+ * */
 public class settingsState {
 
     // GENERAL SETTINGS
@@ -28,6 +32,8 @@ public class settingsState {
             boolean high_contrast;
     // TRADING
         // ACCOUNT MANAGEMENT
+            // Linked bank accounts
+            // Payment methods
             // ... -> SUPPORT
 
     public settingsState() {
@@ -91,18 +97,6 @@ public class settingsState {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println("Email Notifications: " + email_notifications);
-        System.out.println("SMS Notifications: " + sms_notifications);
-        System.out.println("Push Notifications: " + push_notifications);
-        System.out.println("Price Alerts: " + price_alerts);
-        System.out.println("Trade Confirmations: " + trade_confirmations);
-        System.out.println("News and Updates: " + news_and_updates);
-        System.out.println("Language: " + language);
-        System.out.println("Time Zone: " + time_zone);
-        System.out.println("Regional Format: " + regional_format);
-        System.out.println("Theme: " + theme);
-        System.out.println("High Contrast: " + high_contrast);
     }
 
     public static void main(String[] args) {
