@@ -10,7 +10,7 @@ import java.util.Properties;
 public class EmailNotification {
     public static void outlook(){
         final String username = "wattbroker@outlook.com";
-        final String password = "Afc_Admin1";
+        final String password = "";
 
         // SMTP server properties for Hotmail
         Properties props = new Properties();
