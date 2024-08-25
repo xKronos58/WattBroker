@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class DB_query {
-    // TODO : Create hashing algorithm to enhance security.
-
     private String url = "jdbc:sqlite:identifier.sqlite";
     public static void main(String[] args) {
         DB_query dbq = new DB_query();
@@ -14,8 +12,6 @@ public class DB_query {
     }
 
     public DB_query() {
-
-
     }
 
     public boolean checkCredentials(String username, String password) {

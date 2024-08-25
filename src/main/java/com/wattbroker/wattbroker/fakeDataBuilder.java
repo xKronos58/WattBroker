@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * /!\ IMPORTANT /!\
+ * This class is only used to generate fake
+ * data to test the graph while waiting for
+ * the algorithm to be finalised.
+ * */
 public class fakeDataBuilder {
 
 

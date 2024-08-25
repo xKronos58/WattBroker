@@ -39,7 +39,7 @@ public class EmailNotification {
             message.setSubject("Testing OutlookSender");
             message.setText("Dear User,\n\nThis is a test email sent from OutlookSender.");
 
-            // Send message
+            // Send a message
             Transport.send(message);
 
             System.out.println("Email sent successfully.");

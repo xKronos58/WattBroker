@@ -12,6 +12,8 @@ public class Main {
             System.out.println("Linux detected");
         } else if (operatingSystem.equals("windows")) {
             System.out.println("Windows detected");
+        } else if (operatingSystem.equals("mac")) {
+            System.out.println("Mac detected");
         } else {
             System.out.println("Unknown OS");
         }
@@ -20,4 +22,8 @@ public class Main {
     public static void main(String[] args) {
         init();
     }
+
+    public static void SendNotif() { }
+
+    public static void readDb() {};
 }
