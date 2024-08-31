@@ -22,24 +22,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/***/
 public class Graph extends Pane {
-    @FXML @SuppressWarnings("unused")
-    private Pane graphPane;
-    @FXML @SuppressWarnings("unused")
-    private Text hourButton;
-    @FXML @SuppressWarnings("unused")
-    private Text dayButton;
-    @FXML @SuppressWarnings("unused")
-    private Text weekButton;
-    @FXML @SuppressWarnings("unused") private Text _1;
-    @FXML @SuppressWarnings("unused") private Text _2;
-    @FXML @SuppressWarnings("unused") private Text _3;
-    @FXML @SuppressWarnings("unused") private Text _4;
-    @FXML @SuppressWarnings("unused") private Text _5;
-    @FXML @SuppressWarnings("unused") private Text _6;
-    @FXML @SuppressWarnings("unused") private Text _7;
-    @FXML @SuppressWarnings("unused")
-            private AnchorPane root;
+    @FXML @SuppressWarnings("unused") private Pane graphPane;
+    @FXML @SuppressWarnings("unused") private Text hourButton;
+    @FXML @SuppressWarnings("unused") private Text dayButton;
+    @FXML @SuppressWarnings("unused") private Text weekButton;
+    @FXML @SuppressWarnings("unused") private AnchorPane root;
 
     public static final LinearGradient Demand = LinearGradient.valueOf("linear-gradient(to right, EB00FF, EB00FF, D492F3, EB00FF, EB00FF)");
     public static final LinearGradient Price = LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)");
@@ -120,14 +109,6 @@ public class Graph extends Pane {
             l.setTranslateX(0);
             dayButton.setFill(Color.rgb(132, 132, 132, 1));
             weekButton.setFill(Color.rgb(132, 132, 132, 1));
-            // Set Time
-//            _1.setText("00:00");
-//            _2.setText("10.00");
-//            _3.setText("20.00");
-//            _4.setText("30.00");
-//            _5.setText("40.00");
-//            _6.setText("50.00");
-//            _7.setText("60.00");
             // Set last graph
             lastGraph[0] = 'h';
         });
@@ -145,14 +126,6 @@ public class Graph extends Pane {
             l.setTranslateX(dayButton.getX());
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             weekButton.setFill(Color.rgb(132, 132, 132, 1));
-            // Set Time
-//            _1.setText("00:00");
-//            _2.setText("04.00");
-//            _3.setText("08.00");
-//            _4.setText("12.00");
-//            _5.setText("16.00");
-//            _6.setText("20.00");
-//            _7.setText("24.00");
             // Set last graph
             lastGraph[0] = 'd';
         });
@@ -168,14 +141,6 @@ public class Graph extends Pane {
             l.setTranslateX(dayButton.getX());
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             dayButton.setFill(Color.rgb(132, 132, 132, 1));
-            // Set Time
-//            _1.setText("MON    ");
-//            _2.setText("TUE    ");
-//            _3.setText("WED    ");
-//            _4.setText("THU    ");
-//            _5.setText("FIR    ");
-//            _6.setText("SAT    ");
-//            _7.setText("SUN    ");
             // Set last graph
             lastGraph[0] = 'w';
         });

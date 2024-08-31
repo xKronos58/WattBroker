@@ -5,30 +5,27 @@ import com.util.util.Vector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+/**
+ * Class used for the full width graph types.
+ * @author finleycrowther
+ * @implNote currently does not support scaling add modification to Graph.GraphSize.
+ * @see com.wattbroker.wattbroker.Graph.GraphSize Graph Scaling
+ * @see Graph Root Class*/
 public class LargeGraph extends Pane {
-    @FXML @SuppressWarnings("unused")
-    private Pane graphPane;
-    @FXML @SuppressWarnings("unused")
-    private Text hourButton;
-    @FXML @SuppressWarnings("unused")
-    private Text dayButton;
-    @FXML @SuppressWarnings("unused")
-    private Text weekButton;
+
+    // FXML Variables form LargeGraph.fxml
+    @FXML @SuppressWarnings("unused") private Pane graphPane;
+    @FXML @SuppressWarnings("unused") private Text hourButton;
+    @FXML @SuppressWarnings("unused") private Text dayButton;
+    @FXML @SuppressWarnings("unused") private Text weekButton;
     @FXML @SuppressWarnings("unused") private Text _1;
     @FXML @SuppressWarnings("unused") private Text _2;
     @FXML @SuppressWarnings("unused") private Text _3;
@@ -36,15 +33,38 @@ public class LargeGraph extends Pane {
     @FXML @SuppressWarnings("unused") private Text _5;
     @FXML @SuppressWarnings("unused") private Text _6;
     @FXML @SuppressWarnings("unused") private Text _7;
-    @FXML @SuppressWarnings("unused")
-            private AnchorPane root;
+    @FXML @SuppressWarnings("unused") private AnchorPane root;
 
+    /**
+     * Graph type, stores the data types displayed on the graph from FXML ("market", "usage", "fossil", "renewable")*/
+    private String graphType;
 
-    long start;
+    /**
+     * Returns the type of the graph ("market", "usage", "fossil", "renewable")
+     * @return String type of graph*/
+    public String getGraphType() {
+        return graphType;
+    }
+
+    /**
+     * Communicating with the fxml to set the graph type
+     * @param graphType Parsed type from the FXML ("market", "usage", "fossil", "renewable")
+     * */
+    public void setGraphType(String graphType) {
+        this.graphType = graphType;
+        // Handle graph type change if needed
+    }
+
+    /**
+     * Constructor for the LargeGraph class, builds the large graph fxml and reads data
+     * @see Graph root class
+     * @see com.wattbroker.wattbroker.Graph.GraphSize*/
     public LargeGraph() {
         FXMLLoader load = new FXMLLoader(getClass().getResource("large_graph.fxml"));
         load.setRoot(this);
         load.setController(this);
+
+        this.setId("large_graph");
 
         try {
             load.load();
@@ -52,10 +72,7 @@ public class LargeGraph extends Pane {
             System.out.println(e.getMessage());
         }
 
-        StackPane graph = new StackPane(Graph.wavyPath(plotPoints(
-                LargeGraph.graphType.Market.set_put(null, 'd'), new Data()
-                        .getMarketData(new Date(System.currentTimeMillis()),
-                                "market@2024-06-02_00:00:00-23:59:00.csv")), Graph.GraphSize.LARGE));
+        StackPane graph = buildGraph(Graph.todayData);
 
         graph.setId("Graph");
 
@@ -142,7 +159,44 @@ public class LargeGraph extends Pane {
         });
     }
 
-    private void updateGraph(char[] lastGraph) {
+    /**
+     * Builds the graph based on the data type
+     * @param data Data to be displayed on the graph
+     * @return StackPane containing the graph*/
+    private StackPane buildGraph(String data) {
+        // If not provided sets the graph to the default to avoid null pointer exception with the switch statement
+        if(getGraphType() == null)
+            setGraphType("default");
+
+        return switch (graphType.toLowerCase()) {
+            case "market" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "SPOT_PRICE"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "SPOT_PRICE"), Graph.GraphSize.LARGE, Graph.Price, true, Graph.Price_Fill));
+            case "renewable" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "GENERATION"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "GENERATION"), Graph.GraphSize.LARGE, Graph.Renewable, true, Graph.Renewable_Fill));
+            case "fossil" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "GENERATION"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "GENERATION"), Graph.GraphSize.LARGE, Graph.Fossil, true, Graph.Fossil_Fill));
+            case "usage" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "DEMAND"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "DEMAND"), Graph.GraphSize.LARGE, Graph.Supply, true, Graph.Supply_Fill));
+            default -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "SPOT_PRICE"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "SPOT_PRICE"), Graph.GraphSize.LARGE, Graph.Price, true, Graph.Price_Fill),
+                    Graph.wavyPath(Graph.plotPoints_AEMO(
+                            Graph.graphType.AEMO.set_put(null, 'd', "DEMAND"),
+                            new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "DEMAND"), Graph.GraphSize.LARGE, Graph.Demand, false, null),
+                    Graph.wavyPath(Graph.plotPoints_AEMO(
+                            Graph.graphType.AEMO.set_put(null, 'd', "GENERATION"),
+                            new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "GENERATION"), Graph.GraphSize.LARGE, Graph.Supply, false, null));
+        };
+    }
+
+    /**
+     * Updates the graph based on the last graph type
+     * @param lastGraph Last graph type*/
+    void updateGraph(char[] lastGraph) {
         for(Node n : graphPane.getChildren()) {
             if(n.getId().equals("Graph")) {
                 graphPane.getChildren().remove(n);
@@ -150,81 +204,24 @@ public class LargeGraph extends Pane {
             }
         }
 
-        StackPane graph = new StackPane(Graph.wavyPath(plotPoints(
-                graphType.Market.set_put(null, lastGraph[0]), new Data()
-                        .getMarketData(new Date(System.currentTimeMillis()),
-                                switch (lastGraph[0]) {
-                                    case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
-                                    case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
-                                    case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
-                                    default -> throw new IllegalStateException("Unexpected value: " + lastGraph[0]);
-                                })), Graph.GraphSize.LARGE));
+        StackPane graph = buildGraph(switch (lastGraph[0]) {
+            case 'h' -> Graph.yesterdayData;
+            case 'w' -> Graph.tomorrowData;
+            default -> Graph.todayData; // 'd' and others which are not valid values
+        });
 
         graph.setId("Graph");
 
         graphPane.getChildren().add(graph);
     }
 
-    enum graphType {
-        Market {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                com.wattbroker.wattbroker.Data data = new Data();
-                List<Data.tV> _data = data.getMarketData(new Date(System.currentTimeMillis()),
-                        switch (gt) {
-                            case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
-                            case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
-                            case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
-                            default -> throw new IllegalStateException("Unexpected value: " + gt);
-                        });
-                Data.tV initial = _data.get(0), end = _data.get(_data.size()-1);
-                // Check time and devise scale :
-                String t1 = initial.dateTime(), t2 = end.dateTime();
-                graphTimeAxisType type ;
-                type = findTimeAxis(t1, t2);
-                type.set();
+    void setType() {
 
-                long current = System.nanoTime();
-                // Find y (Value) axis high and low.
-                double max_val = 0, min_val = 0;
-                for (Data.tV data_i : _data) {
-                    if (data_i.value() > max_val)
-                        max_val = data_i.value();
-                    else if (data_i.value() < min_val)
-                        min_val = data_i.value();
-                }
-
-
-                long _final = System.nanoTime();
-                long time = _final-current;
-                System.out.println(time + "ns => " + time/10000 + "ms");
-
-                List<Vector<Minimum<Double>, Maximum<Double>>> maxMin = new ArrayList<>();
-                maxMin.add(new Vector<>(new Minimum<>(min_val), new Maximum<>(max_val)));
-                maxMin.add(new Vector<>(new Minimum<>(0.0), new Maximum<>(_data.size() - 1.0)));
-                return maxMin;
-            }
-        }, Data {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-            }
-        }, Settings {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-
-            }
-        }, Algorithms {
-            @Override
-            public List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt) {
-                return null;
-
-            }
-        };
-        public abstract List<Vector<Minimum<Double>, Maximum<Double>>> set_put(List<URI> apiLocation, char gt);
     }
 
+    /**
+     * Enum for the time axis type
+     * @see com.wattbroker.wattbroker.Graph.GraphSize Graph Scaling*/
     public enum graphTimeAxisType {
         SECOND {
             @Override
@@ -255,81 +252,4 @@ public class LargeGraph extends Pane {
         public int breaks;
         public abstract void set();
     }
-
-    public static graphTimeAxisType findTimeAxis(String t1, String t2) {
-        int indexOfBreak_t1 = util.until(0, t1, ' '), indexOfBreak_t2 = util.until(0, t2, ' ');
-        graphTimeAxisType type;
-        if(t1.charAt(indexOfBreak_t1 - 1) != t2.charAt(indexOfBreak_t2 - 1)) {
-            type = graphTimeAxisType.WEEK;
-        } else if (!t1.substring(indexOfBreak_t1, indexOfBreak_t1 + 2)
-                .equals (t2.substring(indexOfBreak_t2, indexOfBreak_t2 + 2))) {
-            type = graphTimeAxisType.HOUR;
-        } else if (!t1.substring(indexOfBreak_t1 + 3, indexOfBreak_t1 + 5)
-                .equals(t2.substring(indexOfBreak_t2 + 3, indexOfBreak_t2 + 5))) {
-            type = graphTimeAxisType.MINUTE;
-        } else {
-            type = graphTimeAxisType.SECOND;
-        }
-
-        return type;
-    }
-
-    /**
-     * Converts data into vector co-ordinates
-     * @param maxMin takes a list (Size 2) of the max x (value) and y (time)
-     * @param data takes a list of the data to be plotted
-     * */
-    @SuppressWarnings("ClassEscapesDefinedScope")
-    public List<Vector<Double, Double>> plotPoints(
-            List<Vector<Minimum<Double>, Maximum<Double>>> maxMin, List<Data.tV> data) {
-        if(maxMin.size() != 2)
-            throw new IllegalArgumentException("maxMin must have 2 elements");
-        Vector<Double, Double> graphSize = new Vector<>(639.0, 1169.0);
-
-        List<Vector<Double, Double>> points = new ArrayList<>();
-
-        double d1 = graphSize.getY()/maxMin.get(1).getY().max,
-                d2 = graphSize.getX()/maxMin.get(0).getY().max;
-
-        for(int i = 0; i < data.size(); i++) {
-            double x = data.get(i).value(), y = i;
-            x *= d2;
-            y *= d1;
-            x = graphSize.getY() - x;
-            points.add(new Vector<>(x, y));
-        }
-
-        return points;
-    }
-
-    public static class Maximum<t> {
-        t max;
-        public Maximum(t max) {
-            this.max = max;
-        }
-
-        public t getMax() {
-            return max;
-        }
-
-        public void setMax(t max) {
-            this.max = max;
-        }
-    }
-
-    public static class Minimum<t> {
-        t min;
-        public Minimum(t min) {
-            this.min = min;
-        }
-
-        public t getMin() {
-            return min;
-        }
-
-        public void setMin(t min) {
-            this.min = min;
-        }
-    }
-
 }

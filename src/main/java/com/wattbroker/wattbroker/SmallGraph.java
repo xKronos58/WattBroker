@@ -40,7 +40,6 @@ public class SmallGraph extends Pane {
     @FXML @SuppressWarnings("unused")
     private AnchorPane root;
 
-
     long start;
 
     /**
@@ -68,10 +67,9 @@ public class SmallGraph extends Pane {
         }
 
         // Create the graph and add it to the graphPane
-        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints(
-                Graph.graphType.Market.set_put(null, 'd'), new Data()
-                        .getMarketData(new Date(System.currentTimeMillis()),
-                                "market@2024-06-02_00:00:00-23:59:00.csv"), Graph.GraphSize.SMALL), Graph.GraphSize.SMALL));
+        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                Graph.graphType.AEMO.set_put(null, 'd', "SPOT_PRICE"), new Data()
+                        .getAEMOdata("AEMO@2024-08-19.csv"), Graph.GraphSize.SMALL, "SPOT_PRICE"), Graph.GraphSize.SMALL, Graph.Price, true, Graph.Price_Fill));
 
         // Add id to the graph for later usage
         graph.setId("Graph");
@@ -170,15 +168,14 @@ public class SmallGraph extends Pane {
             }
         }
 
-        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints(
-                Graph.graphType.Market.set_put(null, lastGraph[0]), new Data()
-                        .getMarketData(new Date(System.currentTimeMillis()),
-                                switch (lastGraph[0]) {
-                                    case 'h' -> "market@2024-06-01_00:00:00-23:59:00.csv";
-                                    case 'd' -> "market@2024-06-02_00:00:00-23:59:00.csv";
-                                    case 'w' -> "market@2024-06-03_00:00:00-23:59:00.csv";
+        StackPane graph = new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                Graph.graphType.AEMO.set_put(null, lastGraph[0], "SPOT_PRICE"), new Data()
+                        .getAEMOdata(switch (lastGraph[0]) {
+                                    case 'h' -> "AEMO@2024-08-19.csv"; // INCLUDE _ht
+                                    case 'd' -> "AEMO@2024-08-20.csv"; // INCLUDE _dt
+                                    case 'w' -> "AEMO@2024-08-21.csv"; // INCLUDE _wt
                                     default -> throw new IllegalStateException("Unexpected value: " + lastGraph[0]);
-                                }), Graph.GraphSize.SMALL), Graph.GraphSize.SMALL));
+                                }), Graph.GraphSize.SMALL, "SPOT_PRICE"), Graph.GraphSize.SMALL, Graph.Price, true, Graph.Price_Fill));
 
         graph.setId("Graph");
 

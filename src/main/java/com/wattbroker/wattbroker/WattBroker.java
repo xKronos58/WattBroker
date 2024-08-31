@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Main clas for wattbroker */
 public class WattBroker extends Application {
 
     public static WattBroker instance;
@@ -19,6 +21,24 @@ public class WattBroker extends Application {
         primaryStage.setScene(s);
         primaryStage.setTitle("Watt Broker");
         primaryStage.show();
+
+        // Ignore this code as there is a problem with the import causing a runtime error
+//        URL iconURL = Main.class.getResource("images/wattbroker_icon.svg");
+//        assert iconURL != null;
+////        Image icon = new Image(String.valueOf(iconURL));
+//
+//        if (System.getenv("OS").equals("mac")) {
+//            //Set icon
+//            try {
+//                // Different type of image for mac OS
+//            } catch (Exception e) {
+//                // Mac exception accounted for ...
+//            }
+//        } else if (System.getenv("OS").equals("windows")) {
+////            primaryStage.getIcons().add(icon);
+//        } else if (System.getenv("OS").equals("linux")) {
+//
+//        } else {} // BRO what the fuck...
     }
 
     public static void main(String[] args) {

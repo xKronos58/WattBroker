@@ -59,6 +59,7 @@ public class UI_Controller {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         ShowDashboard(null);
     }
 
@@ -70,6 +71,15 @@ public class UI_Controller {
         currentPane = "Market";
         setLastButton(lastPane);
         Market_icon.setImage(new Image(Objects.requireNonNull(Main.class.getResource("images/Market_icon_selected.png")).toString()));
+
+//        for(Node n : ContentPane.getChildrenUnmodifiable()) {
+//            if (n.getId() != null && n.getId().equals("large_graph"))
+//                ((LargeGraph) n).updateGraph(new char[]{'d'});
+//        }
+
+        ContentPane.getChildrenUnmodifiable().stream()
+                .filter(n -> n.getId() != null && n.getId().equals("large_graph"))
+                .forEach(n -> ((LargeGraph) n).updateGraph(new char[]{'d'}));
     }
 
     public void ShowData(MouseEvent mouseEvent) {

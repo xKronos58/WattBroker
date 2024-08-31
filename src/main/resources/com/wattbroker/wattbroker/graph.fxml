@@ -65,17 +65,17 @@
             </Text>
         </HBox>
         <HBox prefHeight="24.0" prefWidth="200.0" spacing="22.0">
-            <Text fx:id="hourButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="HOUR">
+            <Text fx:id="hourButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="YESTERDAY">
                 <font>
                     <Font name="Inter SemiBold" size="18.0"/>
                 </font>
             </Text>
-            <Text fx:id="dayButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="DAY">
+            <Text fx:id="dayButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="TODAY">
                 <font>
                     <Font name="Inter SemiBold" size="18.0"/>
                 </font>
             </Text>
-            <Text fx:id="weekButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEK">
+            <Text fx:id="weekButton" fill="#848484" strokeType="OUTSIDE" strokeWidth="0.0" text="TOMORROW">
                 <font>
                     <Font name="Inter SemiBold" size="18.0"/>
                 </font>

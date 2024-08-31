@@ -22,7 +22,7 @@ import java.util.List;
 public class Weather {
     Path filePath;
     List<Hour> Content;
-    Season s = Season.SUMMER;
+    Season s;
     public Weather(double lat, double lng) throws IOException {
         this.filePath = getWeather(lat, lng);
         this.Content = getJSONArray();

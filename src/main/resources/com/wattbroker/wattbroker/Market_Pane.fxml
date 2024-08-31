@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Pane?>
 <?import com.wattbroker.wattbroker.LargeGraph?>
+<?import com.wattbroker.wattbroker.AEMO.type?>
 <GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.MarketPaneController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0"/>
@@ -77,7 +78,7 @@
                <VBox.margin>
                   <Insets left="42.0" right="1.0" top="35.0"/>
                </VBox.margin>
-               <LargeGraph/>
+               <LargeGraph graphType="Market"/>
             </Pane>
             <Text fill="WHITE" layoutX="93.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   text="Renewable Energy">
@@ -92,7 +93,7 @@
                <VBox.margin>
                   <Insets left="42.0" top="35.0"/>
                </VBox.margin>
-               <LargeGraph/>
+               <LargeGraph graphType="Renewable"/>
             </Pane>
             <Text fill="WHITE" layoutX="10.0" layoutY="849.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   text="Fossil Fuel">
@@ -107,7 +108,7 @@
                <VBox.margin>
                   <Insets left="42.0" top="35.0"/>
                </VBox.margin>
-               <LargeGraph/>
+               <LargeGraph graphType="Fossil"/>
             </Pane>
             <Text fill="WHITE" layoutX="10.0" layoutY="1642.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   text="Usage">
@@ -122,7 +123,7 @@
                <VBox.margin>
                   <Insets left="42.0" top="35.0"/>
                </VBox.margin>
-               <LargeGraph/>
+               <LargeGraph graphType="Usage"/>
             </Pane>
          </VBox>
       </AnchorPane>
