@@ -1,4 +1,6 @@
 # Change log
+### Current : [+40,886, -8,990]
+
 ## [0.1.0] - 06-06-2024
 ### [+1767, -0] - Finley Crowther
 ### Added
@@ -107,4 +109,11 @@
 ### Added
 - Added AEMO data handling 
 - Added graphing parsing for AEMO data
-
+## [2.0.0] - 31-08-2024
+### [+TBC, -TBC] - Finley Crowther
+### Added
+- Added toggle menu object allowing for custom toggle lists for APIs, Algorithms and Hotspots
+- Added Settings for Algorithms 
+- Added placeholder content for some pages which will be added in a later release 
+- Added data panel root * data not currently available 
+- 

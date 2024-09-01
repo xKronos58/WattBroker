@@ -59,6 +59,15 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="421.0" fitWidth="764.0" layoutX="120.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/GoofyAHH_INTEGRAL.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
    </children>

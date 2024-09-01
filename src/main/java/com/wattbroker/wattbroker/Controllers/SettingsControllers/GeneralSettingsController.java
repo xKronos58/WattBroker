@@ -126,7 +126,11 @@ public class GeneralSettingsController {
      * and navigates back to the login screen,*Does not need to clean user data from cache
      * as once logged back in will be overwritten.
      * @param ignoredMouseEvent * Ignored
-     * @throws IOException thrown if login.fxml is not found in the project resources directory*/
+     * @throws IOException thrown if login.fxml is not found in the project resources directory
+     * @bug <code>001A</code> Opens a second window
+     * @bug-description Opens a second window as the <code>login()</code> method does not close
+     * <code>Main.primaryStage</code> and creates a new instance of that.
+     * This is under construction and has issues with static states and duplicate instances of objects. */
     public void Logout(MouseEvent ignoredMouseEvent) throws IOException {
         Main.primaryStage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("Login.fxml")))));
     }

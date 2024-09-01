@@ -39,6 +39,9 @@ public class WattBroker extends Application {
 //        } else if (System.getenv("OS").equals("linux")) {
 //
 //        } else {} // BRO what the fuck...
+
+        SearchBar.panes p = SearchBar.panes.fromString("setting");
+        System.out.println(p);
     }
 
     public static void main(String[] args) {
@@ -47,10 +50,11 @@ public class WattBroker extends Application {
 
     public WattBroker() {
         // Prevent multiple instances of WattBroker
-        if (instance != null) {
-            throw new RuntimeException("WattBroker is already running");
-        }
+//        if (instance != null) {
+//            throw new RuntimeException("WattBroker is already running");
+//        }
         // Set the static instance reference
+//        main(null);
         instance = this;
     }
 }

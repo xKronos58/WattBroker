@@ -59,6 +59,15 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <children>
+                  <Text fill="WHITE" layoutX="214.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGAL MUMBO JUMBO GOES HERE!">
+                     <font>
+                        <Font name="Inter SemiBold" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
    </children>
