@@ -3,7 +3,89 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-style="-fx-background-color: #1D1">
-
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.SVGPath?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="747.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.accountController">
+    <AnchorPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="211.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PROFILE PICTURE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="126.0" layoutY="126.0" prefHeight="155.0" style="-fx-background-color: linear-gradient(from 50% 0% to 50% 100%, #4272ED 1.9%, rgba(23, 23, 23, 0.0) 75%);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text fill="WHITE" layoutX="82.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTICS" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="50.0">
+            <font>
+                <Font name="Inter Medium" size="48.0" />
+            </font>
+        </Text>
+        <SVGPath content="M39 13L13 39M13 13L39 39" fill="TRANSPARENT" layoutX="394.0" layoutY="32.0" onMouseClicked="#close" stroke="WHITE" strokeWidth="4.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="53.0" />
+    </AnchorPane>
+    <AnchorPane layoutX="10.0" layoutY="221.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="287.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="20.0" layoutY="231.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="363.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="30.0" layoutY="241.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="439.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPANY ID" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="40.0" layoutY="251.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="515.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLOYEE ID" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
+    <AnchorPane layoutX="50.0" layoutY="261.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="591.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Medium" size="32.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="36.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="Inter Light" size="32.0" />
+            </font>
+        </Text>
+    </AnchorPane>
 </AnchorPane>
+

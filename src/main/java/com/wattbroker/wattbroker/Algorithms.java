@@ -32,4 +32,3 @@ public class Algorithms implements toggleable {
         };
     }
 }
-

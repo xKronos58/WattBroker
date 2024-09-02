@@ -2,17 +2,9 @@ package com.wattbroker.wattbroker;
 
 import com.wattbroker.wattbroker.UserHandling.USER_ID;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.util.Objects;
 
 public class UserProfile extends Application {
     public static Stage s;
@@ -33,5 +25,4 @@ public class UserProfile extends Application {
         primaryStage.show();
         s = primaryStage;
     }
-
 }

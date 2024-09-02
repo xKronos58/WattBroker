@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,8 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1145.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.legalController">
    <children>
       <GridPane layoutX="68.0" layoutY="1.0" prefHeight="1145.0" prefWidth="988.0" style="-fx-background-color: #171717;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -61,11 +63,153 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <children>
-                  <Text fill="WHITE" layoutX="214.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEGAL MUMBO JUMBO GOES HERE!">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
+                  <ScrollPane fx:id="rootScroll" layoutX="145.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="987.0" style="-fx-background-color: #171717;">
+                           <children>
+                              <TextFlow prefWidth="900.0" AnchorPane.leftAnchor="40.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WATTBROKER TERMS OF SERVICE&#10;&#10;" wrappingWidth="671.492919921875">
+                                       <font>
+                                          <Font name="Inter ExtraBold" size="32.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="412.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effective Date: 02/09/2024&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Introduction&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to WattBroker, an energy commodity trading platform owned and operated by AFC Industries (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). These Terms of Service (&quot;Terms&quot;) govern your access to and use of our platform, including any content, functionality, and services offered on or through WattBroker (the &quot;Platform&quot;).&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Acceptance of Terms&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By accessing or using the Platform, you agree to comply with and be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you must not use the Platform.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Eligibility&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Platform is intended for users who are at least 18 years old. By using the Platform, you represent and warrant that you meet this age requirement and have the legal capacity to enter into a binding contract.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Account Registration&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To access certain features of the Platform, you may be required to register for an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for maintaining the confidentiality of your account login information.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="843.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Use of the Platform&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="872.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You agree to use the Platform in compliance with all applicable laws and regulations. You are solely responsible for your use of the Platform and for any content you upload, share, or otherwise transmit through the Platform.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1075.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Prohibited Activities&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You agree not to:&#10;&#10;- Use the Platform for any unlawful purpose or in violation of any local, state, national, or international law.&#10;- Upload or transmit any content that is offensive, harmful, or infringes on the rights of others.&#10;- Interfere with or disrupt the operation of the Platform or the servers or networks connected to the Platform.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Trading on WattBroker&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All transactions conducted on WattBroker are subject to the terms and conditions set forth in this Agreement. You acknowledge that trading in energy commodities involves significant risks and that you are solely responsible for assessing the risks associated with such transactions.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Fees and Payments&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fees for using the Platform's services, if any, will be disclosed to you before you complete any transaction. By completing a transaction, you agree to pay all applicable fees.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1772.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. Limitation of Liability&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="1801.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To the fullest extent permitted by law, the Company shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from (a) your use or inability to use the Platform; (b) any unauthorized access to or use of our servers and/or any personal information stored therein.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2004.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10. Governing Law&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2033.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These Terms shall be governed by and construed in accordance with the laws of Australia, without regard to its conflict of law principles.&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11. Changes to the Terms&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We may update these Terms from time to time. If we make changes, we will notify you by revising the &quot;Effective Date&quot; at the top of these Terms and, in some cases, we may provide additional notice (such as adding a statement to our homepage or sending you a notification).&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12. Contact Us&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter SemiBold" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you have any questions about these Terms, please contact us at legal@afcindustries.com.au&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="10.0" layoutY="2469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* This is temporary | Author - Chat GPT (4O)&#10;&#10;&#10;" wrappingWidth="900.0">
+                                       <font>
+                                          <Font name="Inter Medium" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </children>

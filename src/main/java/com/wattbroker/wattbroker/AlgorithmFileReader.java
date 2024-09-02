@@ -82,7 +82,7 @@ public class AlgorithmFileReader {
                         Double.parseDouble(Content.get(35).substring("MAX_TRADE_STATUS:".length(), Content.get(35).length() -1)),
                         Double.parseDouble(Content.get(36).substring("MIN_TRADE_STATUS:".length(), Content.get(36).length() -1)),
                         Double.parseDouble(Content.get(37).substring("MAX_TRADE_SETTINGS:".length(), Content.get(37).length() -1)),
-                        Double.parseDouble(Content.get(38).substring("MIN_TRADE_SETTINGS:".length(), Content.get(38).length() -1))));
+                        Double.parseDouble(Content.get(38).substring("MIN_TRADE_SETTINGS:".length()))));
         return asd;
     }
     
@@ -301,6 +301,5 @@ public class AlgorithmFileReader {
 
     public static void main(String[] args) {
         AlgorithmFileReader afr = new AlgorithmFileReader("/Users/finleycrowther/Desktop/_SftDev/Criterion 6/WB_Code/WattBroker/src/main/resources/com/wattbroker/wattbroker/_LOCAL_Data_Storage/VIC-1.algorithm", false);
-        System.out.println(afr.asd);
     }
 }

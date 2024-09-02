@@ -73,7 +73,7 @@ public class AlgorithmPaneController {
         if(values[0].equals("NAME")) return null;
         try {
             return new Algorithms(values[0], values[1], Double.parseDouble(values[2]),
-                    Double.parseDouble(values[3]), Double.parseDouble(values[4]), values[5].equals("true"), values[6]);
+                    Double.parseDouble(values[3]), Double.parseDouble(values[4]), values[5].equalsIgnoreCase("true"), values[6]);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,7 +101,7 @@ public class AlgorithmPaneController {
                 Controller.setAlgorithm(algorithm);
                 nodes.add(temp);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage() + " (AlgorithmPaneController : 104)");
             }
         }
 

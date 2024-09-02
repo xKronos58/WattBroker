@@ -59,7 +59,7 @@ public class Hash {
      * Swaps an int to byte format
      * @param value int to be swapped
      * @return byte[] of the integer */
-    private static byte[] intToBytes(int value) {
+    static byte[] intToBytes(int value) {
         return ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt(value).array();
     }
 
@@ -68,7 +68,7 @@ public class Hash {
      * @param arrays the arrays to concatenate
      * @return the concatenated array
      */
-    private static byte[] concat(byte[]... arrays) {
+    static byte[] concat(byte[]... arrays) {
         int totalLength = Arrays.stream(arrays).mapToInt(arr -> arr.length).sum();
         byte[] result = new byte[totalLength];
         int offset = 0;
@@ -179,7 +179,7 @@ public class Hash {
      * @param a first byte array
      * @param b second byte array
      * @return byte[] scrambled based off length */
-    private static byte[] xor(byte[] a, byte[] b) {
+    static byte[] xor(byte[] a, byte[] b) {
         byte[] result = new byte[a.length];
         for (int i = 0; i < a.length; i++) {
             result[i] = (byte) (a[i] ^ b[i]);

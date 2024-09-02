@@ -60,7 +60,7 @@
          </AnchorPane>
          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
             <AnchorPane fx:id="graphRoot" prefHeight="735.0" prefWidth="1181.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="210.0">
-               <LargeGraph/>
+               <LargeGraph fx:id="EP_graph" graphType="Efficiency"/>
             </AnchorPane>
             <HBox spacing="15.0" AnchorPane.leftAnchor="35.0">
                <AnchorPane prefHeight="63.0" prefWidth="403.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">

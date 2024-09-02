@@ -1,6 +1,7 @@
 package com.wattbroker.wattbroker.Controllers;
 
 import com.wattbroker.wattbroker.AlgorithmFileReader;
+import com.wattbroker.wattbroker.LargeGraph;
 import com.wattbroker.wattbroker.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,6 +66,9 @@ public class AlgorithmDetailController {
             min_trade_settings_val,
             Holdings_val,
             Efficiency_val;
+
+    @FXML
+    LargeGraph EP_graph;
 
     private final String algoName;
     private final Line l = new Line();
@@ -145,6 +149,8 @@ public class AlgorithmDetailController {
         min_trade_source_val.setText(afr.asd.getSettings().getMin_trade_source().toString());
         max_trade_settings_val.setText(afr.asd.getSettings().getMax_trade_settings().toString());
         min_trade_settings_val.setText(afr.asd.getSettings().getMin_trade_settings().toString());
+
+        EP_graph.RebindGraph();
     }
 
     private void addLine() {
@@ -162,6 +168,8 @@ public class AlgorithmDetailController {
         l.setStartY(efficiency_text.getY() + efficiency_text.getLayoutBounds().getHeight() + 5);
         System.out.println("X1 = " + l.getStartX() + ", X2 = " + l.getEndX() + ", Y = " + l.getStartY());
         profit_text.setFill(Color.rgb(52, 52, 52, 1));
+        EP_graph.setGraphType("Efficiency");
+        EP_graph.RebindGraph();
     }
 
     private void setToProfit() {
@@ -171,5 +179,7 @@ public class AlgorithmDetailController {
         l.setStartY(profit_text.getY() + profit_text.getLayoutBounds().getHeight() + 5);
         System.out.println("X1 = " + l.getStartX() + ", X2 = " + l.getEndX() + ", Y = " + l.getStartY());
         efficiency_text.setFill(Color.rgb(52, 52, 52, 1));
+        EP_graph.setGraphType("Profit");
+        EP_graph.RebindGraph();
     }
 }

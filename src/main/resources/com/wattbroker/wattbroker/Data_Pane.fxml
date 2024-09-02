@@ -19,7 +19,7 @@
 
 <!--<?import com.wattbroker.wattbroker.SearchBar?>-->
 
-<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.Data_controller">
+<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.Data_controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0" />
@@ -46,152 +46,166 @@
    <ScrollPane fx:id="rootScroll" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1311.0" style="-fx-background-color: #171717;">
          <VBox layoutX="282.0" layoutY="120.0" prefHeight="667.0" prefWidth="906.0" spacing="11.0" style="-fx-background-color: #4747471C; -fx-background-radius: 22;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="132.0">
-            <AnchorPane prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+            <AnchorPane prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" top="21.0" />
+                  <Insets left="21.0" right="21.0" top="21.0"/>
                </VBox.margin>
-               <children>
-                  <Text fill="WHITE" layoutX="31.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="339.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="27.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="31.0" layoutY="31.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
-               <children>
-                  <Text fill="WHITE" layoutX="53.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="31.0" layoutY="136.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="241.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="346.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="451.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
-                     <font>
-                        <Font name="Inter SemiBold" size="32.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </VBox>
-         <AnchorPane layoutX="971.0" layoutY="133.0" prefHeight="667.0" prefWidth="310.0" style="-fx-background-color: #4747471C; -fx-background-radius: 22;" AnchorPane.leftAnchor="970.0" AnchorPane.topAnchor="132.0">
-            <children>
-               <Text fill="WHITE" layoutX="41.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECTED ALGORITHM" wrappingWidth="207.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="21.0">
+               <Text fx:id="hsp_1_state" fill="WHITE" layoutX="31.0" layoutY="59.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
                   <font>
-                     <Font name="Inter SemiBold" size="32.0" />
+                     <Font name="Inter SemiBold" size="32.0"/>
                   </font>
                </Text>
-               <ChoiceBox layoutX="21.0" layoutY="113.0" prefHeight="25.0" prefWidth="272.0" />
-            </children>
+               <Text fx:id="hsp_1_type" fill="WHITE" layoutX="339.0" layoutY="59.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="TYPE:!TYPE" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_1_profit" fill="WHITE" layoutX="204.0" layoutY="69.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+            <AnchorPane layoutX="31.0" layoutY="31.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+               <VBox.margin>
+                  <Insets left="21.0" right="21.0"/>
+               </VBox.margin>
+               <Text fx:id="hsp_2_state" fill="WHITE" layoutX="53.0" layoutY="63.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="!STATE" AnchorPane.leftAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_2_type" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE"
+                     AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_2_profit" fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+            <AnchorPane layoutX="31.0" layoutY="136.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+               <VBox.margin>
+                  <Insets left="21.0" right="21.0"/>
+               </VBox.margin>
+               <Text fx:id="hsp_3_state" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE"
+                     AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_3_type" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE"
+                     AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_3_profit" fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="241.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+               <VBox.margin>
+                  <Insets left="21.0" right="21.0"/>
+               </VBox.margin>
+               <Text fx:id="hsp_4_state" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE"
+                     AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_4_type" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE"
+                     AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_4_profit" fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="346.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+               <VBox.margin>
+                  <Insets left="21.0" right="21.0"/>
+               </VBox.margin>
+               <Text fx:id="hsp_5_state" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE"
+                     AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_5_type" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE"
+                     AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_5_profit" fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="451.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+               <VBox.margin>
+                  <Insets left="21.0" right="21.0"/>
+               </VBox.margin>
+               <Text fx:id="hsp_6_state" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!STATE"
+                     AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_6_type" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE:!TYPE"
+                     AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="hsp_6_profit" fill="WHITE" layoutX="204.0" layoutY="68.0" strokeType="OUTSIDE"
+                     strokeWidth="0.0" text="PRICE:!VAL" AnchorPane.leftAnchor="596.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+            </AnchorPane>
+         </VBox>
+         <AnchorPane layoutX="971.0" layoutY="133.0" prefHeight="667.0" prefWidth="310.0"
+                     style="-fx-background-color: #4747471C; -fx-background-radius: 22;" AnchorPane.leftAnchor="970.0"
+                     AnchorPane.topAnchor="132.0">
+            <Text fill="WHITE" layoutX="41.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="SELECTED ALGORITHM" wrappingWidth="207.0" AnchorPane.leftAnchor="21.0"
+                  AnchorPane.topAnchor="21.0">
+               <font>
+                  <Font name="Inter SemiBold" size="32.0"/>
+               </font>
+            </Text>
+            <ChoiceBox layoutX="21.0" layoutY="113.0" prefHeight="25.0" prefWidth="272.0"/>
          </AnchorPane>
          <Line endX="1295.6197509765625" endY="3.0517578125E-5" layoutX="14.0" layoutY="74.0" startX="-14.999963760375977" startY="3.0517578125E-5" strokeWidth="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <stroke>
-               <LinearGradient endX="1.0" endY="1.0">
+               <LinearGradient>
                   <stops>
                      <Stop>
                         <color>
@@ -219,7 +233,7 @@
          </Text>
          <Line endX="1295.6197509765625" endY="3.0517578125E-5" layoutX="27.0" layoutY="84.0" startX="-14.999963760375977" startY="3.0517578125E-5" strokeWidth="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="900.0">
             <stroke>
-               <LinearGradient endX="1.0" endY="1.0">
+               <LinearGradient>
                   <stops>
                      <Stop>
                         <color>
@@ -240,36 +254,126 @@
                <Font name="Inter SemiBold" size="48.0" />
             </font>
          </Text>
-         <VBox layoutX="52.0" layoutY="142.0" prefHeight="667.0" prefWidth="1238.0" spacing="11.0" style="-fx-background-color: #4747471C; -fx-background-radius: 22;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="959.0">
-            <AnchorPane prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+         <VBox layoutX="52.0" layoutY="142.0" prefWidth="1238.0" spacing="11.0" style="-fx-background-color: #4747471C; -fx-background-radius: 22;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="959.0">
+            <AnchorPane prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" top="21.0" />
+                  <Insets left="21.0" right="21.0" top="21.0"/>
                </VBox.margin>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AEMO" AnchorPane.leftAnchor="26.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tyoe : Generator"
+                     AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="AEMO_viewButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View More"
+                     AnchorPane.leftAnchor="912.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
             </AnchorPane>
-            <AnchorPane layoutX="31.0" layoutY="31.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+            <AnchorPane layoutX="31.0" layoutY="31.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
+                  <Insets left="21.0" right="21.0"/>
                </VBox.margin>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BOM" AnchorPane.leftAnchor="26.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tyoe :  Weather"
+                     AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="BOM_viewButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View More"
+                     AnchorPane.leftAnchor="912.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
             </AnchorPane>
-            <AnchorPane layoutX="31.0" layoutY="136.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+            <AnchorPane layoutX="31.0" layoutY="136.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
+                  <Insets left="21.0" right="21.0"/>
                </VBox.margin>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ASX" AnchorPane.leftAnchor="26.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tyoe :  Market"
+                     AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="ASX_viewButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View More"
+                     AnchorPane.leftAnchor="912.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
             </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="241.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+            <AnchorPane layoutX="10.0" layoutY="241.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
+                  <Insets left="21.0" right="21.0"/>
                </VBox.margin>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ALGO" AnchorPane.leftAnchor="26.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tyoe :  Algorithm"
+                     AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View More" AnchorPane.leftAnchor="912.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
             </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="346.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
+            <AnchorPane layoutX="10.0" layoutY="346.0" prefHeight="94.0" prefWidth="869.0"
+                        style="-fx-background-color: #51515182; -fx-background-radius: 22;">
                <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
+                  <Insets left="21.0" right="21.0"/>
                </VBox.margin>
-            </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="451.0" prefHeight="94.0" prefWidth="869.0" style="-fx-background-color: #51515182; -fx-background-radius: 22;">
-               <VBox.margin>
-                  <Insets left="21.0" right="21.0" />
-               </VBox.margin>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="RE.ALTO" AnchorPane.leftAnchor="26.0"
+                     AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tyoe : API-Other"
+                     AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
+               <Text fx:id="OTHER_viewButton" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View More"
+                     AnchorPane.leftAnchor="912.0" AnchorPane.topAnchor="26.0">
+                  <font>
+                     <Font name="Inter SemiBold" size="32.0"/>
+                  </font>
+               </Text>
             </AnchorPane>
          </VBox>
       </AnchorPane>

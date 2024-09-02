@@ -37,7 +37,7 @@ public class LargeGraph extends Pane {
 
     /**
      * Graph type, stores the data types displayed on the graph from FXML ("market", "usage", "fossil", "renewable")*/
-    private String graphType;
+    @FXML private String graphType;
 
     /**
      * Returns the type of the graph ("market", "usage", "fossil", "renewable")
@@ -71,7 +71,10 @@ public class LargeGraph extends Pane {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    @FXML
+    public void initialize() {
         StackPane graph = buildGraph(Graph.todayData);
 
         graph.setId("Graph");
@@ -159,12 +162,19 @@ public class LargeGraph extends Pane {
         });
     }
 
+    public void RebindGraph() {
+        // Rebind the graph
+        // graphType = "market", "usage", "fossil", "renewable"
+        updateGraph(new char[]{'d'});
+    }
+
     /**
      * Builds the graph based on the data type
      * @param data Data to be displayed on the graph
      * @return StackPane containing the graph*/
     private StackPane buildGraph(String data) {
         // If not provided sets the graph to the default to avoid null pointer exception with the switch statement
+
         if(getGraphType() == null)
             setGraphType("default");
 
@@ -181,6 +191,12 @@ public class LargeGraph extends Pane {
             case "usage" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
                         Graph.graphType.AEMO.set_put(null, 'd', "DEMAND"),
                         new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "DEMAND"), Graph.GraphSize.LARGE, Graph.Supply, true, Graph.Supply_Fill));
+            case "efficiency" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "DEMAND"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "DEMAND"), Graph.GraphSize.LARGE, Graph.Efficiency, true, Graph.Efficiency_Fill));
+            case "profit" -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
+                        Graph.graphType.AEMO.set_put(null, 'd', "SPOT_PRICE"),
+                        new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "SPOT_PRICE"), Graph.GraphSize.LARGE, Graph.Profit, true, Graph.Profit_Fill));
             default -> new StackPane(Graph.wavyPath(Graph.plotPoints_AEMO(
                         Graph.graphType.AEMO.set_put(null, 'd', "SPOT_PRICE"),
                         new Data().getAEMOdata(data), Graph.GraphSize.LARGE, "SPOT_PRICE"), Graph.GraphSize.LARGE, Graph.Price, true, Graph.Price_Fill),

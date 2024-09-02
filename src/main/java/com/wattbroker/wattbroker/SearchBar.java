@@ -8,6 +8,15 @@ import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the object class for the search function.
+ * The search function allows users to traverse
+ * wattbroker easily.
+ * As a search option was not included in the SRS.
+ * It is a Work in progress and will be completed
+ * in a later patch, so the code written here is
+ * not finalised or finished.
+ * */
 public class SearchBar extends AnchorPane{
 
     public TextField Search_Bar;
@@ -32,7 +41,7 @@ public class SearchBar extends AnchorPane{
     }
 
     private void Search(String text) {
-        System.out.println(root.getParent());
+//        System.out.println(root.getParent());
     }
 
     public enum panes {

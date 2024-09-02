@@ -33,14 +33,18 @@ public class Graph extends Pane {
     public static final LinearGradient Demand = LinearGradient.valueOf("linear-gradient(to right, EB00FF, EB00FF, D492F3, EB00FF, EB00FF)");
     public static final LinearGradient Price = LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)");
     public static final LinearGradient Supply = LinearGradient.valueOf("linear-gradient(to right, 00FF85, 00FF85, 72DC76, 00FF85, 00FF85)");
-    public static final LinearGradient Fossil = LinearGradient.valueOf("linear-gradient(to right, EBFF00, F1F392, EBFF00)");
-    public static final LinearGradient Renewable = LinearGradient.valueOf("linear-gradient(to right, FF0000, F39292, FF0000)");
+    public static final LinearGradient Renewable = LinearGradient.valueOf("linear-gradient(to right, EBFF00, F1F392, EBFF00)");
+    public static final LinearGradient Fossil = LinearGradient.valueOf("linear-gradient(to right, FF0000, F39292, FF0000)");
+    public static final LinearGradient Profit = LinearGradient.valueOf("linear-gradient(to right, 00FF85, 00FF85, 72DC76, 00FF85, 00FF85)");
+    public static final LinearGradient Efficiency = LinearGradient.valueOf("linear-gradient(to right, 81CFFC, 525BC3, 525BC3, 525BC3, 81CFFC)");
 
     public static final LinearGradient Price_Fill = LinearGradient.valueOf("linear-gradient(to bottom, 5057FF, 774FAF00)");
     public static final LinearGradient Demand_Fill = LinearGradient.valueOf("linear-gradient(to bottom, 5057FF, 774FAF00)");
     public static final LinearGradient Supply_Fill = LinearGradient.valueOf("linear-gradient(to bottom, 00FF8550, 00FFA300)");
-    public static final LinearGradient Fossil_Fill = LinearGradient.valueOf("linear-gradient(to bottom, EBFF0050, EBFF0000)");
-    public static final LinearGradient Renewable_Fill = LinearGradient.valueOf("linear-gradient(to bottom, FF000050, FF000000)");
+    public static final LinearGradient Renewable_Fill = LinearGradient.valueOf("linear-gradient(to bottom, EBFF0050, EBFF0000)");
+    public static final LinearGradient Fossil_Fill = LinearGradient.valueOf("linear-gradient(to bottom, FF000050, FF000000)");
+    public static final LinearGradient Profit_Fill = LinearGradient.valueOf("linear-gradient(to bottom, 00FF8550, 00FFA300)");
+    public static final LinearGradient Efficiency_Fill = LinearGradient.valueOf("linear-gradient(to bottom, 81CFFC50, 81CFFC00)");
 
     public static final String yesterdayData = "AEMO@2024-08-19.csv";
     public static final String todayData = "AEMO@2024-08-20.csv";
@@ -88,7 +92,7 @@ public class Graph extends Pane {
         graphPane.getChildren().add(graph);
 
         // Add the currently selected button line
-        Line l = new Line(77, 24, 77+ dayButton.prefWidth(0), 24);
+        Line l = new Line(131, 24, 131+ dayButton.prefWidth(0), 24);
         l.setStroke(Color.rgb(120, 32, 150, 1));
         l.setStrokeWidth(3);
         root.getChildren().add(l);
@@ -123,7 +127,7 @@ public class Graph extends Pane {
             dayButton.setFill(Color.WHITE);
             l.setStartX(dayButton.getX());
             l.setEndX(dayButton.prefWidth(0));
-            l.setTranslateX(dayButton.getX());
+            l.setTranslateX(dayButton.getLayoutX());
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             weekButton.setFill(Color.rgb(132, 132, 132, 1));
             // Set last graph
@@ -138,7 +142,7 @@ public class Graph extends Pane {
             weekButton.setFill(Color.WHITE);
             l.setStartX(weekButton.getX());
             l.setEndX(weekButton.prefWidth(0));
-            l.setTranslateX(dayButton.getX());
+            l.setTranslateX(weekButton.getLayoutX());
             hourButton.setFill(Color.rgb(132, 132, 132, 1));
             dayButton.setFill(Color.rgb(132, 132, 132, 1));
             // Set last graph

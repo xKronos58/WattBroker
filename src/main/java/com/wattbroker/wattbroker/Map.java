@@ -145,7 +145,7 @@ public class Map extends AnchorPane {
         loader.setRoot(this);
         loader.setController(this);
 
-        System.out.println(this.getParent());
+//        System.out.println(this.getParent());
 
         try {
             loader.load();
@@ -581,7 +581,7 @@ public class Map extends AnchorPane {
             }
             @Override
             public String getName() {
-                return "NEW SOUtH WALES";
+                return "NEW SOUTH WALES";
             }
             @Override
             public Color getColour() {

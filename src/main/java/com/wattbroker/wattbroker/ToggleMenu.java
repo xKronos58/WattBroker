@@ -54,12 +54,10 @@ public class ToggleMenu extends AnchorPane {
                 buttonIcon.setContent(openButton);
                 contentRoot.setVisible(true);
                 contentRoot.setMaxHeight(contentRootHeight);
-                System.out.println(contentRoot.getHeight());
             } else {
                 buttonIcon.setContent(closedButton);
                 contentRoot.setVisible(false);
                 contentRoot.setMaxHeight(0);
-                System.out.println(contentRoot.getHeight());
             }
         });
 

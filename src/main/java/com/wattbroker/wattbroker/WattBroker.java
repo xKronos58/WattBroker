@@ -40,8 +40,8 @@ public class WattBroker extends Application {
 //
 //        } else {} // BRO what the fuck...
 
-        SearchBar.panes p = SearchBar.panes.fromString("setting");
-        System.out.println(p);
+//        SearchBar.panes p = SearchBar.panes.fromString("setting");
+//        System.out.println(p);
     }
 
     public static void main(String[] args) {
