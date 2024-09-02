@@ -67,6 +67,10 @@ public class Data {
         return temp;
     }
 
+    /**
+     * Data storage for time Value
+     * @param dateTime date to be stored
+     * @param value value to be stored */
     public record tV(String dateTime, double value) {
         public double dateTimeAsDouble() {
             String ymd = dateTime.split(" ")[0];

@@ -21,6 +21,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * <b>IMPORTANT! </b> This class is essentially a duplicate of the Graph class until it is modified to be resizable
+ * <b>ONLY SET SIZES ARE AVAILABLE AT THE MOMENT!</b><newline/>
+ * Graph class renders a styled graph based of sets of data rendered in three different sizes (Small, Regular, Large), this class is for the Small graph size
+ * @see GraphSize size of the graph
+ * @see LargeGraph large version of graph
+ * @see SmallGraph small version of graph
+ * Loads the "graph.fxml" file under the resource directory
+ * @throws Exception *(within code) e if "graph.fxml" is not found under the resource directory */
 public class SmallGraph extends Pane {
     @FXML @SuppressWarnings("unused")
     private Pane graphPane;

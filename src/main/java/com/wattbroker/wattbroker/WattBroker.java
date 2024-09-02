@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 /**
- * Main clas for wattbroker */
+ * Main clas for wattbroker launches into the login screen
+ * <b>Ignore commented code, problem with mac-os import</b>*/
 public class WattBroker extends Application {
 
     public static WattBroker instance;
@@ -23,6 +24,7 @@ public class WattBroker extends Application {
         primaryStage.show();
 
         // Ignore this code as there is a problem with the import causing a runtime error
+
 //        URL iconURL = Main.class.getResource("images/wattbroker_icon.svg");
 //        assert iconURL != null;
 ////        Image icon = new Image(String.valueOf(iconURL));
@@ -38,7 +40,7 @@ public class WattBroker extends Application {
 ////            primaryStage.getIcons().add(icon);
 //        } else if (System.getenv("OS").equals("linux")) {
 //
-//        } else {} // BRO what the fuck...
+//        } else {} // BRO what the fudge...
 
 //        SearchBar.panes p = SearchBar.panes.fromString("setting");
 //        System.out.println(p);

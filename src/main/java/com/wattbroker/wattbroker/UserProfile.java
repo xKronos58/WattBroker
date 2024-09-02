@@ -6,6 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This the the GUI class for the inspect user action
+ * Allows the user to inspect their profile
+ * This class is just the loader and menu. */
 public class UserProfile extends Application {
     public static Stage s;
     User user;

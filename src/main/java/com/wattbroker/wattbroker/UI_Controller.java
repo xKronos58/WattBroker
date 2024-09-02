@@ -15,6 +15,10 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * GUI class handling basic menu traversal of the main pages
+ * Caches each of the main menus the allows the side panel to be
+ * clickable to traverse between them. */
 public class UI_Controller {
     public HBox DashboardButton;
     public Pane ContentPane;

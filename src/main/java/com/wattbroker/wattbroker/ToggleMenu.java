@@ -11,6 +11,12 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Gui class for the toggle menu.
+ * This class renders a toggle menu with a button
+ * that when clicked will show a list of elements.
+ * @see ToggleData
+ * */
 public class ToggleMenu extends AnchorPane {
 
     private String openButton = "M12.3389 19.125L24.6776 31.875L37.0163 19.125";
@@ -19,6 +25,11 @@ public class ToggleMenu extends AnchorPane {
     private final VBox contentRoot = new VBox(10);
     double contentRootHeight = 0;
 
+    /**
+     * Constructor for the toggle menu.
+     * @param objects list of toggleable objects
+     * @param dataType type of data to display
+     */
     public ToggleMenu(List<? extends toggleable> objects, toggleable.dataType dataType) {
         List<ToggleData> data = new ArrayList<>();
         for(toggleable object : objects) {
@@ -37,6 +48,11 @@ public class ToggleMenu extends AnchorPane {
         this.getChildren().add(Content);
     }
 
+    /**
+     * Generates a button for the toggle menu.
+     * @param dataType type of data to display
+     * @return AnchorPane with the button
+     */
     private AnchorPane generateButton(toggleable.dataType dataType) {
         AnchorPane root = new AnchorPane();
 
@@ -76,6 +92,11 @@ public class ToggleMenu extends AnchorPane {
         return root;
     }
 
+    /**
+     * Generates an element for the toggle menu.
+     * @param data data to display
+     * @return AnchorPane with the element
+     */
     AnchorPane generateElement(ToggleData data) {
         AnchorPane root = new AnchorPane();
         root.setStyle("-fx-background-color: #313131; -fx-background-radius: 14");

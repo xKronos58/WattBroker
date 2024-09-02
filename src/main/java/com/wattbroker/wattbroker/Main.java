@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * *SECONDARY* - use Wattbroker.java for the login menu. Main class for the Watt broker application. */
 public class Main extends Application {
 
     public static User user;

@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * GUI class handling login events. */
 public class loginController {
     public Button signInButton;
     public PasswordField password;
@@ -32,6 +34,9 @@ public class loginController {
     public TextField FirstName;
     public TextField LastName;
 
+    /**
+     * Method to handle the sign in event.
+     * @param actionEvent The event that triggered the method. */
     public void signIn(ActionEvent actionEvent) throws IOException {
         String passwordHash = convertToHash(password.getText());
         DB_query dbq = new DB_query();
@@ -43,10 +48,17 @@ public class loginController {
         }
     }
 
+    /**
+     * Method to convert a string to a hash.
+     * @param text The text to convert to a hash.
+     * @return The hash of the text. */
     private String convertToHash(String text) {
         return Hash.hashText(new String[]{text});
     }
 
+    /**
+     * Method to handle the create account event.
+     * @param mouseEvent The event that triggered the method. */
     public void gotoCreateAccount(MouseEvent mouseEvent) {
         try {
             WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("CreateAccount.fxml")).load()));
@@ -55,7 +67,9 @@ public class loginController {
         }
     }
 
-
+    /**
+     * Method to handle the sign in with google event.
+     * @param mouseEvent The event that triggered the method. */
     public void createAccount(ActionEvent mouseEvent) {
         String firstName = FirstName.getText(), lastName = LastName.getText(),
                 password = Password.getText(), username = Username.getText(),
@@ -100,6 +114,8 @@ public class loginController {
 
     }
 
+    /**
+     * Set create account screen*/
     public void closeCreateAccountScreen(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
@@ -110,12 +126,17 @@ public class loginController {
         }
     }
 
+    /**
+     * Set sign in screen*/
     public void signInKey(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             signIn(new ActionEvent());
         }
     }
 
+    /**
+     * Method to handle the forgot password event.
+     * @param mouseEvent The event that triggered the method. */
     public void ForgotPassword(MouseEvent mouseEvent) {
         try {
             WattBroker.primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("ForgotPassword.fxml")).load()));

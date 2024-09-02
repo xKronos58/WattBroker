@@ -16,6 +16,11 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * This class is a gui map demonstrating the current state markets
+ * allowing for easy comparison between best places to buy and sell
+ * energy.
+ * This class renders data based off the AEMO API ** */
 public class Map extends AnchorPane {
 
     public static Color StartColour = Color.rgb(65, 229, 237, 1);
@@ -67,6 +72,7 @@ public class Map extends AnchorPane {
             CreateOverlay("QLD")
     };
 
+    /** Create a new overlay for the map */
     private StackPane CreateOverlay(String state) {
         SVGPath body = new SVGPath(), triangle = new SVGPath();
         body.setContent("M0 20.7496C0 9.28993 9.40202 0 21 0H124C135.598 0 145 9.28993 145 20.7496C145 32.2093 135.598 41.4993 124 41.4993H21C9.40205 41.4993 0 32.2093 0 20.7496Z");
@@ -129,6 +135,7 @@ public class Map extends AnchorPane {
         return full;
     }
 
+    /** Get the text for the overlay */
     private Text getText(double state) {
         Text p = new Text(Math.round(
                 state
@@ -140,6 +147,7 @@ public class Map extends AnchorPane {
         return p;
     }
 
+    /** Create a new map */
     public Map() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Map.fxml"));
         loader.setRoot(this);

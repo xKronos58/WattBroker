@@ -22,7 +22,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-/***/
+/**
+ * Main graph rendering class used to display different datasets
+ * This class can take in several different datasets and convert
+ * them into a visual display over time of data.
+ * The data is handled by the Data.java class.
+ * This class is the Root class for other graphing classes like
+ * LargeGraph.java and SmallGraph.java
+ * @see LargeGraph
+ * @see SmallGraph
+ * @see Data
+ * @bug Needle does not work
+ * @bug-description Value tracking needle does not fully function to show values in gui * this is being worked on.
+ * @implNote Scaling for this class does not currently work due to JAVAFX's custom object handling, this will be changed in a future patch, for now use small and large graph. */
 public class Graph extends Pane {
     @FXML @SuppressWarnings("unused") private Pane graphPane;
     @FXML @SuppressWarnings("unused") private Text hourButton;
@@ -150,6 +162,9 @@ public class Graph extends Pane {
         });
     }
 
+    /**
+     * Graph size enum for the different sizes of the graph
+     * @see GraphSize size of the graph */
     public void updateGraph(char[] lastGraph) {
         for(Node n : graphPane.getChildren()) {
             if(n.getId().equals("Graph")) {
@@ -191,6 +206,14 @@ public class Graph extends Pane {
         graphPane.getChildren().add(graph);
     }
 
+    /**
+     * This method creates the line to render the graph based off cubic curves.
+     * this is done by taking a list of vectors and breaking them down into the
+     * sets of values then layering them on top of each other to create one solid
+     * line which is then rendered on the graph.
+     * @see Vector
+     * @see Data
+     * */
     @SuppressWarnings("ClassEscapesDefinedScope")
     public static StackPane wavyPath(List<Vector<Double, Double>> vectors, GraphSize size, LinearGradient gradient, boolean hasFill, LinearGradient fillGradient) {
         Path path = new Path(new MoveTo(0, vectors.get(0).getX())),

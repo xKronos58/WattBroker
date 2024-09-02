@@ -21,7 +21,6 @@ public class SearchBar extends AnchorPane{
 
     public TextField Search_Bar;
     public AnchorPane root;
-
     public SearchBar() {
         FXMLLoader load = new FXMLLoader(getClass().getResource("SearchBar.fxml"));
         load.setRoot(this);

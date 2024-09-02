@@ -15,8 +15,6 @@ import java.util.Scanner;
  * the algorithm to be finalised.
  * */
 public class fakeDataBuilder {
-
-
     public static void main(String[] args) {
         Scanner inp = new Scanner(System.in);
         System.out.println("Type of data: \"Day\" [1] | \"Week\" [2] | \"Hour\" [3]");

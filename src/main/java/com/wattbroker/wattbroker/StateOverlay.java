@@ -14,6 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Gui class for state overlay from the map class.
+ * This class renders each state when clicked as
+ * a svg with the current price and some basic
+ * spot price information.
+ * @see Map
+ * */
 public class StateOverlay extends Application {
     @FXML
     SVGPath state;
@@ -25,12 +32,20 @@ public class StateOverlay extends Application {
     Text priceLabel;
     Map.State localState;
     private final FXMLLoader fxmlLoader;
+
+    /**
+     * Constructor for the state overlay.
+     * @param state current state
+     */
     public StateOverlay(Map.State state){
         fxmlLoader = new FXMLLoader(Main.class.getResource("StateOverlay.fxml"));
         fxmlLoader.setController(this);
         localState = state;
     }
 
+    /**
+     * Builds the state overlay.
+     * */
     public void Build() {
         try {
             start(new Stage());

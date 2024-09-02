@@ -1,5 +1,11 @@
 package com.wattbroker.wattbroker;
 
+/**
+ * This class is an extension of toggleable list data types.
+ * It stores algorithm data based on provided information
+ * and formats it so that it can be rendered in a toggleMenu
+ * @see ToggleMenu
+ * */
 public class Algorithms implements toggleable {
     String name;
     double efficiency;
@@ -7,6 +13,13 @@ public class Algorithms implements toggleable {
     double profit;
     boolean running;
 
+    /**
+     * Main constructor for the Algorithms class
+     * @param name e.g. 'Algorithm 1'
+     * @param efficiency e.g. '95.5'
+     * @param holdings e.g. '1000'
+     * @param profit e.g. '1000'
+     * @param running e.g. 'true'*/
     public Algorithms(String name, double efficiency, double holdings, double profit, boolean running) {
         this.name = name;
         this.efficiency = efficiency;
@@ -20,6 +33,10 @@ public class Algorithms implements toggleable {
 
     }
 
+    /**
+     * Gets the value of a spesific data type
+     * @param data e.g. 'NAME'
+     * @return ToggleData e.g. 'Algorithm 1'*/
     @Override
     public ToggleData getData(dataType data) {
         return switch (data) {

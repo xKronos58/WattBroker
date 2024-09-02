@@ -7,6 +7,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+/**
+ * Testing class for designing colour mapping for the MAP.java
+ * @see Map Implimentation
+ * @implNote  Not in use anymore */
 public class GradientColorMapping extends Application {
 
     @Override

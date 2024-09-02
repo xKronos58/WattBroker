@@ -7,23 +7,37 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class reads <code>xxx.algorithm</code> files containing the custom
+ * source and settings of each algorithm which is applied.
+ * This class takes in either a resource path or an absolute path to get
+ * the file based on the algorithm name.
+ * @implNote there are two overloads for the constructor use the one with the boolean
+ * only if the path is a non-resource / absolute path.
+ * DO-Not use 'true' within the boolean input. */
 public class AlgorithmFileReader {
     
     private String path;
     private File file;
 
+    /**
+     * ASD stores all the values for the algorithm
+     * Access this to get individual values. */
     public AlgorithmSettingData asd;
     /**
-     * 
+     * Constructor for resource paths
      * @param path file path of NAME.algorithm file from the <Strong>RESOURCE</Strong> directory if not a resource add false at the end and provide a full file path */
     public AlgorithmFileReader(String path) {
         this.path = path;
         this.file = new File(String.valueOf(Main.class.getResource(path)));
 
         this.asd = convertToAlgorithmSettingsData(getLines());
-
     }
-    
+
+    /**
+     * Constructor for non-resource paths
+     * @param path file path of NAME.algorithm file from the <Strong>RESOURCE</Strong> directory if not a resource add false at the end and provide a full file path
+     * @param isResource ONLY USE FALSE! this is to differentiate between resources and non-resources  */
     public AlgorithmFileReader(String path, boolean isResource) {
         if(isResource)
             throw new IllegalArgumentException("Please remove 'true' from the end of the initialization");
@@ -34,9 +48,15 @@ public class AlgorithmFileReader {
         this.asd = convertToAlgorithmSettingsData(getLines());
     }
 
+    /**
+     * Converts the file lines to a AlgorithmSettingData object
+     * @param Content the lines of the file
+     * @return AlgorithmSettingData object */
     private AlgorithmSettingData convertToAlgorithmSettingsData(List<String> Content) {
         if(Content.size() != 40)
             throw new IllegalArgumentException("Invalid file format, Custom tags a not yet implemented please use the default tags.");
+
+        // Read all data and convert to AlgorithmSettingData object
         AlgorithmSettingData asd = new AlgorithmSettingData(
                 Content.get(0).substring("NAME:".length()),
                 switch (Content.get(1).substring("STATUS:".length()).toUpperCase()) {
@@ -48,7 +68,6 @@ public class AlgorithmFileReader {
                 Double.parseDouble(Content.get(2).substring("PROFIT:".length())),
                 Double.parseDouble(Content.get(3).substring("EFFICIENCY:".length())),
                 Double.parseDouble(Content.get(4).substring("HOLDINGS:".length())),
-//                Content.get(5).substring("SOURCE_LINK:{".length(), Content.get(5).length() -1).split(","),
                 null,
                 new AlgorithmSettings(
                         Double.parseDouble(Content.get(7).substring("MAX_HOLDINGS:".length(), Content.get(7).length() -1)),
@@ -85,7 +104,10 @@ public class AlgorithmFileReader {
                         Double.parseDouble(Content.get(38).substring("MIN_TRADE_SETTINGS:".length()))));
         return asd;
     }
-    
+
+    /**
+     * Reads all lines in the file
+     * @return List of all lines in the file */
     private List<String> getLines() {
         ///Users/finleycrowther/Desktop/_SftDev/Criterion 6/WB_Code/WattBroker/src/main/resources/com/wattbroker/wattbroker/_LOCAL_Data_Storage/VIC-1.algorithm
 
@@ -103,7 +125,15 @@ public class AlgorithmFileReader {
         return temp;
     }
     
-    
+    /**
+     * This class stores the data for the algorithm
+     * @param Name Name of the algorithm
+     * @param status Status of the algorithm
+     * @param Profit Profit of the algorithm
+     * @param Efficiency Efficiency of the algorithm
+     * @param Holdings Holdings of the algorithm
+     * @param Source_location Source location of the algorithm
+     * @param Settings Settings of the algorithm */
     public record AlgorithmSettingData(
             String Name, 
             Status status,
@@ -123,7 +153,41 @@ public class AlgorithmFileReader {
         }
 
     };
-    
+
+    /**
+     * This class stores the settings for the algorithm
+     * @param max_holdings Maximum holdings
+     * @param min_holdings Minimum holdings
+     * @param max_profit Maximum profit
+     * @param min_profit Minimum profit
+     * @param max_efficiency Maximum efficiency
+     * @param min_efficiency Minimum efficiency
+     * @param max_loss Maximum loss
+     * @param min_loss Minimum loss
+     * @param max_risk Maximum risk
+     * @param min_risk Minimum risk
+     * @param max_trade Maximum trade
+     * @param min_trade Minimum trade
+     * @param max_trade_time Maximum trade time
+     * @param min_trade_time Minimum trade time
+     * @param max_trade_amount Maximum trade amount
+     * @param min_trade_amount Minimum trade amount
+     * @param max_trade_loss Maximum trade loss
+     * @param min_trade_loss Minimum trade loss
+     * @param max_trade_risk Maximum trade risk
+     * @param min_trade_risk Minimum trade risk
+     * @param max_trade_profit Maximum trade profit
+     * @param min_trade_profit Minimum trade profit
+     * @param max_trade_efficiency Maximum trade efficiency
+     * @param min_trade_efficiency Minimum trade efficiency
+     * @param max_trade_holdings Maximum trade holdings
+     * @param min_trade_holdings Minimum trade holdings
+     * @param max_trade_status Maximum trade status
+     * @param min_trade_status Minimum trade status
+     * @param max_trade_source Maximum trade source
+     * @param min_trade_source Minimum trade source
+     * @param max_trade_settings Maximum trade settings
+     * @param min_trade_settings Minimum trade settings */
     public record AlgorithmSettings(
             Double max_holdings,
             Double min_holdings,
@@ -291,15 +355,13 @@ public class AlgorithmFileReader {
             return min_trade_settings;
         }
     }
-    
+
+    /**
+     * Enum for the status of the algorithm */
     public enum Status {
         STOPPED(false), RUNNING(true), SUSPENDED(false);
 
         Status(boolean b) {}
 
-    }
-
-    public static void main(String[] args) {
-        AlgorithmFileReader afr = new AlgorithmFileReader("/Users/finleycrowther/Desktop/_SftDev/Criterion 6/WB_Code/WattBroker/src/main/resources/com/wattbroker/wattbroker/_LOCAL_Data_Storage/VIC-1.algorithm", false);
     }
 }

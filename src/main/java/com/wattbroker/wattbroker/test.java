@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 import java.util.Date;
 
+/**
+ * Testing class*/
 public class test extends Application {
 
     @Override

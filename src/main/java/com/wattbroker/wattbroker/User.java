@@ -1,5 +1,9 @@
 package com.wattbroker.wattbroker;
 
+/**
+ * User class for the WattBroker application
+ * Not in use yet
+ */
 public class User {
     public User() {
 

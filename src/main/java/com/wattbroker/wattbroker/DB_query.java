@@ -4,6 +4,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Objects;
 
+/**
+ * This class query's an SQLite authentication database
+ * to check user credentials.
+ * This class has several methods to get certain sets of data.
+ * */
 public class DB_query {
     private String url = "jdbc:sqlite:identifier.sqlite";
     public static void main(String[] args) {
@@ -14,6 +19,12 @@ public class DB_query {
     public DB_query() {
     }
 
+    /**
+     * This method checks the credentials of a user.
+     * @param username The username of the user.
+     * @param password The password of the user.
+     * @return True if the credentials are correct, false otherwise.
+     * */
     public boolean checkCredentials(String username, String password) {
         String sql = "SELECT USERNAME, PASSWORD FROM USERLIST WHERE USERNAME = '" + username + "'";
         try (var conn = DriverManager.getConnection(url);
@@ -28,6 +39,11 @@ public class DB_query {
         return false;
     }
 
+    /**
+     * This method checks if a user exists in the database.
+     * @param username The username of the user.
+     * @return True if the user exists, false otherwise.
+     * */
     public boolean addUser(String firstName, String lastName, String username, String email, String password, String companyCode, String employeeCode) {
         String sql = "INSERT INTO USERLIST (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, COMPANY_CODE, EMPLOYEE_CODE) VALUES ('" + firstName + "', '" + lastName + "', '" + username + "', '" + email + "', '" + password + "', '" + companyCode + "', '" + employeeCode + "')";
         try (var conn = DriverManager.getConnection(url);
@@ -41,6 +57,11 @@ public class DB_query {
         return false;
     }
 
+    /**
+     * This method gets the first name of a user.
+     * @param id The id of the user.
+     * @return The first name of the user.
+     * */
     public String getUsername(int id) {
         String sql = "SELECT USERNAME FROM USERLIST WHERE ID = " + id;
         try (var conn = DriverManager.getConnection(url);
@@ -54,6 +75,11 @@ public class DB_query {
         return null;
     }
 
+    /**
+     * This method gets the email of a user.
+     * @param id The id of the user.
+     * @return The email of the user.
+     * */
     public String getEmail(int id) {
         String sql = "SELECT EMAIL FROM USERLIST WHERE ID = " + id;
         try (var conn = DriverManager.getConnection(url);
@@ -69,6 +95,11 @@ public class DB_query {
         return null;
     }
 
+    /**
+     * This method gets the company code of a user.
+     * @param id The id of the user.
+     * @return The company code of the user.
+     * */
     public void setUsername(int id, String text) {
         String sql = "UPDATE USERLIST SET USERNAME = '" + text + "' WHERE ID = " + id;
         try (var conn = DriverManager.getConnection(url);
@@ -79,6 +110,11 @@ public class DB_query {
         }
     }
 
+    /**
+     * This method gets the password of a user.
+     * @param id The id of the user.
+     * @return The password of the user.
+     * */
     public void setPassword(int id, String text) {
         String sql = "UPDATE USERLIST SET PASSWORD = '" + text + "' WHERE ID = " + id;
         try (var conn = DriverManager.getConnection(url);
@@ -89,6 +125,11 @@ public class DB_query {
         }
     }
 
+    /**
+     * This method gets the email of a user.
+     * @param id The id of the user.
+     * @return The email of the user.
+     * */
     public void setEmail(int id, String text) {
         String sql = "UPDATE USERLIST SET EMAIL = '" + text + "' WHERE ID = " + id;
         try (var conn = DriverManager.getConnection(url);
@@ -99,6 +140,13 @@ public class DB_query {
         }
     }
 
+    /**
+     * This method gets the user id used for other queries
+     * this should be used for in-code identification of users
+     * rather than storing username as this is more efficient
+     * when querying data.
+     * @return The id of the user.
+     * */
     public int getId(String USERNAME) {
         String sql = "SELECT ID FROM USERLIST WHERE USERNAME = \"" + USERNAME + "\"";
         try (var conn = DriverManager.getConnection(url);

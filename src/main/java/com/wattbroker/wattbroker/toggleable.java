@@ -1,5 +1,8 @@
 package com.wattbroker.wattbroker;
 
+/**
+ * Interface for toggleable objects
+ */
 public interface toggleable {
     void toggle();
 

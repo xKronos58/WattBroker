@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
+/**
+ * Testing class */
 public class SVG_Testing extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {

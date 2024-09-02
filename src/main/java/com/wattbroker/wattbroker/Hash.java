@@ -22,7 +22,6 @@ public class Hash {
         if (digestSize <= 64) {
             return blake2b(digestSize, message);
         }
-
         int r = (int) Math.ceil(digestSize / 32.0) - 2;
 
         byte[] v1 = blake2b(64, concat(intToBytes(digestSize), message));

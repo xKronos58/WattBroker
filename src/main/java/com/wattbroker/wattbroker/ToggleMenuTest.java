@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is a testing class for creating the toggle menu. refer to ToggleMenu for actual toggle menu
+ * @see ToggleMenu*/
 public class ToggleMenuTest extends Application {
 
     static List<Algorithm> algos = new ArrayList<>();
