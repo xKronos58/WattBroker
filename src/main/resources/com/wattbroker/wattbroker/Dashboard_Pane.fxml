@@ -18,7 +18,7 @@
 <?import com.wattbroker.wattbroker.Graph?>
 <?import com.wattbroker.wattbroker.Map?>
 
-<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.DashboardPaneController">
+<GridPane prefHeight="1142.0" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wattbroker.wattbroker.Controllers.DashboardPaneController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0" />

@@ -16,517 +16,659 @@
 
 <?import com.wattbroker.wattbroker.LargeGraph?>
 
-<ScrollPane fx:id="scrollRoot" maxHeight="Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="1142" prefWidth="1312.0" style="-fx-background-color: #171717;"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <AnchorPane minHeight="0.0" minWidth="0.0" fx:id="rootAnchorPane">
-      <GridPane prefWidth="1312.0" style="-fx-background-color: #171717;" AnchorPane.bottomAnchor="0.0"
-                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<?import javafx.scene.text.TextFlow?>
+<ScrollPane fx:id="scrollRoot" maxHeight="Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1142" prefWidth="1312.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="rootAnchorPane" minHeight="0.0" minWidth="0.0">
+      <GridPane prefWidth="1312.0" style="-fx-background-color: #171717;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="886.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="426.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="281.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" percentHeight="0.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="281.0" minHeight="0.0" prefHeight="281.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="0.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true"
-                    GridPane.valignment="TOP">
+         <ImageView fitHeight="269.0" fitWidth="1297.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
             <GridPane.margin>
-               <Insets left="20.0" top="12.0"/>
+               <Insets left="20.0" top="12.0" />
             </GridPane.margin>
-            <Image url="@Images/Banner.png"/>
+            <Image url="@Images/Banner.png" />
          </ImageView>
-         <Text fx:id="name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!ALG_NAME"
-               GridPane.valignment="TOP">
+         <Text fx:id="name" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!ALG_NAME" GridPane.valignment="TOP">
             <font>
-               <Font name="System Bold" size="80.0"/>
+               <Font name="System Bold" size="80.0" />
             </font>
             <GridPane.margin>
-               <Insets left="36.0" top="36.0"/>
+               <Insets left="36.0" top="36.0" />
             </GridPane.margin>
          </Text>
-         <AnchorPane maxHeight="60.0" prefHeight="60.0" prefWidth="394.0"
-                     style="-fx-background-color: #343434; -fx-background-radius: 25;" GridPane.columnIndex="1"
-                     GridPane.valignment="TOP">
+         <AnchorPane maxHeight="60.0" prefHeight="60.0" prefWidth="394.0" style="-fx-background-color: #343434; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.valignment="TOP">
             <GridPane.margin>
-               <Insets right="32.0" top="18.0"/>
+               <Insets right="32.0" top="18.0" />
             </GridPane.margin>
-            <TextField fx:id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing"
-                       style="-fx-background-color: #343434; -fx-text-fill: #FFF;"
-                       AnchorPane.leftAnchor="25.0">
+            <TextField fx:id="Search_Bar" prefHeight="60.0" prefWidth="317.0" promptText="Type Somthing" style="-fx-background-color: #343434; -fx-text-fill: #FFF;" AnchorPane.leftAnchor="25.0">
                <padding>
-                  <Insets left="25.0"/>
+                  <Insets left="25.0" />
                </padding>
                <font>
-                  <Font size="20.0"/>
+                  <Font size="20.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true"
-                       AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
-               <Image url="@Images/search.png"/>
+            <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
+               <Image url="@Images/search.png" />
             </ImageView>
          </AnchorPane>
          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-            <AnchorPane fx:id="graphRoot" prefHeight="735.0" prefWidth="1181.0" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.topAnchor="210.0">
+            <AnchorPane fx:id="graphRoot" prefHeight="735.0" prefWidth="1181.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="210.0">
                <LargeGraph/>
             </AnchorPane>
             <HBox spacing="15.0" AnchorPane.leftAnchor="35.0">
-               <AnchorPane prefHeight="63.0" prefWidth="403.0"
-                           style="-fx-background-color: #343434; -fx-background-radius: 20;">
-                  <Text fill="#4fdd5d" strokeType="OUTSIDE" strokeWidth="0.0" text="RUNNING"
-                        textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
+               <AnchorPane prefHeight="63.0" prefWidth="403.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                  <Text fill="#4fdd5d" strokeType="OUTSIDE" strokeWidth="0.0" text="RUNNING" textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font name="Inter SemiBold" size="30.0"/>
+                        <Font name="Inter SemiBold" size="30.0" />
                      </font>
                   </Text>
                </AnchorPane>
-               <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="403.0"
-                           style="-fx-background-color: #343434; -fx-background-radius: 20;">
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAW"
-                        textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
+               <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="403.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAW" textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font name="Inter SemiBold" size="30.0"/>
+                        <Font name="Inter SemiBold" size="30.0" />
                      </font>
                   </Text>
                </AnchorPane>
-               <AnchorPane layoutX="428.0" layoutY="10.0" prefHeight="63.0" prefWidth="403.0"
-                           style="-fx-background-color: #343434; -fx-background-radius: 20;">
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPOSIT"
-                        textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
+               <AnchorPane layoutX="428.0" layoutY="10.0" prefHeight="63.0" prefWidth="403.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="DEPOSIT" textAlignment="CENTER" wrappingWidth="403.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font name="Inter SemiBold" size="30.0"/>
+                        <Font name="Inter SemiBold" size="30.0" />
                      </font>
                   </Text>
                </AnchorPane>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="35.0" AnchorPane.leftAnchor="44.0"
-                  AnchorPane.topAnchor="88.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="35.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="88.0">
                <opaqueInsets>
-                  <Insets left="44.0" top="25.0"/>
+                  <Insets left="44.0" top="25.0" />
                </opaqueInsets>
-               <Text fill="#343434" strokeType="OUTSIDE" strokeWidth="0.0" text="EFFICIENCY"
-                     fx:id="efficiency_text">
+               <Text fx:id="efficiency_text" fill="#343434" strokeType="OUTSIDE" strokeWidth="0.0" text="EFFICIENCY">
                   <font>
-                     <Font name="Inter SemiBold" size="48.0"/>
+                     <Font name="Inter SemiBold" size="48.0" />
                   </font>
                </Text>
-               <Text fill="#343434" layoutX="10.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                     text="PROFIT" fx:id="profit_text">
+               <Text fx:id="profit_text" fill="#343434" layoutX="10.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PROFIT">
                   <font>
-                     <Font name="Inter SemiBold" size="48.0"/>
+                     <Font name="Inter SemiBold" size="48.0" />
                   </font>
                </Text>
             </HBox>
-            <HBox layoutX="45.0" layoutY="10.0" spacing="21.0" AnchorPane.leftAnchor="35.0"
-                  AnchorPane.topAnchor="1036.0">
-               <AnchorPane prefHeight="63.0" prefWidth="600.0"
-                           style="-fx-background-color: #343434; -fx-background-radius: 20;">
-                  <Text fill="#4fdd5d" strokeType="OUTSIDE" strokeWidth="0.0" text="RUNNING"
-                        textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
+            <HBox layoutX="45.0" layoutY="10.0" spacing="21.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="1036.0">
+               <AnchorPane prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                  <Text fill="#4fdd5d" strokeType="OUTSIDE" strokeWidth="0.0" text="RUNNING" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font name="Inter SemiBold" size="30.0"/>
+                        <Font name="Inter SemiBold" size="30.0" />
                      </font>
                   </Text>
                </AnchorPane>
-               <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="600.0"
-                           style="-fx-background-color: #343434; -fx-background-radius: 20;">
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAW"
-                        textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
+               <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAW" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
                      <font>
-                        <Font name="Inter SemiBold" size="30.0"/>
+                        <Font name="Inter SemiBold" size="30.0" />
                      </font>
                   </Text>
                </AnchorPane>
             </HBox>
-            <GridPane prefWidth="1312.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="27.0"
-                      AnchorPane.topAnchor="1240.0">
+            <HBox layoutX="45.0" layoutY="1046.0" spacing="21.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="1130.0">
+               <children>
+                  <AnchorPane prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                     <children>
+                        <Text fx:id="Holdings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="HOLDINGS : !VAL" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
+                           <font>
+                              <Font name="Inter SemiBold" size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: #343434; -fx-background-radius: 20;">
+                     <children>
+                        <TextFlow prefWidth="600" AnchorPane.topAnchor="15" textAlignment="CENTER">
+                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EFFICIENCY : " textAlignment="CENTER" wrappingWidth="600.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                           <Text fx:id="Efficiency_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </TextFlow>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <GridPane prefWidth="1312.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="1240.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
 <!--               Column 1 -->
                <VBox spacing="26.0">
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STATE"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STATE" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="state_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX HOLDINGS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX HOLDINGS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_holdings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN HOLDINGS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN HOLDINGS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_holdings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX PROFIT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX PROFIT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_profit_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN PROFIT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN PROFIT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_profit_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children>
+                     </AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX EFFICIENCY"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX EFFICIENCY" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_efficiency_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children>
+                     </AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN EFFICIENCY"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN EFFICIENCY" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_efficiency_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX LOSS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX LOSS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_loss_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN LOSS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN LOSS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_loss_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX RISK"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX RISK" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_risk_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN RISK"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN RISK" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_risk_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE EFFICIENCY"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE EFFICIENCY" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_efficiency_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE EFFICIENCY"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE EFFICIENCY" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_efficiency_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE HOLDINGS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE HOLDINGS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_holdings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="14.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE HOLDINGS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE HOLDINGS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_holdings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="14.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE STATUS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="WHAT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="what" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                </VBox>
 <!--               Column 2 -->
                <VBox spacing="26.0" GridPane.columnIndex="1">
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE TIME"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE TIME" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_time_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="14.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE TIME"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE TIME" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_time_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE AMOUNT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE AMOUNT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_amount_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE AMOUNT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE AMOUNT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_amount_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE LOSS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE LOSS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_loss_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE LOSS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE LOSS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_loss_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="14.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE RISK"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE RISK" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_risk_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE RISK"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE RISK" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_risk_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE PROFIT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE PROFIT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_profit_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE PROFIT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE PROFIT" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_profit_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="14.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE PROFIT"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE STATUS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_status_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE STATUS"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE STATUS" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_status_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE SOURCE"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE SOURCE" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_source_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE SOURCE"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE SOURCE" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_source_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE SETTING"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX TRADE SETTING" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="max_trade_settings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
-                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE SETTING"
-                           AnchorPane.topAnchor="12.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIN TRADE SETTING" wrappingWidth="287.0" AnchorPane.topAnchor="12.0">
                         <font>
-                           <Font name="Inter SemiBold" size="30.0"/>
+                           <Font name="Inter SemiBold" size="30.0" />
                         </font>
                      </Text>
-                     <AnchorPane prefHeight="66.0" prefWidth="303.0"
-                                 style="-fx-background-color: #51515182; -fx-background-radius: 20;"
-                                 AnchorPane.leftAnchor="291.0"/>
+                     <AnchorPane prefHeight="66.0" prefWidth="303.0" style="-fx-background-color: #51515182; -fx-background-radius: 20;" AnchorPane.leftAnchor="291.0">
+                        <children>
+                           <Text fx:id="min_trade_settings_val" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="!VAL" AnchorPane.bottomAnchor="15.693183898925781" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="15.0">
+                              <font>
+                                 <Font name="Inter SemiBold" size="30.0" />
+                              </font>
+                           </Text>
+                        </children></AnchorPane>
                   </AnchorPane>
                </VBox>
             </GridPane>

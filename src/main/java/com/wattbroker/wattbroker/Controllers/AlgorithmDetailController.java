@@ -1,5 +1,6 @@
 package com.wattbroker.wattbroker.Controllers;
 
+import com.wattbroker.wattbroker.AlgorithmFileReader;
 import com.wattbroker.wattbroker.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,42 @@ public class AlgorithmDetailController {
     public Text profit_text;
     @FXML
     public AnchorPane rootAnchorPane;
+
+    @FXML Text state_val,
+            max_holdings_val,
+            min_holdings_val,
+            max_profit_val,
+            min_profit_val,
+            max_efficiency_val,
+            min_efficiency_val,
+            max_loss_val,
+            min_loss_val,
+            max_risk_val,
+            min_risk_val,
+            max_trade_val,
+            max_trade_efficiency_val,
+            min_trade_efficiency_val,
+            max_trade_holdings_val,
+            min_trade_holdings_val,
+            min_trade_val,
+            max_trade_time_val,
+            min_trade_time_val,
+            max_trade_amount_val,
+            min_trade_amount_val,
+            max_trade_loss_val,
+            min_trade_loss_val,
+            max_trade_risk_val,
+            min_trade_risk_val,
+            max_trade_profit_val,
+            min_trade_profit_val,
+            max_trade_status_val,
+            min_trade_status_val,
+            max_trade_source_val,
+            min_trade_source_val,
+            max_trade_settings_val,
+            min_trade_settings_val,
+            Holdings_val,
+            Efficiency_val;
 
     private final String algoName;
     private final Line l = new Line();
@@ -69,6 +106,45 @@ public class AlgorithmDetailController {
                 throw new RuntimeException(ex);
             }
         }});
+
+        AlgorithmFileReader afr = new AlgorithmFileReader("/Users/finleycrowther/Desktop/_SftDev/Criterion 6/WB_Code/WattBroker/src/main/resources/com/wattbroker/wattbroker/_LOCAL_Data_Storage/" + algoName + ".algorithm", false);
+
+        Holdings_val.setText("HOLDINGS : " + afr.asd.Holdings().toString());
+        Efficiency_val.setText(afr.asd.Efficiency().toString());
+        Efficiency_val.setFill(afr.asd.Efficiency() > 80.0 ? Color.rgb(0, 255, 0, 1) : ( afr.asd.Efficiency() > 50.0 ? Color.rgb(255, 255, 0) : Color.rgb(255, 0, 0, 1)));
+
+        max_holdings_val.setText(afr.asd.getSettings().getMax_holdings().toString());
+        min_holdings_val.setText(afr.asd.getSettings().getMin_holdings().toString());
+        max_profit_val.setText(afr.asd.getSettings().getMax_profit().toString());
+        min_profit_val.setText(afr.asd.getSettings().getMin_profit().toString());
+        max_efficiency_val.setText(afr.asd.getSettings().getMax_efficiency().toString());
+        min_efficiency_val.setText(afr.asd.getSettings().getMin_efficiency().toString());
+        max_loss_val.setText(afr.asd.getSettings().getMax_loss().toString());
+        min_loss_val.setText(afr.asd.getSettings().getMin_loss().toString());
+        max_risk_val.setText(afr.asd.getSettings().getMax_risk().toString());
+        min_risk_val.setText(afr.asd.getSettings().getMin_risk().toString());
+        max_trade_val.setText(afr.asd.getSettings().getMax_trade().toString());
+        max_trade_efficiency_val.setText(afr.asd.getSettings().getMax_trade_efficiency().toString());
+        min_trade_efficiency_val.setText(afr.asd.getSettings().getMin_trade_efficiency().toString());
+        max_trade_holdings_val.setText(afr.asd.getSettings().getMax_trade_holdings().toString());
+        min_trade_holdings_val.setText(afr.asd.getSettings().getMin_trade_holdings().toString());
+        min_trade_val.setText(afr.asd.getSettings().getMin_trade().toString());
+        max_trade_time_val.setText(afr.asd.getSettings().getMax_trade_time().toString());
+        min_trade_time_val.setText(afr.asd.getSettings().getMin_trade_time().toString());
+        max_trade_amount_val.setText(afr.asd.getSettings().getMax_trade_amount().toString());
+        min_trade_amount_val.setText(afr.asd.getSettings().getMin_trade_amount().toString());
+        max_trade_loss_val.setText(afr.asd.getSettings().getMax_trade_loss().toString());
+        min_trade_loss_val.setText(afr.asd.getSettings().getMin_trade_loss().toString());
+        max_trade_risk_val.setText(afr.asd.getSettings().getMax_trade_risk().toString());
+        min_trade_risk_val.setText(afr.asd.getSettings().getMin_trade_risk().toString());
+        max_trade_profit_val.setText(afr.asd.getSettings().getMax_trade_profit().toString());
+        min_trade_profit_val.setText(afr.asd.getSettings().getMin_trade_profit().toString());
+        max_trade_status_val.setText(afr.asd.getSettings().getMax_trade_status().toString());
+        min_trade_status_val.setText(afr.asd.getSettings().getMin_trade_status().toString());
+        max_trade_source_val.setText(afr.asd.getSettings().getMax_trade_source().toString());
+        min_trade_source_val.setText(afr.asd.getSettings().getMin_trade_source().toString());
+        max_trade_settings_val.setText(afr.asd.getSettings().getMax_trade_settings().toString());
+        min_trade_settings_val.setText(afr.asd.getSettings().getMin_trade_settings().toString());
     }
 
     private void addLine() {

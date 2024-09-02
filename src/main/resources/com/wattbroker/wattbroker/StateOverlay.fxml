@@ -7,7 +7,7 @@
 
 <!--<?import com.wattbroker.wattbroker.Graph?>-->
 
-<!--<?import com.wattbroker.wattbroker.SmallGraph?>-->
+<?import com.wattbroker.wattbroker.SmallGraph?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="1186.0" style="-fx-background-color: #232323;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane layoutX="70.0" layoutY="84.0" prefHeight="727.0" prefWidth="367.0" style="-fx-background-color: #1C1C1C;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <SVGPath fx:id="state" content="M40,60 C42,48 44,30 25,32" layoutX="0" layoutY="0" />
@@ -28,7 +28,7 @@
       </font>
    </Text>
    <Pane id="GraphRoot" layoutX="469.0" layoutY="290.0" prefHeight="440.0" prefWidth="515.0" AnchorPane.leftAnchor="387.0" AnchorPane.topAnchor="211.0">
-<!--      <SmallGraph/>-->
+      <SmallGraph/>
    </Pane>
    <AnchorPane layoutX="887.0" layoutY="107.0" prefHeight="518.0" prefWidth="244.0" style="-fx-background-color: #272727; -fx-background-radius: 20;" AnchorPane.leftAnchor="916.0" AnchorPane.topAnchor="167.0">
       <Text fill="WHITE" layoutX="12.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUGGESTION" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="22.0">

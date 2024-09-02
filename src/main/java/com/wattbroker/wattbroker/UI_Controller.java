@@ -60,6 +60,14 @@ public class UI_Controller {
             throw new RuntimeException(e);
         }
 
+        userIcon.setOnMouseClicked(e -> {
+            try {
+                new UserProfile(Main.user, Main.userId);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
         ShowDashboard(null);
     }
 
