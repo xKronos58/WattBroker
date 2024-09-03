@@ -1,5 +1,7 @@
 package com.wattbroker.wattbroker.Controllers;
 
+import com.wattbroker.wattbroker.Controllers.SettingsControllers.EditType;
+import com.wattbroker.wattbroker.Controllers.SettingsControllers.GeneralSettingsController;
 import com.wattbroker.wattbroker.Main;
 import com.wattbroker.wattbroker.UI_Controller;
 import com.wattbroker.wattbroker.WattBroker;
@@ -41,7 +43,10 @@ public class AlgorithmPaneController {
         alg.setPadding(new javafx.geometry.Insets(0, 0, 30, 28));
         alg.getChildren().addAll(algorithms);
         try {
-            alg.getChildren().add(FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("AddButtonTemplate.fxml"))));
+            Node addButton = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("AddButtonTemplate.fxml")));
+            addButton.setOnMouseClicked(e -> new GeneralSettingsController.EDIT(EditType.ALGORITHM, null));
+
+            alg.getChildren().add(addButton);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

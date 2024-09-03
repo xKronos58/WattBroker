@@ -142,7 +142,7 @@ public class GeneralSettingsController {
      * @see EditType
      *
      * */
-    private static class EDIT extends Application {
+    public static class EDIT extends Application {
 
         /**
          * GUI method to launch the edit menu
@@ -171,7 +171,7 @@ public class GeneralSettingsController {
 
             // Define elements used in GUI
             AnchorPane root = new AnchorPane();
-            Text info = new Text("Enter new " + type.name().toLowerCase());
+            Text info = new Text("Enter new " + type.getName());
             TextField content = new TextField();
             Button set = new Button("Update");
             Button cancel = new Button("Cancel");
@@ -193,6 +193,8 @@ public class GeneralSettingsController {
                     case EMAIL:
                         DB_query dbq1 = new DB_query();
                         dbq1.setEmail(Main.userId.getId(), content.getText());
+                        break;
+                    case ALGORITHM:
                         break;
                 }
                 stage.close();
@@ -232,7 +234,7 @@ public class GeneralSettingsController {
             stage.setScene(new Scene(root));
 
             // Map the update method to the closing action
-            stage.setOnHiding(e -> g.updateLabels());
+            if (g!=null) stage.setOnHiding(e -> g.updateLabels());
 
             // Launch the stage
             start(stage);
