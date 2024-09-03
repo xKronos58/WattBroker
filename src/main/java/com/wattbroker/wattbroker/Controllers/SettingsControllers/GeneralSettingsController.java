@@ -236,11 +236,4 @@ public class GeneralSettingsController {
             // Map the update method to the closing action
             if (g!=null) stage.setOnHiding(e -> g.updateLabels());
 
-            // Launch the stage
-            start(stage);
-        }
-    }
-
-}
-
-
+           

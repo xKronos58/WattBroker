@@ -102,14 +102,4 @@ public class AlgorithmPaneController {
                         throw new RuntimeException(ex);
                     }
                 });
-                AlgTemplateController Controller = current.getController();
-                Controller.setAlgorithm(algorithm);
-                nodes.add(temp);
-            } catch (Exception e) {
-                System.out.println(e.getMessage() + " (AlgorithmPaneController : 104)");
-            }
-        }
-
-        return nodes;
-    }
-}
+                AlgTempla
