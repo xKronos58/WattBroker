@@ -63,6 +63,7 @@
                <children>
                   <ImageView fitHeight="421.0" fitWidth="764.0" layoutX="120.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
                      <image>
+<!--                        PLACEHOLDER IMAGE PLEASE DISREGARD-->
                         <Image url="@Images/GoofyAHH_INTEGRAL.jpg" />
                      </image>
                   </ImageView>

@@ -62,6 +62,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <children>
                   <ImageView fitHeight="521.0" fitWidth="754.0" layoutX="117.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+   <!--                PLACE HOLDER IMAGE PLEASE DISREGARD -->
                      <image>
                         <Image url="@Images/SUPPORT.jpg" />
                      </image>
